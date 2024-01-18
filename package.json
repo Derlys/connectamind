@@ -1,5 +1,5 @@
 {
-  "name": "@pubkey-stack/source",
+  "name": "@connectamind/source",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -17,9 +17,9 @@
     "dev:services": "docker compose up",
     "dev:services:stop": "docker compose down",
     "dev:web": "nx run web:serve",
-    "docker:build:api": "docker build . -t ghcr.io/pubkeyapp/pubkey-stack",
-    "docker:push:api": "docker push ghcr.io/pubkeyapp/pubkey-stack",
-    "docker:run:api": "docker run -it -p 8000:3000 ghcr.io/pubkeyapp/pubkey-stack",
+    "docker:build:api": "docker build . -t ghcr.io/pubkeyapp/connectamind",
+    "docker:push:api": "docker push ghcr.io/pubkeyapp/connectamind",
+    "docker:run:api": "docker run -it -p 8000:3000 ghcr.io/pubkeyapp/connectamind",
     "e2e:all": "nx run-many --target=e2e --all",
     "format:all": "nx format:write --all",
     "lint:all": "nx run-many --target=lint --all",

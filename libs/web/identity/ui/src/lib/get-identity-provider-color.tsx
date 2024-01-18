@@ -1,4 +1,4 @@
-import { IdentityProvider } from '@pubkey-stack/sdk'
+import { IdentityProvider } from '@connectamind/sdk'
 
 export function getIdentityProviderColor(provider: IdentityProvider) {
   switch (provider) {

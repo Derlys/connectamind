@@ -1,5 +1,5 @@
 import { Group } from '@mantine/core'
-import { WalletButton } from '@pubkey-stack/web-solana-ui'
+import { WalletButton } from '@connectamind/web-solana-ui'
 import { UiPage } from '@pubkey-ui/core'
 import { useWallet } from '@solana/wallet-adapter-react'
 import { CounterListFeature } from './counter-list-feature'

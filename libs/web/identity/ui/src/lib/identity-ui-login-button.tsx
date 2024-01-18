@@ -1,5 +1,5 @@
 import type { ButtonProps } from '@mantine/core'
-import { IdentityProvider } from '@pubkey-stack/sdk'
+import { IdentityProvider } from '@connectamind/sdk'
 import { IdentityUiProviderButton } from './identity-ui-provider-button'
 import { IdentityUiSolanaLoginButton } from './identity-ui-solana-login-button'
 

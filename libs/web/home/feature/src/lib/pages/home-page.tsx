@@ -7,9 +7,9 @@ export function HomePage() {
   return (
     <Container size={800}>
       <UiStack gap="xl" my="xl">
-        <Title>Welcome to PubKey Stack.</Title>
+        <Title>Welcome to Connectamind.</Title>
 
-        <Text c="dimmed">This is the PubKey Stack starter project.</Text>
+        <Text c="dimmed">This is the Connectamind starter project.</Text>
         <Group>
           <Button component={Link} to="/dashboard" size="xl" color="brand" leftSection={<IconRocket />}>
             Get started
@@ -20,7 +20,7 @@ export function HomePage() {
 
           <Button
             component={'a'}
-            href="https://github.com/pubkeyapp/pubkey-stack"
+            href="https://github.com/pubkeyapp/connectamind"
             size="xl"
             variant="default"
             leftSection={<IconBrandGithub />}

@@ -7,7 +7,7 @@ export function AboutPage() {
   return (
     <Container size={700}>
       <UiStack gap="xl" my="xl">
-        <Title>About PubKey Stack.</Title>
+        <Title>About Connectamind.</Title>
         <Text c="dimmed">This is an empty about page.</Text>
         <Group>
           <Button component={Link} to="/home" size="xl" color="brand" leftSection={<IconHome />}>

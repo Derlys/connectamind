@@ -1,5 +1,5 @@
-import { Identity, IdentityProvider } from '@pubkey-stack/sdk'
-import { useIdentitySolana } from '@pubkey-stack/web-identity-data-access'
+import { Identity, IdentityProvider } from '@connectamind/sdk'
+import { useIdentitySolana } from '@connectamind/web-identity-data-access'
 import { toastError } from '@pubkey-ui/core'
 import { useWallet } from '@solana/wallet-adapter-react'
 import { useEffect, useMemo, useState } from 'react'

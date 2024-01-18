@@ -1,5 +1,5 @@
 import { Button, Group } from '@mantine/core'
-import { AdminCreateUserInput } from '@pubkey-stack/sdk'
+import { AdminCreateUserInput } from '@connectamind/sdk'
 import { formFieldPassword, formFieldText, UiForm, UiFormField } from '@pubkey-ui/core'
 
 export function AdminUiCreateUserForm({ submit }: { submit: (res: AdminCreateUserInput) => Promise<boolean> }) {

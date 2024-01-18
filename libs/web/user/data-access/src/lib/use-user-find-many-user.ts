@@ -1,5 +1,5 @@
-import { UserFindManyUserInput } from '@pubkey-stack/sdk'
-import { useSdk } from '@pubkey-stack/web-core-data-access'
+import { UserFindManyUserInput } from '@connectamind/sdk'
+import { useSdk } from '@connectamind/web-core-data-access'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 

@@ -1,6 +1,6 @@
-import { UserUpdateUserInput } from '@pubkey-stack/sdk'
-import { useAuth, useMe } from '@pubkey-stack/web-auth-data-access'
-import { useSdk } from '@pubkey-stack/web-core-data-access'
+import { UserUpdateUserInput } from '@connectamind/sdk'
+import { useAuth, useMe } from '@connectamind/web-auth-data-access'
+import { useSdk } from '@connectamind/web-core-data-access'
 import { toastError } from '@pubkey-ui/core'
 import { useUserFineOneUser } from './use-user-fine-one-user'
 

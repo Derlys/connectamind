@@ -1,11 +1,11 @@
 import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql'
-import { BaseContext } from '@pubkey-stack/api-core-data-access'
+import { BaseContext } from '@connectamind/api-core-data-access'
 import {
   ApiIdentityService,
   IdentityChallenge,
   RequestIdentityChallengeInput,
   VerifyIdentityChallengeInput,
-} from '@pubkey-stack/api-identity-data-access'
+} from '@connectamind/api-identity-data-access'
 
 @Resolver()
 export class ApiAnonIdentityResolver {

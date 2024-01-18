@@ -1,5 +1,5 @@
 import { ActionIcon, Anchor, Group, ScrollArea, Stack, Text } from '@mantine/core'
-import { ellipsify, Identity } from '@pubkey-stack/sdk'
+import { ellipsify, Identity } from '@connectamind/sdk'
 import { UiCopy, UiDebugModal } from '@pubkey-ui/core'
 import { IconTrash } from '@tabler/icons-react'
 import { DataTable } from 'mantine-datatable'

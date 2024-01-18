@@ -1,6 +1,6 @@
 import { Logger } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
-import { ApiCoreService } from '@pubkey-stack/api-core-data-access'
+import { ApiCoreService } from '@connectamind/api-core-data-access'
 import cookieParser from 'cookie-parser'
 import session from 'express-session'
 import { exec } from 'node:child_process'

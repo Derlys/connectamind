@@ -1,6 +1,6 @@
 import { Parent, ResolveField, Resolver } from '@nestjs/graphql'
-import { Identity } from '@pubkey-stack/api-identity-data-access'
-import { User } from '@pubkey-stack/api-user-data-access'
+import { Identity } from '@connectamind/api-identity-data-access'
+import { User } from '@connectamind/api-user-data-access'
 
 @Resolver(() => User)
 export class ApiUserResolver {

@@ -5,12 +5,12 @@ import {
   ellipsify,
   getRequestDetails,
   slugifyId,
-} from '@pubkey-stack/api-core-data-access'
+} from '@connectamind/api-core-data-access'
 import { RequestIdentityChallengeInput } from './dto/request-identity-challenge.input'
 import { VerifyIdentityChallengeInput } from './dto/verify-identity-challenge-input'
 import { sha256 } from './helpers/sha256'
 import { ApiSolanaIdentityService } from './api-solana-identity.service'
-import { ApiAuthService } from '@pubkey-stack/api-auth-data-access'
+import { ApiAuthService } from '@connectamind/api-auth-data-access'
 import { IdentityProvider, UserRole, UserStatus } from '@prisma/client'
 
 @Injectable()

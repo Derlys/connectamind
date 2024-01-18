@@ -1,5 +1,5 @@
 import { BN } from '@coral-xyz/anchor'
-import { uiToastLink } from '@pubkey-stack/web-solana-data-access'
+import { uiToastLink } from '@connectamind/web-solana-data-access'
 import { toastError } from '@pubkey-ui/core'
 import { useMutation } from '@tanstack/react-query'
 import { useCounterProgramAccount } from './counter-program-account-provider'

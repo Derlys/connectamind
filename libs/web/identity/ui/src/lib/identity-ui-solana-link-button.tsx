@@ -1,8 +1,8 @@
 import { Button, ButtonProps } from '@mantine/core'
 import { modals } from '@mantine/modals'
-import { Identity, IdentityProvider, solanaGradient } from '@pubkey-stack/sdk'
-import { IdentityProviderSolanaLink } from '@pubkey-stack/web-identity-data-access'
-import { SolanaClusterProvider } from '@pubkey-stack/web-solana-data-access'
+import { Identity, IdentityProvider, solanaGradient } from '@connectamind/sdk'
+import { IdentityProviderSolanaLink } from '@connectamind/web-identity-data-access'
+import { SolanaClusterProvider } from '@connectamind/web-solana-data-access'
 import { IdentityUiIcon } from './identity-ui-icon'
 import { IdentityUiSolanaLinkWizard } from './identity-ui-solana-link-wizard'
 

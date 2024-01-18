@@ -1,5 +1,5 @@
 import { Group, Text } from '@mantine/core'
-import { IdentityProvider } from '@pubkey-stack/sdk'
+import { IdentityProvider } from '@connectamind/sdk'
 import { IdentityUiIcon } from './identity-ui-icon'
 
 export function IdentityUiBadge({ provider }: { provider: IdentityProvider }) {

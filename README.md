@@ -1,4 +1,4 @@
-# PubKey Stack
+# Connectamind
 
 ## Getting Started
 
@@ -13,8 +13,8 @@
 Clone the repo and install dependencies:
 
 ```shell
-git clone git@github.com:pubkeyapp/pubkey-stack.git
-cd pubkey-stack
+git clone git@github.com:pubkeyapp/connectamind.git
+cd connectamind
 pnpm
 ```
 
@@ -87,7 +87,7 @@ pnpm nx g prisma-model company
 Output:
 
 ```shell
-> NX Generating @pubkey-stack/tools:prisma-model
+> NX Generating @connectamind/tools:prisma-model
 
 UPDATE prisma/schema.prisma
 ```
@@ -105,7 +105,7 @@ pnpm nx g api-feature company
 Output:
 
 ```shell
-> NX Generating @pubkey-stack/tools:api-feature
+> NX Generating @connectamind/tools:api-feature
 
 CREATE libs/api/company/data-access/...
 CREATE libs/api/company/feature/...
@@ -127,7 +127,7 @@ pnpm nx g web-feature company
 Output:
 
 ```shell
-> NX Generating @pubkey-stack/tools:web-feature
+> NX Generating @connectamind/tools:web-feature
 
 CREATE libs/web/company/data-access/...
 CREATE libs/web/company/feature/...

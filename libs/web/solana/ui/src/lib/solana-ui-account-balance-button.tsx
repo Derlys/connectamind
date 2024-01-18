@@ -1,6 +1,6 @@
 import { Button, Menu } from '@mantine/core'
-import { ellipsify } from '@pubkey-stack/sdk'
-import { useCluster, useGetBalance } from '@pubkey-stack/web-solana-data-access'
+import { ellipsify } from '@connectamind/sdk'
+import { useCluster, useGetBalance } from '@connectamind/web-solana-data-access'
 import { useWallet } from '@solana/wallet-adapter-react'
 import { PublicKey } from '@solana/web3.js'
 import { IconCurrencySolana, IconExternalLink } from '@tabler/icons-react'

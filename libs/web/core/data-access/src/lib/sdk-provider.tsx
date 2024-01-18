@@ -1,4 +1,4 @@
-import { getGraphQLSdk, Sdk } from '@pubkey-stack/sdk'
+import { getGraphQLSdk, Sdk } from '@connectamind/sdk'
 import { createContext, ReactNode, useContext } from 'react'
 
 const Context = createContext<Sdk>({} as Sdk)

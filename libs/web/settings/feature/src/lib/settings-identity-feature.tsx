@@ -1,6 +1,6 @@
-import { useAuth } from '@pubkey-stack/web-auth-data-access'
-import { useUserFindManyIdentity } from '@pubkey-stack/web-identity-data-access'
-import { IdentityUiGroupList } from '@pubkey-stack/web-identity-ui'
+import { useAuth } from '@connectamind/web-auth-data-access'
+import { useUserFindManyIdentity } from '@connectamind/web-identity-data-access'
+import { IdentityUiGroupList } from '@connectamind/web-identity-ui'
 import { UiLoader, UiStack } from '@pubkey-ui/core'
 
 export function SettingsIdentityFeature() {

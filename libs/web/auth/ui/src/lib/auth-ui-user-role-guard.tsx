@@ -1,5 +1,5 @@
-import { UserRole } from '@pubkey-stack/sdk'
-import { useAuth } from '@pubkey-stack/web-auth-data-access'
+import { UserRole } from '@connectamind/sdk'
+import { useAuth } from '@connectamind/web-auth-data-access'
 import { UiError } from '@pubkey-ui/core'
 import { Outlet } from 'react-router-dom'
 import { AuthUiFull } from './auth-ui-full'

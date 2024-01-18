@@ -1,5 +1,5 @@
-import { useAdminFindOneUser } from '@pubkey-stack/web-user-data-access'
-import { AdminUiUpdateUserForm } from '@pubkey-stack/web-user-ui'
+import { useAdminFindOneUser } from '@connectamind/web-user-data-access'
+import { AdminUiUpdateUserForm } from '@connectamind/web-user-ui'
 import { UiCard, UiError, UiLoader } from '@pubkey-ui/core'
 
 export function AdminUserDetailFeatureSettings({ userId }: { userId: string }) {

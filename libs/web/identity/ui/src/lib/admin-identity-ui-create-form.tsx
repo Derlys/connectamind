@@ -1,5 +1,5 @@
 import { Button, Group } from '@mantine/core'
-import { AdminCreateIdentityInput, getEnumOptions, IdentityProvider } from '@pubkey-stack/sdk'
+import { AdminCreateIdentityInput, getEnumOptions, IdentityProvider } from '@connectamind/sdk'
 import { formFieldSelect, formFieldText, UiForm, UiFormField } from '@pubkey-ui/core'
 
 export function AuthUiIdentityCreateForm({ submit }: { submit: (res: AdminCreateIdentityInput) => Promise<boolean> }) {

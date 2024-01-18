@@ -1,4 +1,4 @@
-import { type LoginInput, RegisterInput } from '@pubkey-stack/sdk'
+import { type LoginInput, RegisterInput } from '@connectamind/sdk'
 import { formFieldPassword, formFieldText, UiForm, UiFormField } from '@pubkey-ui/core'
 import { ReactNode, useState } from 'react'
 

@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common'
-import { ApiAuthFeatureModule } from '@pubkey-stack/api-auth-feature'
-import { ApiCoreDataAccessModule } from '@pubkey-stack/api-core-data-access'
-import { ApiIdentityFeatureModule } from '@pubkey-stack/api-identity-feature'
-import { ApiUserFeatureModule } from '@pubkey-stack/api-user-feature'
+import { ApiAuthFeatureModule } from '@connectamind/api-auth-feature'
+import { ApiCoreDataAccessModule } from '@connectamind/api-core-data-access'
+import { ApiIdentityFeatureModule } from '@connectamind/api-identity-feature'
+import { ApiUserFeatureModule } from '@connectamind/api-user-feature'
 import { ApiCoreController } from './api-core.controller'
 import { ApiCoreResolver } from './api-core.resolver'
 

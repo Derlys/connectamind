@@ -1,5 +1,5 @@
-import { AppConfig, IdentityProvider, LoginInput, RegisterInput, User } from '@pubkey-stack/sdk'
-import { useSdk } from '@pubkey-stack/web-core-data-access'
+import { AppConfig, IdentityProvider, LoginInput, RegisterInput, User } from '@connectamind/sdk'
+import { useSdk } from '@connectamind/web-core-data-access'
 import { toastError, toastSuccess } from '@pubkey-ui/core'
 import { useQuery } from '@tanstack/react-query'
 import { createContext, ReactNode, useContext, useEffect, useMemo, useReducer } from 'react'

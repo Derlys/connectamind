@@ -1,6 +1,6 @@
-import { AdminCreateUserInput } from '@pubkey-stack/sdk'
-import { useAdminFindManyUser } from '@pubkey-stack/web-user-data-access'
-import { AdminUiCreateUserForm } from '@pubkey-stack/web-user-ui'
+import { AdminCreateUserInput } from '@connectamind/sdk'
+import { useAdminFindManyUser } from '@connectamind/web-user-data-access'
+import { AdminUiCreateUserForm } from '@connectamind/web-user-ui'
 import { toastError, UiBack, UiCard, UiPage } from '@pubkey-ui/core'
 import { useNavigate } from 'react-router-dom'
 

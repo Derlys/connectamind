@@ -44,8 +44,8 @@ export const defaultClusters: Cluster[] = [
   },
 ]
 
-const clusterAtom = atomWithStorage<Cluster>('pubkey-stack-cluster', defaultClusters[0])
-const clustersAtom = atomWithStorage<Cluster[]>('pubkey-stack-clusters', defaultClusters)
+const clusterAtom = atomWithStorage<Cluster>('connectamind-cluster', defaultClusters[0])
+const clustersAtom = atomWithStorage<Cluster[]>('connectamind-clusters', defaultClusters)
 
 const activeClustersAtom = atom<Cluster[]>((get) => {
   const clusters = get(clustersAtom)

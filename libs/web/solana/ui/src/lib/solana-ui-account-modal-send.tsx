@@ -1,6 +1,6 @@
 import { Button, ButtonProps, Modal, TextInput } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { useTransferSol } from '@pubkey-stack/web-solana-data-access'
+import { useTransferSol } from '@connectamind/web-solana-data-access'
 import { useWallet } from '@solana/wallet-adapter-react'
 import { PublicKey } from '@solana/web3.js'
 import { useState } from 'react'

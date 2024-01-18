@@ -1,5 +1,5 @@
 import { useWallet } from '@solana/wallet-adapter-react'
-import { useGetBalance } from '@pubkey-stack/web-solana-data-access'
+import { useGetBalance } from '@connectamind/web-solana-data-access'
 import { useCounterFetchAll } from './use-counter-fetch-all'
 
 export function useCounterRefresh() {

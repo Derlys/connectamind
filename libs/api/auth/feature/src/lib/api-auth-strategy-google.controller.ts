@@ -5,7 +5,7 @@ import {
   ApiAuthRequest,
   ApiAuthService,
   ApiAuthStrategyGoogleGuard,
-} from '@pubkey-stack/api-auth-data-access'
+} from '@connectamind/api-auth-data-access'
 import { Response } from 'express-serve-static-core'
 
 @Controller('auth/google')

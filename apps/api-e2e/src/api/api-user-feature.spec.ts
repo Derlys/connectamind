@@ -5,11 +5,11 @@ import {
   User,
   UserRole,
   UserStatus,
-} from '@pubkey-stack/sdk'
+} from '@connectamind/sdk'
 import { getAliceCookie, getBobCookie, sdk, uniqueId } from '../support'
 
 function avatarUrl(name) {
-  return `https://source.boringavatars.com/pixel/120/pubkey-stack-${name}`
+  return `https://source.boringavatars.com/pixel/120/connectamind-${name}`
 }
 
 describe('api-user-feature', () => {

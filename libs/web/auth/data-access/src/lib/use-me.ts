@@ -1,4 +1,4 @@
-import { Sdk } from '@pubkey-stack/sdk'
+import { Sdk } from '@connectamind/sdk'
 import { useQuery } from '@tanstack/react-query'
 
 export function useMe(sdk: Sdk) {

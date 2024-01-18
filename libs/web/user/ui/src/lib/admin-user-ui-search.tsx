@@ -1,4 +1,4 @@
-import { useAdminFindManyUser } from '@pubkey-stack/web-user-data-access'
+import { useAdminFindManyUser } from '@connectamind/web-user-data-access'
 import { UserUiAutocomplete, type UserUiAutocompleteProps } from './user-ui-autocomplete'
 
 export type AdminUserUiSearchProps = Omit<UserUiAutocompleteProps, 'items' | 'isLoading' | 'setSearch'>

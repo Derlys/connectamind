@@ -1,7 +1,7 @@
 import { Button, Group } from '@mantine/core'
 import { modals } from '@mantine/modals'
-import { useAdminFindManyIdentity } from '@pubkey-stack/web-identity-data-access'
-import { AdminIdentityUiTable, AuthUiIdentityCreateForm } from '@pubkey-stack/web-identity-ui'
+import { useAdminFindManyIdentity } from '@connectamind/web-identity-data-access'
+import { AdminIdentityUiTable, AuthUiIdentityCreateForm } from '@connectamind/web-identity-ui'
 import { UiInfo, UiLoader, UiStack } from '@pubkey-ui/core'
 
 export function AdminUserDetailFeatureIdentities({ userId }: { userId: string }) {

@@ -1,5 +1,5 @@
 {
-  "name": "@pubkey-stack/sdk",
+  "name": "@connectamind/sdk",
   "version": "0.0.1",
   "type": "commonjs",
   "peerDependencies": {

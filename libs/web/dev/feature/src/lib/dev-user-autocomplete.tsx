@@ -1,6 +1,6 @@
 import { SimpleGrid, Text } from '@mantine/core'
-import type { User } from '@pubkey-stack/sdk'
-import { AdminUserUiSearch, UserUiAvatar, UserUiSearch, UserUiTitle } from '@pubkey-stack/web-user-ui'
+import type { User } from '@connectamind/sdk'
+import { AdminUserUiSearch, UserUiAvatar, UserUiSearch, UserUiTitle } from '@connectamind/web-user-ui'
 import { UiCard, UiDebug, UiInfo, UiStack } from '@pubkey-ui/core'
 import { useState } from 'react'
 

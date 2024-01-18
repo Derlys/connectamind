@@ -6,8 +6,8 @@ import {
   SolanaUiClusterChecker,
   SolanaUiClusterSelect,
   WalletIcon,
-} from '@pubkey-stack/web-solana-ui'
-import { UiHeaderProfile } from '@pubkey-stack/web-ui-core'
+} from '@connectamind/web-solana-ui'
+import { UiHeaderProfile } from '@connectamind/web-ui-core'
 import { UiHeader, UiLayout, UiLoader } from '@pubkey-ui/core'
 import { ReactNode, Suspense } from 'react'
 

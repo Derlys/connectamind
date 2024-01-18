@@ -1,4 +1,4 @@
-import { RegisterInput, UserRole, UserStatus } from '@pubkey-stack/sdk'
+import { RegisterInput, UserRole, UserStatus } from '@connectamind/sdk'
 import { sdk, uniqueId } from '../support'
 
 describe('api-auth-feature', () => {

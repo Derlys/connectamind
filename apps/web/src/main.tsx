@@ -1,4 +1,4 @@
-import { ShellFeature } from '@pubkey-stack/web-shell-feature'
+import { ShellFeature } from '@connectamind/web-shell-feature'
 import { StrictMode } from 'react'
 import * as ReactDOM from 'react-dom/client'
 

@@ -6,8 +6,8 @@ services:
     ports:
       - 5432:5432
     environment:
-      POSTGRES_DB: pubkey-stack
-      POSTGRES_USER: pubkey-stack
-      POSTGRES_PASSWORD: pubkey-stack
+      POSTGRES_DB: connectamind
+      POSTGRES_USER: connectamind
+      POSTGRES_PASSWORD: connectamind
     volumes:
       - ./tmp/postgres:/var/lib/postgresql/data

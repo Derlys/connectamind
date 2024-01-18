@@ -1,5 +1,5 @@
 import { Alert } from '@mantine/core'
-import { useAuth } from '@pubkey-stack/web-auth-data-access'
+import { useAuth } from '@connectamind/web-auth-data-access'
 import { ReactElement } from 'react'
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
 

@@ -1,5 +1,5 @@
-import { getEnumOptions, UserStatus } from '@pubkey-stack/sdk'
-import { UiSelectEnumOption } from '@pubkey-stack/web-ui-core'
+import { getEnumOptions, UserStatus } from '@connectamind/sdk'
+import { UiSelectEnumOption } from '@connectamind/web-ui-core'
 
 export function AdminUserUiSelectStatus({
   value,

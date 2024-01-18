@@ -1,5 +1,5 @@
 import { Badge } from '@mantine/core'
-import { UserRole } from '@pubkey-stack/sdk'
+import { UserRole } from '@connectamind/sdk'
 import { useUiColorScheme } from '@pubkey-ui/core'
 
 export const USER_ROLE_COLORS: Record<UserRole, string> = {

@@ -1,4 +1,4 @@
-import { getGraphQLSdk, IdentityProvider, Sdk } from '@pubkey-stack/sdk'
+import { getGraphQLSdk, IdentityProvider, Sdk } from '@connectamind/sdk'
 import { Keypair } from '@solana/web3.js'
 import * as nacl from 'tweetnacl'
 import { getApiUrl } from './get-api.url'

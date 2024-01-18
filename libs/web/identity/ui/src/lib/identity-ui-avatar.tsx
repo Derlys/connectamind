@@ -1,5 +1,5 @@
 import { Avatar, getGradient, Tooltip } from '@mantine/core'
-import { ellipsify, Identity, IdentityProvider, solanaGradient } from '@pubkey-stack/sdk'
+import { ellipsify, Identity, IdentityProvider, solanaGradient } from '@connectamind/sdk'
 import { IconCurrencySolana } from '@tabler/icons-react'
 
 export function IdentityUiAvatar({ item, withTooltip = false }: { item: Identity; withTooltip?: boolean }) {

@@ -1,5 +1,5 @@
 import { Stack, type StackProps } from '@mantine/core'
-import { IdentityProvider } from '@pubkey-stack/sdk'
+import { IdentityProvider } from '@connectamind/sdk'
 import { IdentityUiLoginButton } from './identity-ui-login-button'
 
 export function IdentityUiLoginButtons({

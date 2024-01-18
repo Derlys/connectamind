@@ -1,5 +1,5 @@
-import { DevAdminRoutes } from '@pubkey-stack/web-dev-feature'
-import { AdminUserFeature } from '@pubkey-stack/web-user-feature'
+import { DevAdminRoutes } from '@connectamind/web-dev-feature'
+import { AdminUserFeature } from '@connectamind/web-user-feature'
 import { UiContainer, UiDashboardGrid, UiDashboardItem, UiNotFound } from '@pubkey-ui/core'
 import { IconUsers } from '@tabler/icons-react'
 import { Navigate, RouteObject, useRoutes } from 'react-router-dom'

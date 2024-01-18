@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common'
-import { ApiAuthDataAccessModule } from '@pubkey-stack/api-auth-data-access'
-import { ApiCoreDataAccessModule } from '@pubkey-stack/api-core-data-access'
+import { ApiAuthDataAccessModule } from '@connectamind/api-auth-data-access'
+import { ApiCoreDataAccessModule } from '@connectamind/api-core-data-access'
 import { ApiAdminIdentityService } from './api-admin-identity.service'
 import { ApiUserIdentityService } from './api-user-identity.service'
 import { ApiIdentityService } from './api-identity.service'

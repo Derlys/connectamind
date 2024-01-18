@@ -1,4 +1,4 @@
-import { useIdentitySolanaLogin } from '@pubkey-stack/web-identity-data-access'
+import { useIdentitySolanaLogin } from '@connectamind/web-identity-data-access'
 import { toastError } from '@pubkey-ui/core'
 import { useWallet } from '@solana/wallet-adapter-react'
 import { useEffect, useState } from 'react'

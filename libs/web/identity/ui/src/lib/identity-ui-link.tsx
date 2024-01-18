@@ -1,5 +1,5 @@
 import { ActionIcon, Tooltip } from '@mantine/core'
-import { Identity } from '@pubkey-stack/sdk'
+import { Identity } from '@connectamind/sdk'
 import { IconExternalLink } from '@tabler/icons-react'
 
 export function IdentityUiLink({ item }: { item: Identity }) {

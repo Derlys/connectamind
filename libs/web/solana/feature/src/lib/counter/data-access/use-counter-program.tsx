@@ -1,6 +1,6 @@
 import { Program } from '@coral-xyz/anchor'
-import { CounterIDL, getCounterProgramId } from '@pubkey-stack/anchor'
-import { useAnchorProvider, useCluster } from '@pubkey-stack/web-solana-data-access'
+import { CounterIDL, getCounterProgramId } from '@connectamind/anchor'
+import { useAnchorProvider, useCluster } from '@connectamind/web-solana-data-access'
 import { Cluster } from '@solana/web3.js'
 
 import { useMemo } from 'react'

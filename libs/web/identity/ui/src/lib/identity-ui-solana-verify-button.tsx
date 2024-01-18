@@ -1,8 +1,8 @@
 import { Button, Tooltip } from '@mantine/core'
 import { modals } from '@mantine/modals'
-import { ellipsify, Identity, IdentityProvider } from '@pubkey-stack/sdk'
-import { IdentityProviderSolanaLink } from '@pubkey-stack/web-identity-data-access'
-import { SolanaClusterProvider } from '@pubkey-stack/web-solana-data-access'
+import { ellipsify, Identity, IdentityProvider } from '@connectamind/sdk'
+import { IdentityProviderSolanaLink } from '@connectamind/web-identity-data-access'
+import { SolanaClusterProvider } from '@connectamind/web-solana-data-access'
 import { IconAlertCircle } from '@tabler/icons-react'
 import { IdentityUiSolanaVerifyWizard } from './identity-ui-solana-verify-wizard'
 

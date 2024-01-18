@@ -1,5 +1,5 @@
 import { Group, Paper, PaperProps, Text, useMantineTheme } from '@mantine/core'
-import { User } from '@pubkey-stack/sdk'
+import { User } from '@connectamind/sdk'
 import { useUiColorScheme } from '@pubkey-ui/core'
 
 import { ReactNode } from 'react'

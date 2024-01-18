@@ -1,4 +1,4 @@
-import { uiToastLink, useCluster } from '@pubkey-stack/web-solana-data-access'
+import { uiToastLink, useCluster } from '@connectamind/web-solana-data-access'
 import { toastError } from '@pubkey-ui/core'
 import { Keypair } from '@solana/web3.js'
 import { useMutation } from '@tanstack/react-query'

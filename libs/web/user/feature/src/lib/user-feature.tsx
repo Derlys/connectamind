@@ -1,4 +1,4 @@
-import { useAuth } from '@pubkey-stack/web-auth-data-access'
+import { useAuth } from '@connectamind/web-auth-data-access'
 import { UiWarning } from '@pubkey-ui/core'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { UserDetailFeature } from './user-detail-feature'

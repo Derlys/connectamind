@@ -1,5 +1,5 @@
 import { Button, ButtonProps } from '@mantine/core'
-import { IdentityProvider } from '@pubkey-stack/sdk'
+import { IdentityProvider } from '@connectamind/sdk'
 import { getIdentityProviderColor } from './get-identity-provider-color'
 import { IdentityUiIcon } from './identity-ui-icon'
 

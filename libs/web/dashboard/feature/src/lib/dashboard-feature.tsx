@@ -1,4 +1,4 @@
-import { useAuth } from '@pubkey-stack/web-auth-data-access'
+import { useAuth } from '@connectamind/web-auth-data-access'
 import { UiContainer, UiDashboardGrid, UiDashboardItem } from '@pubkey-ui/core'
 import { IconCurrencySolana, IconSettings, IconUser } from '@tabler/icons-react'
 

@@ -1,5 +1,5 @@
 import { Text, Tooltip } from '@mantine/core'
-import { Identity } from '@pubkey-stack/sdk'
+import { Identity } from '@connectamind/sdk'
 import { IconDiscountCheckFilled } from '@tabler/icons-react'
 
 export function IdentityUiVerified({ item }: { item: Identity }) {

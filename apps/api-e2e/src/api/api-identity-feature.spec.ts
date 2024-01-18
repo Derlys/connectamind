@@ -1,4 +1,4 @@
-import { IdentityProvider } from '@pubkey-stack/sdk'
+import { IdentityProvider } from '@connectamind/sdk'
 import * as bs58 from 'bs58'
 import { alice, getAliceCookie, getIdentityChallenge, sdk, signMessage } from '../support'
 import { breakStringSolana } from '../support/break-string'

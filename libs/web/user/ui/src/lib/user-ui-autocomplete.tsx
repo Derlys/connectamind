@@ -1,5 +1,5 @@
 import { Autocomplete, type AutocompleteProps, CloseIcon, Loader } from '@mantine/core'
-import type { User } from '@pubkey-stack/sdk'
+import type { User } from '@connectamind/sdk'
 import { IconUserSearch } from '@tabler/icons-react'
 
 import { useRef, useState } from 'react'

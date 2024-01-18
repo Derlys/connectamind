@@ -1,5 +1,5 @@
 import { Group, Text } from '@mantine/core'
-import { Identity, IdentityProvider } from '@pubkey-stack/sdk'
+import { Identity, IdentityProvider } from '@connectamind/sdk'
 import { UiStack } from '@pubkey-ui/core'
 import { IdentityUiIcon } from './identity-ui-icon'
 

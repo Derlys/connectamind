@@ -1,5 +1,5 @@
 import { type DynamicModule, Logger, Module } from '@nestjs/common'
-import { ApiCoreDataAccessModule } from '@pubkey-stack/api-core-data-access'
+import { ApiCoreDataAccessModule } from '@connectamind/api-core-data-access'
 import { ApiAuthStrategyService } from '../api-auth-strategy.service'
 import { ApiAuthStrategyGoogle } from './api-auth-strategy-google'
 

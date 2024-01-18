@@ -17,7 +17,7 @@
     "search": {
       "type": "string",
       "description": "Search for this text",
-      "default": "PubKey Stack"
+      "default": "Connectamind"
     },
     "replace": {
       "type": "string",

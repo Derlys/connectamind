@@ -1,5 +1,5 @@
 import { Button, Group } from '@mantine/core'
-import { User, UserUpdateUserInput } from '@pubkey-stack/sdk'
+import { User, UserUpdateUserInput } from '@connectamind/sdk'
 import { formFieldText, UiForm, UiFormField } from '@pubkey-ui/core'
 
 export function UserUiUpdateForm({

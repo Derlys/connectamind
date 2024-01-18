@@ -1,5 +1,5 @@
-import { UserRole, UserStatus } from '@pubkey-stack/sdk'
-import { AuthUiRouteGuard, AuthUiUserRoleGuard, AuthUiUserStatusGuard } from '@pubkey-stack/web-auth-ui'
+import { UserRole, UserStatus } from '@connectamind/sdk'
+import { AuthUiRouteGuard, AuthUiUserRoleGuard, AuthUiUserStatusGuard } from '@connectamind/web-auth-ui'
 import { UiLoader } from '@pubkey-ui/core'
 
 import { Navigate, Outlet, RouteObject, useRoutes } from 'react-router-dom'
