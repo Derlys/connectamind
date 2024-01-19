@@ -10,4 +10,6 @@ export class Post {
   updatedAt?: Date
   @Field()
   title!: string
+  @Field()
+  content!: string
 }

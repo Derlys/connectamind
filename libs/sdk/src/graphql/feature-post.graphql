@@ -2,6 +2,7 @@ fragment PostDetails on Post {
   createdAt
   id
   title
+  content
   updatedAt
 }
 

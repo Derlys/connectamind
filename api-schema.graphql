@@ -9,6 +9,7 @@ input AdminCreateIdentityInput {
 }
 
 input AdminCreatePostInput {
+  content: String!
   title: String!
 }
 
@@ -145,6 +146,7 @@ type PagingMeta {
 }
 
 type Post {
+  content: String!
   createdAt: DateTime
   id: String!
   title: String!

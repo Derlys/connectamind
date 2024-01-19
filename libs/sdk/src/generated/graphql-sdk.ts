@@ -31,6 +31,7 @@ export type AdminCreateIdentityInput = {
 }
 
 export type AdminCreatePostInput = {
+  content: Scalars['String']['input']
   title: Scalars['String']['input']
 }
 
@@ -225,6 +226,7 @@ export type PagingMeta = {
 
 export type Post = {
   __typename?: 'Post'
+  content: Scalars['String']['output']
   createdAt?: Maybe<Scalars['DateTime']['output']>
   id: Scalars['String']['output']
   title: Scalars['String']['output']
@@ -706,6 +708,7 @@ export type PostDetailsFragment = {
   createdAt?: Date | null
   id: string
   title: string
+  content: string
   updatedAt?: Date | null
 }
 
@@ -717,7 +720,14 @@ export type AdminFindManyPostQuery = {
   __typename?: 'Query'
   paging: {
     __typename?: 'PostPaging'
-    data: Array<{ __typename?: 'Post'; createdAt?: Date | null; id: string; title: string; updatedAt?: Date | null }>
+    data: Array<{
+      __typename?: 'Post'
+      createdAt?: Date | null
+      id: string
+      title: string
+      content: string
+      updatedAt?: Date | null
+    }>
     meta: {
       __typename?: 'PagingMeta'
       currentPage: number
@@ -737,7 +747,14 @@ export type AdminFindOnePostQueryVariables = Exact<{
 
 export type AdminFindOnePostQuery = {
   __typename?: 'Query'
-  item?: { __typename?: 'Post'; createdAt?: Date | null; id: string; title: string; updatedAt?: Date | null } | null
+  item?: {
+    __typename?: 'Post'
+    createdAt?: Date | null
+    id: string
+    title: string
+    content: string
+    updatedAt?: Date | null
+  } | null
 }
 
 export type AdminCreatePostMutationVariables = Exact<{
@@ -746,7 +763,14 @@ export type AdminCreatePostMutationVariables = Exact<{
 
 export type AdminCreatePostMutation = {
   __typename?: 'Mutation'
-  created?: { __typename?: 'Post'; createdAt?: Date | null; id: string; title: string; updatedAt?: Date | null } | null
+  created?: {
+    __typename?: 'Post'
+    createdAt?: Date | null
+    id: string
+    title: string
+    content: string
+    updatedAt?: Date | null
+  } | null
 }
 
 export type AdminUpdatePostMutationVariables = Exact<{
@@ -756,7 +780,14 @@ export type AdminUpdatePostMutationVariables = Exact<{
 
 export type AdminUpdatePostMutation = {
   __typename?: 'Mutation'
-  updated?: { __typename?: 'Post'; createdAt?: Date | null; id: string; title: string; updatedAt?: Date | null } | null
+  updated?: {
+    __typename?: 'Post'
+    createdAt?: Date | null
+    id: string
+    title: string
+    content: string
+    updatedAt?: Date | null
+  } | null
 }
 
 export type AdminDeletePostMutationVariables = Exact<{
@@ -1027,6 +1058,7 @@ export const PostDetailsFragmentDoc = gql`
     createdAt
     id
     title
+    content
     updatedAt
   }
 `
@@ -1934,6 +1966,7 @@ export function AdminCreateIdentityInputSchema(): z.ZodObject<Properties<AdminCr
 
 export function AdminCreatePostInputSchema(): z.ZodObject<Properties<AdminCreatePostInput>> {
   return z.object({
+    content: z.string(),
     title: z.string(),
   })
 }
