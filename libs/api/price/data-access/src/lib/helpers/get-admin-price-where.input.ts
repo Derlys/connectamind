@@ -7,10 +7,7 @@ export function getAdminPriceWhereInput(input: AdminFindManyPriceInput): Prisma.
   }
 
   if (input.search) {
-    where.OR = [
-      { id: { contains: input.search, mode: 'insensitive' } },
-      { token: { contains: input.search, mode: 'insensitive' } },
-    ]
+    where.OR = [{ id: { contains: input.search, mode: 'insensitive' } }]
   }
 
   return where

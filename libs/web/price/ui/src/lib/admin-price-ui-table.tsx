@@ -38,6 +38,7 @@ export function AdminPriceUiTable({
               </Anchor>
             ),
           },
+          { accessor: 'amount' },
           {
             accessor: 'actions',
             title: 'Actions',

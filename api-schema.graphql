@@ -14,8 +14,9 @@ input AdminCreatePostInput {
 }
 
 input AdminCreatePriceInput {
+  amount: String!
   postId: String!
-  token: String!
+  token: Token!
 }
 
 input AdminCreateUserInput {
@@ -55,7 +56,7 @@ input AdminUpdatePostInput {
 }
 
 input AdminUpdatePriceInput {
-  token: String
+  amount: String
 }
 
 input AdminUpdateUserInput {
@@ -179,10 +180,11 @@ type PostPaging {
 }
 
 type Price {
+  amount: String!
   createdAt: DateTime
   id: String!
   postId: String!
-  token: String!
+  token: Token!
   updatedAt: DateTime
 }
 
@@ -217,6 +219,12 @@ input RegisterInput {
 input RequestIdentityChallengeInput {
   provider: IdentityProvider!
   providerId: String!
+}
+
+enum Token {
+  BONK
+  SOL
+  USDC
 }
 
 type User {

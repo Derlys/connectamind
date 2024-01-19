@@ -1,6 +1,7 @@
 export * from './lib/api-price-data-access.module'
 export * from './lib/api-price.service'
 export * from './lib/entity/price.entity'
+export * from './lib/entity/token.enum'
 export * from './lib/entity/price-paging.entity'
 export * from './lib/dto/admin-create-price.input'
 export * from './lib/dto/admin-find-many-price.input'

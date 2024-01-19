@@ -10,10 +10,10 @@ export function AdminPriceUiUpdateForm({
   price: Price
 }) {
   const model: AdminUpdatePriceInput = {
-    token: price.token ?? '',
+    amount: price.amount ?? '',
   }
 
-  const fields: UiFormField<AdminUpdatePriceInput>[] = [formFieldText('token', { label: 'Token' })]
+  const fields: UiFormField<AdminUpdatePriceInput>[] = [formFieldText('amount', { label: 'Amount' })]
   return (
     <UiForm model={model} fields={fields} submit={(res) => submit(res as AdminUpdatePriceInput)}>
       <Group justify="right">

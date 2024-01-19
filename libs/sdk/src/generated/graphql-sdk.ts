@@ -36,8 +36,9 @@ export type AdminCreatePostInput = {
 }
 
 export type AdminCreatePriceInput = {
+  amount: Scalars['String']['input']
   postId: Scalars['String']['input']
-  token: Scalars['String']['input']
+  token: Token
 }
 
 export type AdminCreateUserInput = {
@@ -77,7 +78,7 @@ export type AdminUpdatePostInput = {
 }
 
 export type AdminUpdatePriceInput = {
-  token?: InputMaybe<Scalars['String']['input']>
+  amount?: InputMaybe<Scalars['String']['input']>
 }
 
 export type AdminUpdateUserInput = {
@@ -274,10 +275,11 @@ export type PostPaging = {
 
 export type Price = {
   __typename?: 'Price'
+  amount: Scalars['String']['output']
   createdAt?: Maybe<Scalars['DateTime']['output']>
   id: Scalars['String']['output']
   postId: Scalars['String']['output']
-  token: Scalars['String']['output']
+  token: Token
   updatedAt?: Maybe<Scalars['DateTime']['output']>
 }
 
@@ -362,6 +364,12 @@ export type RegisterInput = {
 export type RequestIdentityChallengeInput = {
   provider: IdentityProvider
   providerId: Scalars['String']['input']
+}
+
+export enum Token {
+  Bonk = 'BONK',
+  Sol = 'SOL',
+  Usdc = 'USDC',
 }
 
 export type User = {
@@ -858,7 +866,8 @@ export type PriceDetailsFragment = {
   __typename?: 'Price'
   createdAt?: Date | null
   id: string
-  token: string
+  token: Token
+  amount: string
   updatedAt?: Date | null
   postId: string
 }
@@ -875,7 +884,8 @@ export type AdminFindManyPriceQuery = {
       __typename?: 'Price'
       createdAt?: Date | null
       id: string
-      token: string
+      token: Token
+      amount: string
       updatedAt?: Date | null
       postId: string
     }>
@@ -902,7 +912,8 @@ export type AdminFindOnePriceQuery = {
     __typename?: 'Price'
     createdAt?: Date | null
     id: string
-    token: string
+    token: Token
+    amount: string
     updatedAt?: Date | null
     postId: string
   } | null
@@ -918,7 +929,8 @@ export type AdminCreatePriceMutation = {
     __typename?: 'Price'
     createdAt?: Date | null
     id: string
-    token: string
+    token: Token
+    amount: string
     updatedAt?: Date | null
     postId: string
   } | null
@@ -935,7 +947,8 @@ export type AdminUpdatePriceMutation = {
     __typename?: 'Price'
     createdAt?: Date | null
     id: string
-    token: string
+    token: Token
+    amount: string
     updatedAt?: Date | null
     postId: string
   } | null
@@ -1218,6 +1231,7 @@ export const PriceDetailsFragmentDoc = gql`
     createdAt
     id
     token
+    amount
     updatedAt
     postId
   }
@@ -2265,6 +2279,8 @@ export const definedNonNullAnySchema = z.any().refine((v) => isDefinedNonNullAny
 
 export const IdentityProviderSchema = z.nativeEnum(IdentityProvider)
 
+export const TokenSchema = z.nativeEnum(Token)
+
 export const UserRoleSchema = z.nativeEnum(UserRole)
 
 export const UserStatusSchema = z.nativeEnum(UserStatus)
@@ -2286,8 +2302,9 @@ export function AdminCreatePostInputSchema(): z.ZodObject<Properties<AdminCreate
 
 export function AdminCreatePriceInputSchema(): z.ZodObject<Properties<AdminCreatePriceInput>> {
   return z.object({
+    amount: z.string(),
     postId: z.string(),
-    token: z.string(),
+    token: TokenSchema,
   })
 }
 
@@ -2341,7 +2358,7 @@ export function AdminUpdatePostInputSchema(): z.ZodObject<Properties<AdminUpdate
 
 export function AdminUpdatePriceInputSchema(): z.ZodObject<Properties<AdminUpdatePriceInput>> {
   return z.object({
-    token: z.string().nullish(),
+    amount: z.string().nullish(),
   })
 }
 

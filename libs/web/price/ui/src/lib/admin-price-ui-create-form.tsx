@@ -1,15 +1,19 @@
 import { Button, Group } from '@mantine/core'
-import { AdminCreatePriceInput } from '@connectamind/sdk'
-import { formFieldText, UiForm, UiFormField } from '@pubkey-ui/core'
-import { ReactNode } from 'react'
+import { AdminCreatePriceInput, getEnumOptions, Token } from '@connectamind/sdk'
+import { formFieldSelect, formFieldText, UiForm, UiFormField } from '@pubkey-ui/core'
 
 export function AdminPriceUiCreateForm({ submit }: { submit: (res: AdminCreatePriceInput) => Promise<boolean> }) {
   const model: AdminCreatePriceInput = {
-    token: '',
+    token: Token.Bonk,
+    amount: '',
     postId: '',
   }
 
-  const fields: UiFormField<AdminCreatePriceInput>[] = [formFieldText('token', { label: 'Token', required: true })]
+  const fields: UiFormField<AdminCreatePriceInput>[] = [
+    //
+    formFieldSelect('token', { label: 'Token', required: true, options: getEnumOptions(Token) }),
+    formFieldText('amount', { label: 'Amount', required: true }),
+  ]
   return (
     <UiForm model={model} fields={fields} submit={(res) => submit(res as AdminCreatePriceInput)}>
       <Group justify="right">

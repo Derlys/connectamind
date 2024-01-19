@@ -2,6 +2,7 @@ fragment PriceDetails on Price {
   createdAt
   id
   token
+  amount
   updatedAt
   postId
 }
