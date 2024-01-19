@@ -1,0 +1,40 @@
+fragment PriceDetails on Price {
+  createdAt
+  id
+  token
+  updatedAt
+  postId
+}
+
+query adminFindManyPrice($input: AdminFindManyPriceInput!) {
+  paging: adminFindManyPrice(input: $input) {
+    data {
+      ...PriceDetails
+    }
+    meta {
+      ...PagingMetaDetails
+    }
+  }
+}
+
+query adminFindOnePrice($priceId: String!) {
+  item: adminFindOnePrice(priceId: $priceId) {
+    ...PriceDetails
+  }
+}
+
+mutation adminCreatePrice($input: AdminCreatePriceInput!) {
+  created: adminCreatePrice(input: $input) {
+    ...PriceDetails
+  }
+}
+
+mutation adminUpdatePrice($priceId: String!, $input: AdminUpdatePriceInput!) {
+  updated: adminUpdatePrice(priceId: $priceId, input: $input) {
+    ...PriceDetails
+  }
+}
+
+mutation adminDeletePrice($priceId: String!) {
+  deleted: adminDeletePrice(priceId: $priceId)
+}

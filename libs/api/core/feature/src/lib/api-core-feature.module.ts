@@ -6,6 +6,7 @@ import { ApiUserFeatureModule } from '@connectamind/api-user-feature'
 import { ApiCoreController } from './api-core.controller'
 import { ApiCoreResolver } from './api-core.resolver'
 import { ApiPostFeatureModule } from '@connectamind/api-post-feature'
+import { ApiPriceFeatureModule } from '@connectamind/api-price-feature'
 
 const imports = [
   // The api-feature generator will add the imports here
@@ -14,6 +15,7 @@ const imports = [
   ApiIdentityFeatureModule,
   ApiUserFeatureModule,
   ApiPostFeatureModule,
+  ApiPriceFeatureModule,
 ]
 
 @Module({

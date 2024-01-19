@@ -13,6 +13,11 @@ input AdminCreatePostInput {
   title: String!
 }
 
+input AdminCreatePriceInput {
+  postId: String!
+  token: String!
+}
+
 input AdminCreateUserInput {
   password: String
   username: String!
@@ -29,6 +34,13 @@ input AdminFindManyPostInput {
   search: String
 }
 
+input AdminFindManyPriceInput {
+  limit: Int = 10
+  page: Int = 1
+  postId: String!
+  search: String
+}
+
 input AdminFindManyUserInput {
   limit: Int = 10
   page: Int = 1
@@ -40,6 +52,10 @@ input AdminFindManyUserInput {
 input AdminUpdatePostInput {
   content: String
   title: String
+}
+
+input AdminUpdatePriceInput {
+  token: String
 }
 
 input AdminUpdateUserInput {
@@ -120,11 +136,14 @@ input LoginInput {
 type Mutation {
   adminCreateIdentity(input: AdminCreateIdentityInput!): Identity
   adminCreatePost(input: AdminCreatePostInput!): Post
+  adminCreatePrice(input: AdminCreatePriceInput!): Price
   adminCreateUser(input: AdminCreateUserInput!): User
   adminDeleteIdentity(identityId: String!): Boolean
   adminDeletePost(postId: String!): Boolean
+  adminDeletePrice(priceId: String!): Boolean
   adminDeleteUser(userId: String!): Boolean
   adminUpdatePost(input: AdminUpdatePostInput!, postId: String!): Post
+  adminUpdatePrice(input: AdminUpdatePriceInput!, priceId: String!): Price
   adminUpdateUser(input: AdminUpdateUserInput!, userId: String!): User
   anonVerifyIdentityChallenge(input: VerifyIdentityChallengeInput!): IdentityChallenge
   login(input: LoginInput!): User
@@ -159,11 +178,26 @@ type PostPaging {
   meta: PagingMeta!
 }
 
+type Price {
+  createdAt: DateTime
+  id: String!
+  postId: String!
+  token: String!
+  updatedAt: DateTime
+}
+
+type PricePaging {
+  data: [Price!]!
+  meta: PagingMeta!
+}
+
 type Query {
   adminFindManyIdentity(input: AdminFindManyIdentityInput!): [Identity!]
   adminFindManyPost(input: AdminFindManyPostInput!): PostPaging!
+  adminFindManyPrice(input: AdminFindManyPriceInput!): PricePaging!
   adminFindManyUser(input: AdminFindManyUserInput!): UserPaging!
   adminFindOnePost(postId: String!): Post
+  adminFindOnePrice(priceId: String!): Price
   adminFindOneUser(userId: String!): User
   anonRequestIdentityChallenge(input: RequestIdentityChallengeInput!): IdentityChallenge
   appConfig: AppConfig!

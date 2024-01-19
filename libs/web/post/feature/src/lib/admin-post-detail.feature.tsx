@@ -4,6 +4,7 @@ import { useAdminFindOnePost } from '@connectamind/web-post-data-access'
 import { useParams } from 'react-router-dom'
 import { AdminPostDetailOverviewTab } from './admin-post-detail-overview.tab'
 import { AdminPostDetailSettingsTab } from './admin-post-detail-settings.tab'
+import { AdminPriceFeature } from '@connectamind/web-price-feature'
 
 export function AdminPostDetailFeature() {
   const { postId } = useParams<{ postId: string }>() as { postId: string }
@@ -33,6 +34,12 @@ export function AdminPostDetailFeature() {
             label: 'Overview',
             element: <AdminPostDetailOverviewTab postId={postId} />,
           },
+          {
+            path: 'prices',
+            label: 'Prices',
+            element: <AdminPriceFeature postId={postId} />,
+          },
+
           {
             path: 'settings',
             label: 'Settings',

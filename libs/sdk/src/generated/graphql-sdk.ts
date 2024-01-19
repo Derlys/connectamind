@@ -35,6 +35,11 @@ export type AdminCreatePostInput = {
   title: Scalars['String']['input']
 }
 
+export type AdminCreatePriceInput = {
+  postId: Scalars['String']['input']
+  token: Scalars['String']['input']
+}
+
 export type AdminCreateUserInput = {
   password?: InputMaybe<Scalars['String']['input']>
   username: Scalars['String']['input']
@@ -51,6 +56,13 @@ export type AdminFindManyPostInput = {
   search?: InputMaybe<Scalars['String']['input']>
 }
 
+export type AdminFindManyPriceInput = {
+  limit?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  postId: Scalars['String']['input']
+  search?: InputMaybe<Scalars['String']['input']>
+}
+
 export type AdminFindManyUserInput = {
   limit?: InputMaybe<Scalars['Int']['input']>
   page?: InputMaybe<Scalars['Int']['input']>
@@ -62,6 +74,10 @@ export type AdminFindManyUserInput = {
 export type AdminUpdatePostInput = {
   content?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
+}
+
+export type AdminUpdatePriceInput = {
+  token?: InputMaybe<Scalars['String']['input']>
 }
 
 export type AdminUpdateUserInput = {
@@ -136,11 +152,14 @@ export type Mutation = {
   __typename?: 'Mutation'
   adminCreateIdentity?: Maybe<Identity>
   adminCreatePost?: Maybe<Post>
+  adminCreatePrice?: Maybe<Price>
   adminCreateUser?: Maybe<User>
   adminDeleteIdentity?: Maybe<Scalars['Boolean']['output']>
   adminDeletePost?: Maybe<Scalars['Boolean']['output']>
+  adminDeletePrice?: Maybe<Scalars['Boolean']['output']>
   adminDeleteUser?: Maybe<Scalars['Boolean']['output']>
   adminUpdatePost?: Maybe<Post>
+  adminUpdatePrice?: Maybe<Price>
   adminUpdateUser?: Maybe<User>
   anonVerifyIdentityChallenge?: Maybe<IdentityChallenge>
   login?: Maybe<User>
@@ -160,6 +179,10 @@ export type MutationAdminCreatePostArgs = {
   input: AdminCreatePostInput
 }
 
+export type MutationAdminCreatePriceArgs = {
+  input: AdminCreatePriceInput
+}
+
 export type MutationAdminCreateUserArgs = {
   input: AdminCreateUserInput
 }
@@ -172,6 +195,10 @@ export type MutationAdminDeletePostArgs = {
   postId: Scalars['String']['input']
 }
 
+export type MutationAdminDeletePriceArgs = {
+  priceId: Scalars['String']['input']
+}
+
 export type MutationAdminDeleteUserArgs = {
   userId: Scalars['String']['input']
 }
@@ -179,6 +206,11 @@ export type MutationAdminDeleteUserArgs = {
 export type MutationAdminUpdatePostArgs = {
   input: AdminUpdatePostInput
   postId: Scalars['String']['input']
+}
+
+export type MutationAdminUpdatePriceArgs = {
+  input: AdminUpdatePriceInput
+  priceId: Scalars['String']['input']
 }
 
 export type MutationAdminUpdateUserArgs = {
@@ -240,12 +272,29 @@ export type PostPaging = {
   meta: PagingMeta
 }
 
+export type Price = {
+  __typename?: 'Price'
+  createdAt?: Maybe<Scalars['DateTime']['output']>
+  id: Scalars['String']['output']
+  postId: Scalars['String']['output']
+  token: Scalars['String']['output']
+  updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type PricePaging = {
+  __typename?: 'PricePaging'
+  data: Array<Price>
+  meta: PagingMeta
+}
+
 export type Query = {
   __typename?: 'Query'
   adminFindManyIdentity?: Maybe<Array<Identity>>
   adminFindManyPost: PostPaging
+  adminFindManyPrice: PricePaging
   adminFindManyUser: UserPaging
   adminFindOnePost?: Maybe<Post>
+  adminFindOnePrice?: Maybe<Price>
   adminFindOneUser?: Maybe<User>
   anonRequestIdentityChallenge?: Maybe<IdentityChallenge>
   appConfig: AppConfig
@@ -265,12 +314,20 @@ export type QueryAdminFindManyPostArgs = {
   input: AdminFindManyPostInput
 }
 
+export type QueryAdminFindManyPriceArgs = {
+  input: AdminFindManyPriceInput
+}
+
 export type QueryAdminFindManyUserArgs = {
   input: AdminFindManyUserInput
 }
 
 export type QueryAdminFindOnePostArgs = {
   postId: Scalars['String']['input']
+}
+
+export type QueryAdminFindOnePriceArgs = {
+  priceId: Scalars['String']['input']
 }
 
 export type QueryAdminFindOneUserArgs = {
@@ -797,6 +854,99 @@ export type AdminDeletePostMutationVariables = Exact<{
 
 export type AdminDeletePostMutation = { __typename?: 'Mutation'; deleted?: boolean | null }
 
+export type PriceDetailsFragment = {
+  __typename?: 'Price'
+  createdAt?: Date | null
+  id: string
+  token: string
+  updatedAt?: Date | null
+  postId: string
+}
+
+export type AdminFindManyPriceQueryVariables = Exact<{
+  input: AdminFindManyPriceInput
+}>
+
+export type AdminFindManyPriceQuery = {
+  __typename?: 'Query'
+  paging: {
+    __typename?: 'PricePaging'
+    data: Array<{
+      __typename?: 'Price'
+      createdAt?: Date | null
+      id: string
+      token: string
+      updatedAt?: Date | null
+      postId: string
+    }>
+    meta: {
+      __typename?: 'PagingMeta'
+      currentPage: number
+      isFirstPage: boolean
+      isLastPage: boolean
+      nextPage?: number | null
+      pageCount?: number | null
+      previousPage?: number | null
+      totalCount?: number | null
+    }
+  }
+}
+
+export type AdminFindOnePriceQueryVariables = Exact<{
+  priceId: Scalars['String']['input']
+}>
+
+export type AdminFindOnePriceQuery = {
+  __typename?: 'Query'
+  item?: {
+    __typename?: 'Price'
+    createdAt?: Date | null
+    id: string
+    token: string
+    updatedAt?: Date | null
+    postId: string
+  } | null
+}
+
+export type AdminCreatePriceMutationVariables = Exact<{
+  input: AdminCreatePriceInput
+}>
+
+export type AdminCreatePriceMutation = {
+  __typename?: 'Mutation'
+  created?: {
+    __typename?: 'Price'
+    createdAt?: Date | null
+    id: string
+    token: string
+    updatedAt?: Date | null
+    postId: string
+  } | null
+}
+
+export type AdminUpdatePriceMutationVariables = Exact<{
+  priceId: Scalars['String']['input']
+  input: AdminUpdatePriceInput
+}>
+
+export type AdminUpdatePriceMutation = {
+  __typename?: 'Mutation'
+  updated?: {
+    __typename?: 'Price'
+    createdAt?: Date | null
+    id: string
+    token: string
+    updatedAt?: Date | null
+    postId: string
+  } | null
+}
+
+export type AdminDeletePriceMutationVariables = Exact<{
+  priceId: Scalars['String']['input']
+}>
+
+export type AdminDeletePriceMutation = { __typename?: 'Mutation'; deleted?: boolean | null }
+
 export type UserDetailsFragment = {
   __typename?: 'User'
   avatarUrl?: string | null
@@ -1063,6 +1213,15 @@ export const PostDetailsFragmentDoc = gql`
     updatedAt
   }
 `
+export const PriceDetailsFragmentDoc = gql`
+  fragment PriceDetails on Price {
+    createdAt
+    id
+    token
+    updatedAt
+    postId
+  }
+`
 export const UserDetailsFragmentDoc = gql`
   fragment UserDetails on User {
     avatarUrl
@@ -1244,6 +1403,49 @@ export const AdminDeletePostDocument = gql`
     deleted: adminDeletePost(postId: $postId)
   }
 `
+export const AdminFindManyPriceDocument = gql`
+  query adminFindManyPrice($input: AdminFindManyPriceInput!) {
+    paging: adminFindManyPrice(input: $input) {
+      data {
+        ...PriceDetails
+      }
+      meta {
+        ...PagingMetaDetails
+      }
+    }
+  }
+  ${PriceDetailsFragmentDoc}
+  ${PagingMetaDetailsFragmentDoc}
+`
+export const AdminFindOnePriceDocument = gql`
+  query adminFindOnePrice($priceId: String!) {
+    item: adminFindOnePrice(priceId: $priceId) {
+      ...PriceDetails
+    }
+  }
+  ${PriceDetailsFragmentDoc}
+`
+export const AdminCreatePriceDocument = gql`
+  mutation adminCreatePrice($input: AdminCreatePriceInput!) {
+    created: adminCreatePrice(input: $input) {
+      ...PriceDetails
+    }
+  }
+  ${PriceDetailsFragmentDoc}
+`
+export const AdminUpdatePriceDocument = gql`
+  mutation adminUpdatePrice($priceId: String!, $input: AdminUpdatePriceInput!) {
+    updated: adminUpdatePrice(priceId: $priceId, input: $input) {
+      ...PriceDetails
+    }
+  }
+  ${PriceDetailsFragmentDoc}
+`
+export const AdminDeletePriceDocument = gql`
+  mutation adminDeletePrice($priceId: String!) {
+    deleted: adminDeletePrice(priceId: $priceId)
+  }
+`
 export const AdminCreateUserDocument = gql`
   mutation adminCreateUser($input: AdminCreateUserInput!) {
     created: adminCreateUser(input: $input) {
@@ -1351,6 +1553,11 @@ const AdminFindOnePostDocumentString = print(AdminFindOnePostDocument)
 const AdminCreatePostDocumentString = print(AdminCreatePostDocument)
 const AdminUpdatePostDocumentString = print(AdminUpdatePostDocument)
 const AdminDeletePostDocumentString = print(AdminDeletePostDocument)
+const AdminFindManyPriceDocumentString = print(AdminFindManyPriceDocument)
+const AdminFindOnePriceDocumentString = print(AdminFindOnePriceDocument)
+const AdminCreatePriceDocumentString = print(AdminCreatePriceDocument)
+const AdminUpdatePriceDocumentString = print(AdminUpdatePriceDocument)
+const AdminDeletePriceDocumentString = print(AdminDeletePriceDocument)
 const AdminCreateUserDocumentString = print(AdminCreateUserDocument)
 const AdminDeleteUserDocumentString = print(AdminDeleteUserDocument)
 const AdminFindManyUserDocumentString = print(AdminFindManyUserDocument)
@@ -1769,6 +1976,111 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         variables,
       )
     },
+    adminFindManyPrice(
+      variables: AdminFindManyPriceQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: AdminFindManyPriceQuery
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<AdminFindManyPriceQuery>(AdminFindManyPriceDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'adminFindManyPrice',
+        'query',
+        variables,
+      )
+    },
+    adminFindOnePrice(
+      variables: AdminFindOnePriceQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: AdminFindOnePriceQuery
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<AdminFindOnePriceQuery>(AdminFindOnePriceDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'adminFindOnePrice',
+        'query',
+        variables,
+      )
+    },
+    adminCreatePrice(
+      variables: AdminCreatePriceMutationVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: AdminCreatePriceMutation
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<AdminCreatePriceMutation>(AdminCreatePriceDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'adminCreatePrice',
+        'mutation',
+        variables,
+      )
+    },
+    adminUpdatePrice(
+      variables: AdminUpdatePriceMutationVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: AdminUpdatePriceMutation
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<AdminUpdatePriceMutation>(AdminUpdatePriceDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'adminUpdatePrice',
+        'mutation',
+        variables,
+      )
+    },
+    adminDeletePrice(
+      variables: AdminDeletePriceMutationVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: AdminDeletePriceMutation
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<AdminDeletePriceMutation>(AdminDeletePriceDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'adminDeletePrice',
+        'mutation',
+        variables,
+      )
+    },
     adminCreateUser(
       variables: AdminCreateUserMutationVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
@@ -1972,6 +2284,13 @@ export function AdminCreatePostInputSchema(): z.ZodObject<Properties<AdminCreate
   })
 }
 
+export function AdminCreatePriceInputSchema(): z.ZodObject<Properties<AdminCreatePriceInput>> {
+  return z.object({
+    postId: z.string(),
+    token: z.string(),
+  })
+}
+
 export function AdminCreateUserInputSchema(): z.ZodObject<Properties<AdminCreateUserInput>> {
   return z.object({
     password: z.string().nullish(),
@@ -1994,6 +2313,15 @@ export function AdminFindManyPostInputSchema(): z.ZodObject<Properties<AdminFind
   })
 }
 
+export function AdminFindManyPriceInputSchema(): z.ZodObject<Properties<AdminFindManyPriceInput>> {
+  return z.object({
+    limit: z.number().nullish(),
+    page: z.number().nullish(),
+    postId: z.string(),
+    search: z.string().nullish(),
+  })
+}
+
 export function AdminFindManyUserInputSchema(): z.ZodObject<Properties<AdminFindManyUserInput>> {
   return z.object({
     limit: z.number().nullish(),
@@ -2008,6 +2336,12 @@ export function AdminUpdatePostInputSchema(): z.ZodObject<Properties<AdminUpdate
   return z.object({
     content: z.string().nullish(),
     title: z.string().nullish(),
+  })
+}
+
+export function AdminUpdatePriceInputSchema(): z.ZodObject<Properties<AdminUpdatePriceInput>> {
+  return z.object({
+    token: z.string().nullish(),
   })
 }
 
