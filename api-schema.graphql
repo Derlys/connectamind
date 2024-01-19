@@ -38,6 +38,7 @@ input AdminFindManyUserInput {
 }
 
 input AdminUpdatePostInput {
+  content: String
   title: String
 }
 

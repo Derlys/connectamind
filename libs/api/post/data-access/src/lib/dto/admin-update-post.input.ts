@@ -4,4 +4,6 @@ import { Field, InputType } from '@nestjs/graphql'
 export class AdminUpdatePostInput {
   @Field({ nullable: true })
   title?: string
+  @Field({ nullable: true })
+  content?: string
 }

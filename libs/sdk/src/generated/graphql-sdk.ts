@@ -60,6 +60,7 @@ export type AdminFindManyUserInput = {
 }
 
 export type AdminUpdatePostInput = {
+  content?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -2005,6 +2006,7 @@ export function AdminFindManyUserInputSchema(): z.ZodObject<Properties<AdminFind
 
 export function AdminUpdatePostInputSchema(): z.ZodObject<Properties<AdminUpdatePostInput>> {
   return z.object({
+    content: z.string().nullish(),
     title: z.string().nullish(),
   })
 }
