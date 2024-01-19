@@ -30,6 +30,10 @@ export type AdminCreateIdentityInput = {
   providerId: Scalars['String']['input']
 }
 
+export type AdminCreatePostInput = {
+  title: Scalars['String']['input']
+}
+
 export type AdminCreateUserInput = {
   password?: InputMaybe<Scalars['String']['input']>
   username: Scalars['String']['input']
@@ -40,12 +44,22 @@ export type AdminFindManyIdentityInput = {
   provider?: InputMaybe<IdentityProvider>
 }
 
+export type AdminFindManyPostInput = {
+  limit?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+}
+
 export type AdminFindManyUserInput = {
   limit?: InputMaybe<Scalars['Int']['input']>
   page?: InputMaybe<Scalars['Int']['input']>
   role?: InputMaybe<UserRole>
   search?: InputMaybe<Scalars['String']['input']>
   status?: InputMaybe<UserStatus>
+}
+
+export type AdminUpdatePostInput = {
+  title?: InputMaybe<Scalars['String']['input']>
 }
 
 export type AdminUpdateUserInput = {
@@ -119,9 +133,12 @@ export type LoginInput = {
 export type Mutation = {
   __typename?: 'Mutation'
   adminCreateIdentity?: Maybe<Identity>
+  adminCreatePost?: Maybe<Post>
   adminCreateUser?: Maybe<User>
   adminDeleteIdentity?: Maybe<Scalars['Boolean']['output']>
+  adminDeletePost?: Maybe<Scalars['Boolean']['output']>
   adminDeleteUser?: Maybe<Scalars['Boolean']['output']>
+  adminUpdatePost?: Maybe<Post>
   adminUpdateUser?: Maybe<User>
   anonVerifyIdentityChallenge?: Maybe<IdentityChallenge>
   login?: Maybe<User>
@@ -137,6 +154,10 @@ export type MutationAdminCreateIdentityArgs = {
   input: AdminCreateIdentityInput
 }
 
+export type MutationAdminCreatePostArgs = {
+  input: AdminCreatePostInput
+}
+
 export type MutationAdminCreateUserArgs = {
   input: AdminCreateUserInput
 }
@@ -145,8 +166,17 @@ export type MutationAdminDeleteIdentityArgs = {
   identityId: Scalars['String']['input']
 }
 
+export type MutationAdminDeletePostArgs = {
+  postId: Scalars['String']['input']
+}
+
 export type MutationAdminDeleteUserArgs = {
   userId: Scalars['String']['input']
+}
+
+export type MutationAdminUpdatePostArgs = {
+  input: AdminUpdatePostInput
+  postId: Scalars['String']['input']
 }
 
 export type MutationAdminUpdateUserArgs = {
@@ -193,10 +223,26 @@ export type PagingMeta = {
   totalCount?: Maybe<Scalars['Int']['output']>
 }
 
+export type Post = {
+  __typename?: 'Post'
+  createdAt?: Maybe<Scalars['DateTime']['output']>
+  id: Scalars['String']['output']
+  title: Scalars['String']['output']
+  updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type PostPaging = {
+  __typename?: 'PostPaging'
+  data: Array<Post>
+  meta: PagingMeta
+}
+
 export type Query = {
   __typename?: 'Query'
   adminFindManyIdentity?: Maybe<Array<Identity>>
+  adminFindManyPost: PostPaging
   adminFindManyUser: UserPaging
+  adminFindOnePost?: Maybe<Post>
   adminFindOneUser?: Maybe<User>
   anonRequestIdentityChallenge?: Maybe<IdentityChallenge>
   appConfig: AppConfig
@@ -212,8 +258,16 @@ export type QueryAdminFindManyIdentityArgs = {
   input: AdminFindManyIdentityInput
 }
 
+export type QueryAdminFindManyPostArgs = {
+  input: AdminFindManyPostInput
+}
+
 export type QueryAdminFindManyUserArgs = {
   input: AdminFindManyUserInput
+}
+
+export type QueryAdminFindOnePostArgs = {
+  postId: Scalars['String']['input']
 }
 
 export type QueryAdminFindOneUserArgs = {
@@ -647,6 +701,70 @@ export type AnonVerifyIdentityChallengeMutation = {
   } | null
 }
 
+export type PostDetailsFragment = {
+  __typename?: 'Post'
+  createdAt?: Date | null
+  id: string
+  title: string
+  updatedAt?: Date | null
+}
+
+export type AdminFindManyPostQueryVariables = Exact<{
+  input: AdminFindManyPostInput
+}>
+
+export type AdminFindManyPostQuery = {
+  __typename?: 'Query'
+  paging: {
+    __typename?: 'PostPaging'
+    data: Array<{ __typename?: 'Post'; createdAt?: Date | null; id: string; title: string; updatedAt?: Date | null }>
+    meta: {
+      __typename?: 'PagingMeta'
+      currentPage: number
+      isFirstPage: boolean
+      isLastPage: boolean
+      nextPage?: number | null
+      pageCount?: number | null
+      previousPage?: number | null
+      totalCount?: number | null
+    }
+  }
+}
+
+export type AdminFindOnePostQueryVariables = Exact<{
+  postId: Scalars['String']['input']
+}>
+
+export type AdminFindOnePostQuery = {
+  __typename?: 'Query'
+  item?: { __typename?: 'Post'; createdAt?: Date | null; id: string; title: string; updatedAt?: Date | null } | null
+}
+
+export type AdminCreatePostMutationVariables = Exact<{
+  input: AdminCreatePostInput
+}>
+
+export type AdminCreatePostMutation = {
+  __typename?: 'Mutation'
+  created?: { __typename?: 'Post'; createdAt?: Date | null; id: string; title: string; updatedAt?: Date | null } | null
+}
+
+export type AdminUpdatePostMutationVariables = Exact<{
+  postId: Scalars['String']['input']
+  input: AdminUpdatePostInput
+}>
+
+export type AdminUpdatePostMutation = {
+  __typename?: 'Mutation'
+  updated?: { __typename?: 'Post'; createdAt?: Date | null; id: string; title: string; updatedAt?: Date | null } | null
+}
+
+export type AdminDeletePostMutationVariables = Exact<{
+  postId: Scalars['String']['input']
+}>
+
+export type AdminDeletePostMutation = { __typename?: 'Mutation'; deleted?: boolean | null }
+
 export type UserDetailsFragment = {
   __typename?: 'User'
   avatarUrl?: string | null
@@ -904,6 +1022,14 @@ export const IdentityChallengeDetailsFragmentDoc = gql`
     verified
   }
 `
+export const PostDetailsFragmentDoc = gql`
+  fragment PostDetails on Post {
+    createdAt
+    id
+    title
+    updatedAt
+  }
+`
 export const UserDetailsFragmentDoc = gql`
   fragment UserDetails on User {
     avatarUrl
@@ -1042,6 +1168,49 @@ export const AnonVerifyIdentityChallengeDocument = gql`
   }
   ${IdentityChallengeDetailsFragmentDoc}
 `
+export const AdminFindManyPostDocument = gql`
+  query adminFindManyPost($input: AdminFindManyPostInput!) {
+    paging: adminFindManyPost(input: $input) {
+      data {
+        ...PostDetails
+      }
+      meta {
+        ...PagingMetaDetails
+      }
+    }
+  }
+  ${PostDetailsFragmentDoc}
+  ${PagingMetaDetailsFragmentDoc}
+`
+export const AdminFindOnePostDocument = gql`
+  query adminFindOnePost($postId: String!) {
+    item: adminFindOnePost(postId: $postId) {
+      ...PostDetails
+    }
+  }
+  ${PostDetailsFragmentDoc}
+`
+export const AdminCreatePostDocument = gql`
+  mutation adminCreatePost($input: AdminCreatePostInput!) {
+    created: adminCreatePost(input: $input) {
+      ...PostDetails
+    }
+  }
+  ${PostDetailsFragmentDoc}
+`
+export const AdminUpdatePostDocument = gql`
+  mutation adminUpdatePost($postId: String!, $input: AdminUpdatePostInput!) {
+    updated: adminUpdatePost(postId: $postId, input: $input) {
+      ...PostDetails
+    }
+  }
+  ${PostDetailsFragmentDoc}
+`
+export const AdminDeletePostDocument = gql`
+  mutation adminDeletePost($postId: String!) {
+    deleted: adminDeletePost(postId: $postId)
+  }
+`
 export const AdminCreateUserDocument = gql`
   mutation adminCreateUser($input: AdminCreateUserInput!) {
     created: adminCreateUser(input: $input) {
@@ -1144,6 +1313,11 @@ const UserVerifyIdentityChallengeDocumentString = print(UserVerifyIdentityChalle
 const UserLinkIdentityDocumentString = print(UserLinkIdentityDocument)
 const AnonRequestIdentityChallengeDocumentString = print(AnonRequestIdentityChallengeDocument)
 const AnonVerifyIdentityChallengeDocumentString = print(AnonVerifyIdentityChallengeDocument)
+const AdminFindManyPostDocumentString = print(AdminFindManyPostDocument)
+const AdminFindOnePostDocumentString = print(AdminFindOnePostDocument)
+const AdminCreatePostDocumentString = print(AdminCreatePostDocument)
+const AdminUpdatePostDocumentString = print(AdminUpdatePostDocument)
+const AdminDeletePostDocumentString = print(AdminDeletePostDocument)
 const AdminCreateUserDocumentString = print(AdminCreateUserDocument)
 const AdminDeleteUserDocumentString = print(AdminDeleteUserDocument)
 const AdminFindManyUserDocumentString = print(AdminFindManyUserDocument)
@@ -1457,6 +1631,111 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         variables,
       )
     },
+    adminFindManyPost(
+      variables: AdminFindManyPostQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: AdminFindManyPostQuery
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<AdminFindManyPostQuery>(AdminFindManyPostDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'adminFindManyPost',
+        'query',
+        variables,
+      )
+    },
+    adminFindOnePost(
+      variables: AdminFindOnePostQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: AdminFindOnePostQuery
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<AdminFindOnePostQuery>(AdminFindOnePostDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'adminFindOnePost',
+        'query',
+        variables,
+      )
+    },
+    adminCreatePost(
+      variables: AdminCreatePostMutationVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: AdminCreatePostMutation
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<AdminCreatePostMutation>(AdminCreatePostDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'adminCreatePost',
+        'mutation',
+        variables,
+      )
+    },
+    adminUpdatePost(
+      variables: AdminUpdatePostMutationVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: AdminUpdatePostMutation
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<AdminUpdatePostMutation>(AdminUpdatePostDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'adminUpdatePost',
+        'mutation',
+        variables,
+      )
+    },
+    adminDeletePost(
+      variables: AdminDeletePostMutationVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: AdminDeletePostMutation
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<AdminDeletePostMutation>(AdminDeletePostDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'adminDeletePost',
+        'mutation',
+        variables,
+      )
+    },
     adminCreateUser(
       variables: AdminCreateUserMutationVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
@@ -1653,6 +1932,12 @@ export function AdminCreateIdentityInputSchema(): z.ZodObject<Properties<AdminCr
   })
 }
 
+export function AdminCreatePostInputSchema(): z.ZodObject<Properties<AdminCreatePostInput>> {
+  return z.object({
+    title: z.string(),
+  })
+}
+
 export function AdminCreateUserInputSchema(): z.ZodObject<Properties<AdminCreateUserInput>> {
   return z.object({
     password: z.string().nullish(),
@@ -1667,6 +1952,14 @@ export function AdminFindManyIdentityInputSchema(): z.ZodObject<Properties<Admin
   })
 }
 
+export function AdminFindManyPostInputSchema(): z.ZodObject<Properties<AdminFindManyPostInput>> {
+  return z.object({
+    limit: z.number().nullish(),
+    page: z.number().nullish(),
+    search: z.string().nullish(),
+  })
+}
+
 export function AdminFindManyUserInputSchema(): z.ZodObject<Properties<AdminFindManyUserInput>> {
   return z.object({
     limit: z.number().nullish(),
@@ -1674,6 +1967,12 @@ export function AdminFindManyUserInputSchema(): z.ZodObject<Properties<AdminFind
     role: UserRoleSchema.nullish(),
     search: z.string().nullish(),
     status: UserStatusSchema.nullish(),
+  })
+}
+
+export function AdminUpdatePostInputSchema(): z.ZodObject<Properties<AdminUpdatePostInput>> {
+  return z.object({
+    title: z.string().nullish(),
   })
 }
 

@@ -1,0 +1,39 @@
+fragment PostDetails on Post {
+  createdAt
+  id
+  title
+  updatedAt
+}
+
+query adminFindManyPost($input: AdminFindManyPostInput!) {
+  paging: adminFindManyPost(input: $input) {
+    data {
+      ...PostDetails
+    }
+    meta {
+      ...PagingMetaDetails
+    }
+  }
+}
+
+query adminFindOnePost($postId: String!) {
+  item: adminFindOnePost(postId: $postId) {
+    ...PostDetails
+  }
+}
+
+mutation adminCreatePost($input: AdminCreatePostInput!) {
+  created: adminCreatePost(input: $input) {
+    ...PostDetails
+  }
+}
+
+mutation adminUpdatePost($postId: String!, $input: AdminUpdatePostInput!) {
+  updated: adminUpdatePost(postId: $postId, input: $input) {
+    ...PostDetails
+  }
+}
+
+mutation adminDeletePost($postId: String!) {
+  deleted: adminDeletePost(postId: $postId)
+}

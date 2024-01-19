@@ -8,6 +8,10 @@ input AdminCreateIdentityInput {
   providerId: String!
 }
 
+input AdminCreatePostInput {
+  title: String!
+}
+
 input AdminCreateUserInput {
   password: String
   username: String!
@@ -18,12 +22,22 @@ input AdminFindManyIdentityInput {
   provider: IdentityProvider
 }
 
+input AdminFindManyPostInput {
+  limit: Int = 10
+  page: Int = 1
+  search: String
+}
+
 input AdminFindManyUserInput {
   limit: Int = 10
   page: Int = 1
   role: UserRole
   search: String
   status: UserStatus
+}
+
+input AdminUpdatePostInput {
+  title: String
 }
 
 input AdminUpdateUserInput {
@@ -103,9 +117,12 @@ input LoginInput {
 
 type Mutation {
   adminCreateIdentity(input: AdminCreateIdentityInput!): Identity
+  adminCreatePost(input: AdminCreatePostInput!): Post
   adminCreateUser(input: AdminCreateUserInput!): User
   adminDeleteIdentity(identityId: String!): Boolean
+  adminDeletePost(postId: String!): Boolean
   adminDeleteUser(userId: String!): Boolean
+  adminUpdatePost(input: AdminUpdatePostInput!, postId: String!): Post
   adminUpdateUser(input: AdminUpdateUserInput!, userId: String!): User
   anonVerifyIdentityChallenge(input: VerifyIdentityChallengeInput!): IdentityChallenge
   login(input: LoginInput!): User
@@ -127,9 +144,23 @@ type PagingMeta {
   totalCount: Int
 }
 
+type Post {
+  createdAt: DateTime
+  id: String!
+  title: String!
+  updatedAt: DateTime
+}
+
+type PostPaging {
+  data: [Post!]!
+  meta: PagingMeta!
+}
+
 type Query {
   adminFindManyIdentity(input: AdminFindManyIdentityInput!): [Identity!]
+  adminFindManyPost(input: AdminFindManyPostInput!): PostPaging!
   adminFindManyUser(input: AdminFindManyUserInput!): UserPaging!
+  adminFindOnePost(postId: String!): Post
   adminFindOneUser(userId: String!): User
   anonRequestIdentityChallenge(input: RequestIdentityChallengeInput!): IdentityChallenge
   appConfig: AppConfig!

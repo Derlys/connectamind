@@ -1,0 +1,7 @@
+export * from './lib/api-post-data-access.module'
+export * from './lib/api-post.service'
+export * from './lib/entity/post.entity'
+export * from './lib/entity/post-paging.entity'
+export * from './lib/dto/admin-create-post.input'
+export * from './lib/dto/admin-find-many-post.input'
+export * from './lib/dto/admin-update-post.input'
