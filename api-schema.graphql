@@ -150,8 +150,11 @@ type Mutation {
   login(input: LoginInput!): User
   logout: Boolean
   register(input: RegisterInput!): User
+  userCreatePost(input: UserCreatePostInput!): Post
   userDeleteIdentity(identityId: String!): Boolean
+  userDeletePost(postId: String!): Boolean
   userLinkIdentity(input: LinkIdentityInput!): Identity
+  userUpdatePost(input: UserUpdatePostInput!, postId: String!): Post
   userUpdateUser(input: UserUpdateUserInput!): User
   userVerifyIdentityChallenge(input: VerifyIdentityChallengeInput!): IdentityChallenge
 }
@@ -206,7 +209,9 @@ type Query {
   me: User
   uptime: Float!
   userFindManyIdentity(input: UserFindManyIdentityInput!): [Identity!]
+  userFindManyPost(input: UserFindManyPostInput!): PostPaging!
   userFindManyUser(input: UserFindManyUserInput!): UserPaging!
+  userFindOnePost(postId: String!): Post
   userFindOneUser(username: String!): User
   userRequestIdentityChallenge(input: RequestIdentityChallengeInput!): IdentityChallenge
 }
@@ -241,8 +246,19 @@ type User {
   username: String
 }
 
+input UserCreatePostInput {
+  content: String!
+  title: String!
+}
+
 input UserFindManyIdentityInput {
   username: String!
+}
+
+input UserFindManyPostInput {
+  limit: Int = 10
+  page: Int = 1
+  search: String
 }
 
 input UserFindManyUserInput {
@@ -265,6 +281,11 @@ enum UserStatus {
   Active
   Created
   Inactive
+}
+
+input UserUpdatePostInput {
+  content: String
+  title: String
 }
 
 input UserUpdateUserInput {

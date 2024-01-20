@@ -1,6 +1,7 @@
 import { useAuth } from '@connectamind/web-auth-data-access'
-import { UiContainer, UiDashboardGrid, UiDashboardItem } from '@pubkey-ui/core'
+import { UiContainer, UiDashboardGrid, UiDashboardItem, UiDebug } from '@pubkey-ui/core'
 import { IconCurrencySolana, IconSettings, IconUser } from '@tabler/icons-react'
+import { useUserFindManyPost } from '@connectamind/web-post-data-access'
 
 const links: UiDashboardItem[] = [
   // User Dashboard Links
@@ -10,6 +11,7 @@ const links: UiDashboardItem[] = [
 ]
 
 export default function DashboardFeature() {
+  const { items } = useUserFindManyPost()
   const { user } = useAuth()
 
   if (!user) return null
@@ -17,6 +19,7 @@ export default function DashboardFeature() {
   return (
     <UiContainer>
       <UiDashboardGrid links={links} />
+      <UiDebug data={items} open />
     </UiContainer>
   )
 }

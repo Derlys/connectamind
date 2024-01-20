@@ -166,8 +166,11 @@ export type Mutation = {
   login?: Maybe<User>
   logout?: Maybe<Scalars['Boolean']['output']>
   register?: Maybe<User>
+  userCreatePost?: Maybe<Post>
   userDeleteIdentity?: Maybe<Scalars['Boolean']['output']>
+  userDeletePost?: Maybe<Scalars['Boolean']['output']>
   userLinkIdentity?: Maybe<Identity>
+  userUpdatePost?: Maybe<Post>
   userUpdateUser?: Maybe<User>
   userVerifyIdentityChallenge?: Maybe<IdentityChallenge>
 }
@@ -231,12 +234,25 @@ export type MutationRegisterArgs = {
   input: RegisterInput
 }
 
+export type MutationUserCreatePostArgs = {
+  input: UserCreatePostInput
+}
+
 export type MutationUserDeleteIdentityArgs = {
   identityId: Scalars['String']['input']
 }
 
+export type MutationUserDeletePostArgs = {
+  postId: Scalars['String']['input']
+}
+
 export type MutationUserLinkIdentityArgs = {
   input: LinkIdentityInput
+}
+
+export type MutationUserUpdatePostArgs = {
+  input: UserUpdatePostInput
+  postId: Scalars['String']['input']
 }
 
 export type MutationUserUpdateUserArgs = {
@@ -303,7 +319,9 @@ export type Query = {
   me?: Maybe<User>
   uptime: Scalars['Float']['output']
   userFindManyIdentity?: Maybe<Array<Identity>>
+  userFindManyPost: PostPaging
   userFindManyUser: UserPaging
+  userFindOnePost?: Maybe<Post>
   userFindOneUser?: Maybe<User>
   userRequestIdentityChallenge?: Maybe<IdentityChallenge>
 }
@@ -344,8 +362,16 @@ export type QueryUserFindManyIdentityArgs = {
   input: UserFindManyIdentityInput
 }
 
+export type QueryUserFindManyPostArgs = {
+  input: UserFindManyPostInput
+}
+
 export type QueryUserFindManyUserArgs = {
   input: UserFindManyUserInput
+}
+
+export type QueryUserFindOnePostArgs = {
+  postId: Scalars['String']['input']
 }
 
 export type QueryUserFindOneUserArgs = {
@@ -387,8 +413,19 @@ export type User = {
   username?: Maybe<Scalars['String']['output']>
 }
 
+export type UserCreatePostInput = {
+  content: Scalars['String']['input']
+  title: Scalars['String']['input']
+}
+
 export type UserFindManyIdentityInput = {
   username: Scalars['String']['input']
+}
+
+export type UserFindManyPostInput = {
+  limit?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
 }
 
 export type UserFindManyUserInput = {
@@ -412,6 +449,11 @@ export enum UserStatus {
   Active = 'Active',
   Created = 'Created',
   Inactive = 'Inactive',
+}
+
+export type UserUpdatePostInput = {
+  content?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
 }
 
 export type UserUpdateUserInput = {
@@ -861,6 +903,90 @@ export type AdminDeletePostMutationVariables = Exact<{
 }>
 
 export type AdminDeletePostMutation = { __typename?: 'Mutation'; deleted?: boolean | null }
+
+export type UserFindManyPostQueryVariables = Exact<{
+  input: UserFindManyPostInput
+}>
+
+export type UserFindManyPostQuery = {
+  __typename?: 'Query'
+  paging: {
+    __typename?: 'PostPaging'
+    data: Array<{
+      __typename?: 'Post'
+      createdAt?: Date | null
+      id: string
+      title: string
+      content: string
+      updatedAt?: Date | null
+    }>
+    meta: {
+      __typename?: 'PagingMeta'
+      currentPage: number
+      isFirstPage: boolean
+      isLastPage: boolean
+      nextPage?: number | null
+      pageCount?: number | null
+      previousPage?: number | null
+      totalCount?: number | null
+    }
+  }
+}
+
+export type UserFindOnePostQueryVariables = Exact<{
+  postId: Scalars['String']['input']
+}>
+
+export type UserFindOnePostQuery = {
+  __typename?: 'Query'
+  item?: {
+    __typename?: 'Post'
+    createdAt?: Date | null
+    id: string
+    title: string
+    content: string
+    updatedAt?: Date | null
+  } | null
+}
+
+export type UserCreatePostMutationVariables = Exact<{
+  input: UserCreatePostInput
+}>
+
+export type UserCreatePostMutation = {
+  __typename?: 'Mutation'
+  created?: {
+    __typename?: 'Post'
+    createdAt?: Date | null
+    id: string
+    title: string
+    content: string
+    updatedAt?: Date | null
+  } | null
+}
+
+export type UserUpdatePostMutationVariables = Exact<{
+  postId: Scalars['String']['input']
+  input: UserUpdatePostInput
+}>
+
+export type UserUpdatePostMutation = {
+  __typename?: 'Mutation'
+  updated?: {
+    __typename?: 'Post'
+    createdAt?: Date | null
+    id: string
+    title: string
+    content: string
+    updatedAt?: Date | null
+  } | null
+}
+
+export type UserDeletePostMutationVariables = Exact<{
+  postId: Scalars['String']['input']
+}>
+
+export type UserDeletePostMutation = { __typename?: 'Mutation'; deleted?: boolean | null }
 
 export type PriceDetailsFragment = {
   __typename?: 'Price'
@@ -1417,6 +1543,49 @@ export const AdminDeletePostDocument = gql`
     deleted: adminDeletePost(postId: $postId)
   }
 `
+export const UserFindManyPostDocument = gql`
+  query userFindManyPost($input: UserFindManyPostInput!) {
+    paging: userFindManyPost(input: $input) {
+      data {
+        ...PostDetails
+      }
+      meta {
+        ...PagingMetaDetails
+      }
+    }
+  }
+  ${PostDetailsFragmentDoc}
+  ${PagingMetaDetailsFragmentDoc}
+`
+export const UserFindOnePostDocument = gql`
+  query userFindOnePost($postId: String!) {
+    item: userFindOnePost(postId: $postId) {
+      ...PostDetails
+    }
+  }
+  ${PostDetailsFragmentDoc}
+`
+export const UserCreatePostDocument = gql`
+  mutation userCreatePost($input: UserCreatePostInput!) {
+    created: userCreatePost(input: $input) {
+      ...PostDetails
+    }
+  }
+  ${PostDetailsFragmentDoc}
+`
+export const UserUpdatePostDocument = gql`
+  mutation userUpdatePost($postId: String!, $input: UserUpdatePostInput!) {
+    updated: userUpdatePost(postId: $postId, input: $input) {
+      ...PostDetails
+    }
+  }
+  ${PostDetailsFragmentDoc}
+`
+export const UserDeletePostDocument = gql`
+  mutation userDeletePost($postId: String!) {
+    deleted: userDeletePost(postId: $postId)
+  }
+`
 export const AdminFindManyPriceDocument = gql`
   query adminFindManyPrice($input: AdminFindManyPriceInput!) {
     paging: adminFindManyPrice(input: $input) {
@@ -1567,6 +1736,11 @@ const AdminFindOnePostDocumentString = print(AdminFindOnePostDocument)
 const AdminCreatePostDocumentString = print(AdminCreatePostDocument)
 const AdminUpdatePostDocumentString = print(AdminUpdatePostDocument)
 const AdminDeletePostDocumentString = print(AdminDeletePostDocument)
+const UserFindManyPostDocumentString = print(UserFindManyPostDocument)
+const UserFindOnePostDocumentString = print(UserFindOnePostDocument)
+const UserCreatePostDocumentString = print(UserCreatePostDocument)
+const UserUpdatePostDocumentString = print(UserUpdatePostDocument)
+const UserDeletePostDocumentString = print(UserDeletePostDocument)
 const AdminFindManyPriceDocumentString = print(AdminFindManyPriceDocument)
 const AdminFindOnePriceDocumentString = print(AdminFindOnePriceDocument)
 const AdminCreatePriceDocumentString = print(AdminCreatePriceDocument)
@@ -1990,6 +2164,111 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         variables,
       )
     },
+    userFindManyPost(
+      variables: UserFindManyPostQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: UserFindManyPostQuery
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<UserFindManyPostQuery>(UserFindManyPostDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'userFindManyPost',
+        'query',
+        variables,
+      )
+    },
+    userFindOnePost(
+      variables: UserFindOnePostQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: UserFindOnePostQuery
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<UserFindOnePostQuery>(UserFindOnePostDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'userFindOnePost',
+        'query',
+        variables,
+      )
+    },
+    userCreatePost(
+      variables: UserCreatePostMutationVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: UserCreatePostMutation
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<UserCreatePostMutation>(UserCreatePostDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'userCreatePost',
+        'mutation',
+        variables,
+      )
+    },
+    userUpdatePost(
+      variables: UserUpdatePostMutationVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: UserUpdatePostMutation
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<UserUpdatePostMutation>(UserUpdatePostDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'userUpdatePost',
+        'mutation',
+        variables,
+      )
+    },
+    userDeletePost(
+      variables: UserDeletePostMutationVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: UserDeletePostMutation
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<UserDeletePostMutation>(UserDeletePostDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'userDeletePost',
+        'mutation',
+        variables,
+      )
+    },
     adminFindManyPrice(
       variables: AdminFindManyPriceQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
@@ -2401,9 +2680,24 @@ export function RequestIdentityChallengeInputSchema(): z.ZodObject<Properties<Re
   })
 }
 
+export function UserCreatePostInputSchema(): z.ZodObject<Properties<UserCreatePostInput>> {
+  return z.object({
+    content: z.string(),
+    title: z.string(),
+  })
+}
+
 export function UserFindManyIdentityInputSchema(): z.ZodObject<Properties<UserFindManyIdentityInput>> {
   return z.object({
     username: z.string(),
+  })
+}
+
+export function UserFindManyPostInputSchema(): z.ZodObject<Properties<UserFindManyPostInput>> {
+  return z.object({
+    limit: z.number().nullish(),
+    page: z.number().nullish(),
+    search: z.string().nullish(),
   })
 }
 
@@ -2412,6 +2706,13 @@ export function UserFindManyUserInputSchema(): z.ZodObject<Properties<UserFindMa
     limit: z.number().nullish(),
     page: z.number().nullish(),
     search: z.string().nullish(),
+  })
+}
+
+export function UserUpdatePostInputSchema(): z.ZodObject<Properties<UserUpdatePostInput>> {
+  return z.object({
+    content: z.string().nullish(),
+    title: z.string().nullish(),
   })
 }
 

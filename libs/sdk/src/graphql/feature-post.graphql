@@ -38,3 +38,36 @@ mutation adminUpdatePost($postId: String!, $input: AdminUpdatePostInput!) {
 mutation adminDeletePost($postId: String!) {
   deleted: adminDeletePost(postId: $postId)
 }
+
+query userFindManyPost($input: UserFindManyPostInput!) {
+  paging: userFindManyPost(input: $input) {
+    data {
+      ...PostDetails
+    }
+    meta {
+      ...PagingMetaDetails
+    }
+  }
+}
+
+query userFindOnePost($postId: String!) {
+  item: userFindOnePost(postId: $postId) {
+    ...PostDetails
+  }
+}
+
+mutation userCreatePost($input: UserCreatePostInput!) {
+  created: userCreatePost(input: $input) {
+    ...PostDetails
+  }
+}
+
+mutation userUpdatePost($postId: String!, $input: UserUpdatePostInput!) {
+  updated: userUpdatePost(postId: $postId, input: $input) {
+    ...PostDetails
+  }
+}
+
+mutation userDeletePost($postId: String!) {
+  deleted: userDeletePost(postId: $postId)
+}
