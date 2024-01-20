@@ -4,6 +4,10 @@ fragment PostDetails on Post {
   title
   content
   updatedAt
+  authorId
+  author {
+    ...UserDetails
+  }
 }
 
 query adminFindManyPost($input: AdminFindManyPostInput!) {

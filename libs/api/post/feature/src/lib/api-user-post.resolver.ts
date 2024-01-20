@@ -1,6 +1,6 @@
 import { Resolver } from '@nestjs/graphql'
 import { ApiPostService } from '@connectamind/api-post-data-access'
-import { ApiAuthGraphQLUserGuard } from '@connectamind/api-auth-data-access'
+import { ApiAuthGraphQLUserGuard, CtxUser } from '@connectamind/api-auth-data-access'
 import { Mutation, Query, Args } from '@nestjs/graphql'
 import { UseGuards } from '@nestjs/common'
 import {
@@ -17,27 +17,31 @@ export class ApiUserPostResolver {
   constructor(private readonly service: ApiPostService) {}
 
   @Mutation(() => Post, { nullable: true })
-  userCreatePost(@Args('input') input: UserCreatePostInput) {
-    return this.service.user.createPost(input)
+  userCreatePost(@CtxUser() user: { id: string }, @Args('input') input: UserCreatePostInput) {
+    return this.service.user.createPost(user.id, input)
   }
 
   @Mutation(() => Boolean, { nullable: true })
-  userDeletePost(@Args('postId') postId: string) {
-    return this.service.user.deletePost(postId)
+  userDeletePost(@CtxUser() user: { id: string }, @Args('postId') postId: string) {
+    return this.service.user.deletePost(user.id, postId)
   }
 
   @Query(() => PostPaging)
-  userFindManyPost(@Args('input') input: UserFindManyPostInput) {
-    return this.service.user.findManyPost(input)
+  userFindManyPost(@CtxUser() user: { id: string }, @Args('input') input: UserFindManyPostInput) {
+    return this.service.user.findManyPost(user.id, input)
   }
 
   @Query(() => Post, { nullable: true })
-  userFindOnePost(@Args('postId') postId: string) {
-    return this.service.user.findOnePost(postId)
+  userFindOnePost(@CtxUser() user: { id: string }, @Args('postId') postId: string) {
+    return this.service.user.findOnePost(user.id, postId)
   }
 
   @Mutation(() => Post, { nullable: true })
-  userUpdatePost(@Args('postId') postId: string, @Args('input') input: UserUpdatePostInput) {
-    return this.service.user.updatePost(postId, input)
+  userUpdatePost(
+    @CtxUser() user: { id: string },
+    @Args('postId') postId: string,
+    @Args('input') input: UserUpdatePostInput,
+  ) {
+    return this.service.user.updatePost(user.id, postId, input)
   }
 }

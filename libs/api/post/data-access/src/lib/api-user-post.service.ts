@@ -10,30 +10,31 @@ import { getUserPostWhereInput } from './helpers/get-user-post-where.input'
 export class ApiUserPostService {
   constructor(private readonly core: ApiCoreService) {}
 
-  async createPost(input: UserCreatePostInput) {
-    return this.core.data.post.create({ data: input })
+  async createPost(userId: string, input: UserCreatePostInput) {
+    return this.core.data.post.create({ data: { ...input, authorId: userId } })
   }
 
-  async deletePost(postId: string) {
+  async deletePost(userId: string, postId: string) {
     const deleted = await this.core.data.post.delete({ where: { id: postId } })
     return !!deleted
   }
 
-  async findManyPost(input: UserFindManyPostInput): Promise<PostPaging> {
+  async findManyPost(userId: string, input: UserFindManyPostInput): Promise<PostPaging> {
     return this.core.data.post
       .paginate({
         orderBy: { createdAt: 'desc' },
         where: getUserPostWhereInput(input),
+        include: { author: true },
       })
       .withPages({ limit: input.limit, page: input.page })
       .then(([data, meta]) => ({ data, meta }))
   }
 
-  async findOnePost(postId: string) {
-    return this.core.data.post.findUnique({ where: { id: postId } })
+  async findOnePost(userId: string, postId: string) {
+    return this.core.data.post.findUnique({ where: { id: postId }, include: { author: true } })
   }
 
-  async updatePost(postId: string, input: UserUpdatePostInput) {
+  async updatePost(userId: string, postId: string, input: UserUpdatePostInput) {
     return this.core.data.post.update({ where: { id: postId }, data: input })
   }
 }

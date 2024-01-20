@@ -1,6 +1,6 @@
 import { Resolver } from '@nestjs/graphql'
 import { ApiPostService } from '@connectamind/api-post-data-access'
-import { ApiAuthGraphQLAdminGuard } from '@connectamind/api-auth-data-access'
+import { ApiAuthGraphQLAdminGuard, CtxUser } from '@connectamind/api-auth-data-access'
 import { Mutation, Query, Args } from '@nestjs/graphql'
 import { UseGuards } from '@nestjs/common'
 import {
@@ -17,8 +17,8 @@ export class ApiAdminPostResolver {
   constructor(private readonly service: ApiPostService) {}
 
   @Mutation(() => Post, { nullable: true })
-  adminCreatePost(@Args('input') input: AdminCreatePostInput) {
-    return this.service.admin.createPost(input)
+  adminCreatePost(@CtxUser() user: { id: string }, @Args('input') input: AdminCreatePostInput) {
+    return this.service.admin.createPost(user.id, input)
   }
 
   @Mutation(() => Boolean, { nullable: true })

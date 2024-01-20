@@ -46,6 +46,8 @@ model Post {
   title     String
   content   String
   prices    Price[]
+  author    User    @relation(fields: [authorId], references: [id])
+  authorId  String
 }
 
 model Price {
@@ -53,7 +55,7 @@ model Price {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   token     Token
-  post      Post    @relation(fields: [postId], references: [id])
+  post      Post     @relation(fields: [postId], references: [id])
   postId    String
   amount    String
 }
@@ -70,6 +72,7 @@ model User {
   status     UserStatus @default(Created)
   username   String     @unique
   identities Identity[]
+  posts      Post[]
 }
 
 enum IdentityProvider {
@@ -90,6 +93,7 @@ enum UserStatus {
   Created
   Inactive
 }
+
 enum Token {
   USDC
   SOL

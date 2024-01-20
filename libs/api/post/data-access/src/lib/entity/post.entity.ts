@@ -1,4 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql'
+import { User } from '@connectamind/api-user-data-access'
 
 @ObjectType()
 export class Post {
@@ -12,4 +13,8 @@ export class Post {
   title!: string
   @Field()
   content!: string
+  @Field(() => User, { nullable: true })
+  author?: User
+  @Field()
+  authorId!: string
 }

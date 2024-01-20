@@ -276,6 +276,8 @@ export type PagingMeta = {
 
 export type Post = {
   __typename?: 'Post'
+  author?: Maybe<User>
+  authorId: Scalars['String']['output']
   content: Scalars['String']['output']
   createdAt?: Maybe<Scalars['DateTime']['output']>
   id: Scalars['String']['output']
@@ -818,6 +820,20 @@ export type PostDetailsFragment = {
   title: string
   content: string
   updatedAt?: Date | null
+  authorId: string
+  author?: {
+    __typename?: 'User'
+    avatarUrl?: string | null
+    createdAt?: Date | null
+    developer?: boolean | null
+    id: string
+    name?: string | null
+    profileUrl?: string | null
+    role?: UserRole | null
+    status?: UserStatus | null
+    updatedAt?: Date | null
+    username?: string | null
+  } | null
 }
 
 export type AdminFindManyPostQueryVariables = Exact<{
@@ -835,6 +851,20 @@ export type AdminFindManyPostQuery = {
       title: string
       content: string
       updatedAt?: Date | null
+      authorId: string
+      author?: {
+        __typename?: 'User'
+        avatarUrl?: string | null
+        createdAt?: Date | null
+        developer?: boolean | null
+        id: string
+        name?: string | null
+        profileUrl?: string | null
+        role?: UserRole | null
+        status?: UserStatus | null
+        updatedAt?: Date | null
+        username?: string | null
+      } | null
     }>
     meta: {
       __typename?: 'PagingMeta'
@@ -862,6 +892,20 @@ export type AdminFindOnePostQuery = {
     title: string
     content: string
     updatedAt?: Date | null
+    authorId: string
+    author?: {
+      __typename?: 'User'
+      avatarUrl?: string | null
+      createdAt?: Date | null
+      developer?: boolean | null
+      id: string
+      name?: string | null
+      profileUrl?: string | null
+      role?: UserRole | null
+      status?: UserStatus | null
+      updatedAt?: Date | null
+      username?: string | null
+    } | null
   } | null
 }
 
@@ -878,6 +922,20 @@ export type AdminCreatePostMutation = {
     title: string
     content: string
     updatedAt?: Date | null
+    authorId: string
+    author?: {
+      __typename?: 'User'
+      avatarUrl?: string | null
+      createdAt?: Date | null
+      developer?: boolean | null
+      id: string
+      name?: string | null
+      profileUrl?: string | null
+      role?: UserRole | null
+      status?: UserStatus | null
+      updatedAt?: Date | null
+      username?: string | null
+    } | null
   } | null
 }
 
@@ -895,6 +953,20 @@ export type AdminUpdatePostMutation = {
     title: string
     content: string
     updatedAt?: Date | null
+    authorId: string
+    author?: {
+      __typename?: 'User'
+      avatarUrl?: string | null
+      createdAt?: Date | null
+      developer?: boolean | null
+      id: string
+      name?: string | null
+      profileUrl?: string | null
+      role?: UserRole | null
+      status?: UserStatus | null
+      updatedAt?: Date | null
+      username?: string | null
+    } | null
   } | null
 }
 
@@ -919,6 +991,20 @@ export type UserFindManyPostQuery = {
       title: string
       content: string
       updatedAt?: Date | null
+      authorId: string
+      author?: {
+        __typename?: 'User'
+        avatarUrl?: string | null
+        createdAt?: Date | null
+        developer?: boolean | null
+        id: string
+        name?: string | null
+        profileUrl?: string | null
+        role?: UserRole | null
+        status?: UserStatus | null
+        updatedAt?: Date | null
+        username?: string | null
+      } | null
     }>
     meta: {
       __typename?: 'PagingMeta'
@@ -946,6 +1032,20 @@ export type UserFindOnePostQuery = {
     title: string
     content: string
     updatedAt?: Date | null
+    authorId: string
+    author?: {
+      __typename?: 'User'
+      avatarUrl?: string | null
+      createdAt?: Date | null
+      developer?: boolean | null
+      id: string
+      name?: string | null
+      profileUrl?: string | null
+      role?: UserRole | null
+      status?: UserStatus | null
+      updatedAt?: Date | null
+      username?: string | null
+    } | null
   } | null
 }
 
@@ -962,6 +1062,20 @@ export type UserCreatePostMutation = {
     title: string
     content: string
     updatedAt?: Date | null
+    authorId: string
+    author?: {
+      __typename?: 'User'
+      avatarUrl?: string | null
+      createdAt?: Date | null
+      developer?: boolean | null
+      id: string
+      name?: string | null
+      profileUrl?: string | null
+      role?: UserRole | null
+      status?: UserStatus | null
+      updatedAt?: Date | null
+      username?: string | null
+    } | null
   } | null
 }
 
@@ -979,6 +1093,20 @@ export type UserUpdatePostMutation = {
     title: string
     content: string
     updatedAt?: Date | null
+    authorId: string
+    author?: {
+      __typename?: 'User'
+      avatarUrl?: string | null
+      createdAt?: Date | null
+      developer?: boolean | null
+      id: string
+      name?: string | null
+      profileUrl?: string | null
+      role?: UserRole | null
+      status?: UserStatus | null
+      updatedAt?: Date | null
+      username?: string | null
+    } | null
   } | null
 }
 
@@ -1343,25 +1471,6 @@ export const IdentityChallengeDetailsFragmentDoc = gql`
     verified
   }
 `
-export const PostDetailsFragmentDoc = gql`
-  fragment PostDetails on Post {
-    createdAt
-    id
-    title
-    content
-    updatedAt
-  }
-`
-export const PriceDetailsFragmentDoc = gql`
-  fragment PriceDetails on Price {
-    createdAt
-    id
-    token
-    amount
-    updatedAt
-    postId
-  }
-`
 export const UserDetailsFragmentDoc = gql`
   fragment UserDetails on User {
     avatarUrl
@@ -1374,6 +1483,30 @@ export const UserDetailsFragmentDoc = gql`
     status
     updatedAt
     username
+  }
+`
+export const PostDetailsFragmentDoc = gql`
+  fragment PostDetails on Post {
+    createdAt
+    id
+    title
+    content
+    updatedAt
+    authorId
+    author {
+      ...UserDetails
+    }
+  }
+  ${UserDetailsFragmentDoc}
+`
+export const PriceDetailsFragmentDoc = gql`
+  fragment PriceDetails on Price {
+    createdAt
+    id
+    token
+    amount
+    updatedAt
+    postId
   }
 `
 export const LoginDocument = gql`

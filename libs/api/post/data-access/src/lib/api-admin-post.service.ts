@@ -10,8 +10,8 @@ import { getAdminPostWhereInput } from './helpers/get-admin-post-where.input'
 export class ApiAdminPostService {
   constructor(private readonly core: ApiCoreService) {}
 
-  async createPost(input: AdminCreatePostInput) {
-    return this.core.data.post.create({ data: input })
+  async createPost(userId: string, input: AdminCreatePostInput) {
+    return this.core.data.post.create({ data: { ...input, authorId: userId } })
   }
 
   async deletePost(postId: string) {
