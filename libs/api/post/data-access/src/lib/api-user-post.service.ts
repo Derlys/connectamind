@@ -37,7 +37,7 @@ export class ApiUserPostService {
   }
 
   async findOnePost(userId: string, postId: string) {
-    return this.core.data.post.findUnique({ where: { id: postId }, include: { author: true } })
+    return this.core.data.post.findUnique({ where: { id: postId }, include: { author: true, prices: true } })
   }
 
   async updatePost(userId: string, postId: string, input: UserUpdatePostInput) {

@@ -8,6 +8,9 @@ fragment PostDetails on Post {
   author {
     ...UserDetails
   }
+  prices {
+    ...PriceDetails
+  }
 }
 
 query adminFindManyPost($input: AdminFindManyPostInput!) {

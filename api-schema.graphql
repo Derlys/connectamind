@@ -175,6 +175,7 @@ type Post {
   content: String!
   createdAt: DateTime
   id: String!
+  prices: [Price!]
   title: String!
   updatedAt: DateTime
 }

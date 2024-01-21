@@ -3,6 +3,7 @@ import { UiBack, UiDebug, UiDebugModal, UiError, UiLoader, UiPage } from '@pubke
 import { useUserFindOnePost } from '@connectamind/web-post-data-access'
 import { useParams } from 'react-router-dom'
 import { UserPostUiUpdateForm } from '@connectamind/web-post-ui'
+import { PriceUiButtons } from '@connectamind/web-price-ui'
 
 export function UserPostDetailFeature() {
   const { postId } = useParams<{ postId: string }>() as { postId: string }
@@ -25,6 +26,12 @@ export function UserPostDetailFeature() {
         </Group>
       }
     >
+      <PriceUiButtons
+        prices={item.prices}
+        onClick={({ token, amount }) => {
+          console.log({ token, amount })
+        }}
+      />
       <UiDebug data={item} open />
       <UserPostUiUpdateForm submit={updatePost} post={item} />
     </UiPage>

@@ -281,6 +281,7 @@ export type Post = {
   content: Scalars['String']['output']
   createdAt?: Maybe<Scalars['DateTime']['output']>
   id: Scalars['String']['output']
+  prices?: Maybe<Array<Price>>
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
 }
@@ -834,6 +835,15 @@ export type PostDetailsFragment = {
     updatedAt?: Date | null
     username?: string | null
   } | null
+  prices?: Array<{
+    __typename?: 'Price'
+    createdAt?: Date | null
+    id: string
+    token: Token
+    amount: string
+    updatedAt?: Date | null
+    postId: string
+  }> | null
 }
 
 export type AdminFindManyPostQueryVariables = Exact<{
@@ -865,6 +875,15 @@ export type AdminFindManyPostQuery = {
         updatedAt?: Date | null
         username?: string | null
       } | null
+      prices?: Array<{
+        __typename?: 'Price'
+        createdAt?: Date | null
+        id: string
+        token: Token
+        amount: string
+        updatedAt?: Date | null
+        postId: string
+      }> | null
     }>
     meta: {
       __typename?: 'PagingMeta'
@@ -906,6 +925,15 @@ export type AdminFindOnePostQuery = {
       updatedAt?: Date | null
       username?: string | null
     } | null
+    prices?: Array<{
+      __typename?: 'Price'
+      createdAt?: Date | null
+      id: string
+      token: Token
+      amount: string
+      updatedAt?: Date | null
+      postId: string
+    }> | null
   } | null
 }
 
@@ -936,6 +964,15 @@ export type AdminCreatePostMutation = {
       updatedAt?: Date | null
       username?: string | null
     } | null
+    prices?: Array<{
+      __typename?: 'Price'
+      createdAt?: Date | null
+      id: string
+      token: Token
+      amount: string
+      updatedAt?: Date | null
+      postId: string
+    }> | null
   } | null
 }
 
@@ -967,6 +1004,15 @@ export type AdminUpdatePostMutation = {
       updatedAt?: Date | null
       username?: string | null
     } | null
+    prices?: Array<{
+      __typename?: 'Price'
+      createdAt?: Date | null
+      id: string
+      token: Token
+      amount: string
+      updatedAt?: Date | null
+      postId: string
+    }> | null
   } | null
 }
 
@@ -1005,6 +1051,15 @@ export type UserFindManyPostQuery = {
         updatedAt?: Date | null
         username?: string | null
       } | null
+      prices?: Array<{
+        __typename?: 'Price'
+        createdAt?: Date | null
+        id: string
+        token: Token
+        amount: string
+        updatedAt?: Date | null
+        postId: string
+      }> | null
     }>
     meta: {
       __typename?: 'PagingMeta'
@@ -1046,6 +1101,15 @@ export type UserFindOnePostQuery = {
       updatedAt?: Date | null
       username?: string | null
     } | null
+    prices?: Array<{
+      __typename?: 'Price'
+      createdAt?: Date | null
+      id: string
+      token: Token
+      amount: string
+      updatedAt?: Date | null
+      postId: string
+    }> | null
   } | null
 }
 
@@ -1076,6 +1140,15 @@ export type UserCreatePostMutation = {
       updatedAt?: Date | null
       username?: string | null
     } | null
+    prices?: Array<{
+      __typename?: 'Price'
+      createdAt?: Date | null
+      id: string
+      token: Token
+      amount: string
+      updatedAt?: Date | null
+      postId: string
+    }> | null
   } | null
 }
 
@@ -1107,6 +1180,15 @@ export type UserUpdatePostMutation = {
       updatedAt?: Date | null
       username?: string | null
     } | null
+    prices?: Array<{
+      __typename?: 'Price'
+      createdAt?: Date | null
+      id: string
+      token: Token
+      amount: string
+      updatedAt?: Date | null
+      postId: string
+    }> | null
   } | null
 }
 
@@ -1485,6 +1567,16 @@ export const UserDetailsFragmentDoc = gql`
     username
   }
 `
+export const PriceDetailsFragmentDoc = gql`
+  fragment PriceDetails on Price {
+    createdAt
+    id
+    token
+    amount
+    updatedAt
+    postId
+  }
+`
 export const PostDetailsFragmentDoc = gql`
   fragment PostDetails on Post {
     createdAt
@@ -1496,18 +1588,12 @@ export const PostDetailsFragmentDoc = gql`
     author {
       ...UserDetails
     }
+    prices {
+      ...PriceDetails
+    }
   }
   ${UserDetailsFragmentDoc}
-`
-export const PriceDetailsFragmentDoc = gql`
-  fragment PriceDetails on Price {
-    createdAt
-    id
-    token
-    amount
-    updatedAt
-    postId
-  }
+  ${PriceDetailsFragmentDoc}
 `
 export const LoginDocument = gql`
   mutation login($input: LoginInput!) {

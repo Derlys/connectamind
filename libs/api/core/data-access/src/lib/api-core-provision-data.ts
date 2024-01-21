@@ -1,6 +1,12 @@
 import { faker } from '@faker-js/faker'
-import { IdentityProvider, Prisma, UserRole, UserStatus } from '@prisma/client'
+import { IdentityProvider, Prisma, Token, UserRole, UserStatus } from '@prisma/client'
 
+const prices = [
+  //
+  { token: Token.BONK, amount: '10' },
+  { token: Token.SOL, amount: '0.1' },
+  { token: Token.USDC, amount: '9.99' },
+]
 export const provisionUsers: Prisma.UserCreateInput[] = [
   {
     username: 'derlys',
@@ -9,12 +15,12 @@ export const provisionUsers: Prisma.UserCreateInput[] = [
     avatarUrl: 'https://avatars.githubusercontent.com/u/58484607?v=4',
     posts: {
       create: [
-        { title: 'Derlys Post 1', content: 'Hola!!' },
-        { title: 'Derlys Post 2', content: 'Hola!!' },
-        { title: 'Derlys Post 3', content: 'Hola!!' },
-        { title: 'Derlys Post 4', content: 'Hola!!' },
-        { title: 'Derlys Post 5', content: 'Hola!!' },
-        { title: 'Derlys Post 6', content: 'Hola!!' },
+        { title: 'Derlys Post 1', content: 'Hola!!', prices: { create: prices } },
+        { title: 'Derlys Post 2', content: 'Hola!!', prices: { create: prices } },
+        { title: 'Derlys Post 3', content: 'Hola!!', prices: { create: prices } },
+        { title: 'Derlys Post 4', content: 'Hola!!', prices: { create: prices } },
+        { title: 'Derlys Post 5', content: 'Hola!!', prices: { create: prices } },
+        { title: 'Derlys Post 6', content: 'Hola!!', prices: { create: prices } },
       ],
     },
     identities: {
@@ -28,12 +34,12 @@ export const provisionUsers: Prisma.UserCreateInput[] = [
     developer: true,
     posts: {
       create: [
-        { title: 'Alice Post 1', content: 'Hola from Alice!!' },
-        { title: 'Alice Post 2', content: 'Hola from Alice!!' },
-        { title: 'Alice Post 3', content: 'Hola from Alice!!' },
-        { title: 'Alice Post 4', content: 'Hola from Alice!!' },
-        { title: 'Alice Post 5', content: 'Hola from Alice!!' },
-        { title: 'Alice Post 6', content: 'Hola from Alice!!' },
+        { title: 'Alice Post 1', content: 'Hola from Alice!!', prices: { create: prices } },
+        { title: 'Alice Post 2', content: 'Hola from Alice!!', prices: { create: prices } },
+        { title: 'Alice Post 3', content: 'Hola from Alice!!', prices: { create: prices } },
+        { title: 'Alice Post 4', content: 'Hola from Alice!!', prices: { create: prices } },
+        { title: 'Alice Post 5', content: 'Hola from Alice!!', prices: { create: prices } },
+        { title: 'Alice Post 6', content: 'Hola from Alice!!', prices: { create: prices } },
       ],
     },
     identities: {
