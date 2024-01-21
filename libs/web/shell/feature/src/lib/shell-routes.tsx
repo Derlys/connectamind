@@ -8,6 +8,7 @@ import { UiNotFound } from '@pubkey-ui/core'
 import { lazy } from 'react'
 import { Navigate } from 'react-router-dom'
 import { useGuardedRoutes } from './use-guarded-routes'
+import { UserPostFeature } from '@connectamind/web-post-feature'
 
 export const LazyAdminFeature = lazy(() => import('./shell-admin-routes'))
 
@@ -23,6 +24,7 @@ export function ShellRoutes() {
     layout: [
       // Here you can add routes that are part of the main layout
       { path: '/dashboard', element: <DashboardFeature /> },
+      { path: '/posts/*', element: <UserPostFeature /> },
       { path: '/profile/*', element: <UserFeature /> },
       { path: '/settings/*', element: <SettingsFeature /> },
       { path: '/solana/*', element: <SolanaFeature /> },

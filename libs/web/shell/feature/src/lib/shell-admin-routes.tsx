@@ -1,16 +1,14 @@
 import { DevAdminRoutes } from '@connectamind/web-dev-feature'
 import { AdminUserFeature } from '@connectamind/web-user-feature'
 import { UiContainer, UiDashboardGrid, UiDashboardItem, UiNotFound } from '@pubkey-ui/core'
-import { IconUsers } from '@tabler/icons-react'
+import { IconBook, IconUsers } from '@tabler/icons-react'
 import { Navigate, RouteObject, useRoutes } from 'react-router-dom'
 import { AdminPostFeature } from '@connectamind/web-post-feature'
-import { AdminPriceFeature } from '@connectamind/web-price-feature'
 
 const links: UiDashboardItem[] = [
   // Admin Dashboard Links are added by the web-feature generator
+  { label: 'Posts', icon: IconBook, to: '/admin/posts' },
   { label: 'Users', icon: IconUsers, to: '/admin/users' },
-  { label: 'Posts', icon: IconUsers, to: '/admin/posts' },
-  { label: 'Prices', icon: IconUsers, to: '/admin/prices' },
 ]
 
 const routes: RouteObject[] = [

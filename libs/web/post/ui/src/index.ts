@@ -1,3 +1,6 @@
 export * from './lib/admin-post-ui-create-form'
 export * from './lib/admin-post-ui-table'
 export * from './lib/admin-post-ui-update-form'
+export * from './lib/user-post-ui-create-form'
+export * from './lib/user-post-ui-table'
+export * from './lib/user-post-ui-update-form'

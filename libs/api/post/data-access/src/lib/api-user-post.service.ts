@@ -15,6 +15,12 @@ export class ApiUserPostService {
   }
 
   async deletePost(userId: string, postId: string) {
+    const found = await this.core.data.post.findFirst({
+      where: { id: postId, authorId: userId },
+    })
+    if (!found) {
+      throw new Error('Post not found')
+    }
     const deleted = await this.core.data.post.delete({ where: { id: postId } })
     return !!deleted
   }
@@ -35,6 +41,12 @@ export class ApiUserPostService {
   }
 
   async updatePost(userId: string, postId: string, input: UserUpdatePostInput) {
+    const found = await this.core.data.post.findFirst({
+      where: { id: postId, authorId: userId },
+    })
+    if (!found) {
+      throw new Error('Post not found')
+    }
     return this.core.data.post.update({ where: { id: postId }, data: input })
   }
 }
