@@ -29,6 +29,12 @@ input AdminFindManyIdentityInput {
   provider: IdentityProvider
 }
 
+input AdminFindManyPaymentInput {
+  limit: Int = 10
+  page: Int = 1
+  search: String
+}
+
 input AdminFindManyPostInput {
   limit: Int = 10
   page: Int = 1
@@ -140,6 +146,7 @@ type Mutation {
   adminCreatePrice(input: AdminCreatePriceInput!): Price
   adminCreateUser(input: AdminCreateUserInput!): User
   adminDeleteIdentity(identityId: String!): Boolean
+  adminDeletePayment(paymentId: String!): Boolean
   adminDeletePost(postId: String!): Boolean
   adminDeletePrice(priceId: String!): Boolean
   adminDeleteUser(userId: String!): Boolean
@@ -167,6 +174,18 @@ type PagingMeta {
   pageCount: Int
   previousPage: Int
   totalCount: Int
+}
+
+type Payment {
+  createdAt: DateTime
+  id: String!
+  signature: String!
+  updatedAt: DateTime
+}
+
+type PaymentPaging {
+  data: [Payment!]!
+  meta: PagingMeta!
 }
 
 type Post {
@@ -201,9 +220,11 @@ type PricePaging {
 
 type Query {
   adminFindManyIdentity(input: AdminFindManyIdentityInput!): [Identity!]
+  adminFindManyPayment(input: AdminFindManyPaymentInput!): PaymentPaging!
   adminFindManyPost(input: AdminFindManyPostInput!): PostPaging!
   adminFindManyPrice(input: AdminFindManyPriceInput!): PricePaging!
   adminFindManyUser(input: AdminFindManyUserInput!): UserPaging!
+  adminFindOnePayment(paymentId: String!): Payment
   adminFindOnePost(postId: String!): Post
   adminFindOnePrice(priceId: String!): Price
   adminFindOneUser(userId: String!): User

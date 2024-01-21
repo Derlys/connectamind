@@ -1,0 +1,27 @@
+fragment PaymentDetails on Payment {
+  createdAt
+  id
+  signature
+  updatedAt
+}
+
+query adminFindManyPayment($input: AdminFindManyPaymentInput!) {
+  paging: adminFindManyPayment(input: $input) {
+    data {
+      ...PaymentDetails
+    }
+    meta {
+      ...PagingMetaDetails
+    }
+  }
+}
+
+query adminFindOnePayment($paymentId: String!) {
+  item: adminFindOnePayment(paymentId: $paymentId) {
+    ...PaymentDetails
+  }
+}
+
+mutation adminDeletePayment($paymentId: String!) {
+  deleted: adminDeletePayment(paymentId: $paymentId)
+}

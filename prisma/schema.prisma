@@ -39,25 +39,44 @@ model IdentityChallenge {
   providerId String
 }
 
-model Post {
+model Payment {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  signature String
+  post      Post     @relation(fields: [postId], references: [id])
+  postId    String
+  price     Price    @relation(fields: [priceId], references: [id])
+  priceId   String
+  owner     User     @relation(fields: [ownerId], references: [id])
+  ownerId   String
+
+  @@unique([postId, ownerId])
+}
+
+model Post {
+  id        String    @id @default(cuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
   title     String
   content   String
+  payments  Payment[]
   prices    Price[]
-  author    User    @relation(fields: [authorId], references: [id])
+  author    User      @relation(fields: [authorId], references: [id])
   authorId  String
 }
 
 model Price {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id        String    @id @default(cuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
   token     Token
-  post      Post     @relation(fields: [postId], references: [id])
+  payments  Payment[]
+  post      Post      @relation(fields: [postId], references: [id])
   postId    String
   amount    String
+
+  @@unique([token, postId])
 }
 
 model User {
@@ -72,6 +91,7 @@ model User {
   status     UserStatus @default(Created)
   username   String     @unique
   identities Identity[]
+  payments   Payment[]
   posts      Post[]
 }
 
@@ -83,6 +103,12 @@ enum IdentityProvider {
   Twitter
 }
 
+enum Token {
+  USDC
+  SOL
+  BONK
+}
+
 enum UserRole {
   Admin
   User
@@ -92,10 +118,4 @@ enum UserStatus {
   Active
   Created
   Inactive
-}
-
-enum Token {
-  USDC
-  SOL
-  BONK
 }

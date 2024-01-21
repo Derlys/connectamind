@@ -51,6 +51,12 @@ export type AdminFindManyIdentityInput = {
   provider?: InputMaybe<IdentityProvider>
 }
 
+export type AdminFindManyPaymentInput = {
+  limit?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
+}
+
 export type AdminFindManyPostInput = {
   limit?: InputMaybe<Scalars['Int']['input']>
   page?: InputMaybe<Scalars['Int']['input']>
@@ -156,6 +162,7 @@ export type Mutation = {
   adminCreatePrice?: Maybe<Price>
   adminCreateUser?: Maybe<User>
   adminDeleteIdentity?: Maybe<Scalars['Boolean']['output']>
+  adminDeletePayment?: Maybe<Scalars['Boolean']['output']>
   adminDeletePost?: Maybe<Scalars['Boolean']['output']>
   adminDeletePrice?: Maybe<Scalars['Boolean']['output']>
   adminDeleteUser?: Maybe<Scalars['Boolean']['output']>
@@ -193,6 +200,10 @@ export type MutationAdminCreateUserArgs = {
 
 export type MutationAdminDeleteIdentityArgs = {
   identityId: Scalars['String']['input']
+}
+
+export type MutationAdminDeletePaymentArgs = {
+  paymentId: Scalars['String']['input']
 }
 
 export type MutationAdminDeletePostArgs = {
@@ -274,6 +285,20 @@ export type PagingMeta = {
   totalCount?: Maybe<Scalars['Int']['output']>
 }
 
+export type Payment = {
+  __typename?: 'Payment'
+  createdAt?: Maybe<Scalars['DateTime']['output']>
+  id: Scalars['String']['output']
+  signature: Scalars['String']['output']
+  updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type PaymentPaging = {
+  __typename?: 'PaymentPaging'
+  data: Array<Payment>
+  meta: PagingMeta
+}
+
 export type Post = {
   __typename?: 'Post'
   author?: Maybe<User>
@@ -311,9 +336,11 @@ export type PricePaging = {
 export type Query = {
   __typename?: 'Query'
   adminFindManyIdentity?: Maybe<Array<Identity>>
+  adminFindManyPayment: PaymentPaging
   adminFindManyPost: PostPaging
   adminFindManyPrice: PricePaging
   adminFindManyUser: UserPaging
+  adminFindOnePayment?: Maybe<Payment>
   adminFindOnePost?: Maybe<Post>
   adminFindOnePrice?: Maybe<Price>
   adminFindOneUser?: Maybe<User>
@@ -333,6 +360,10 @@ export type QueryAdminFindManyIdentityArgs = {
   input: AdminFindManyIdentityInput
 }
 
+export type QueryAdminFindManyPaymentArgs = {
+  input: AdminFindManyPaymentInput
+}
+
 export type QueryAdminFindManyPostArgs = {
   input: AdminFindManyPostInput
 }
@@ -343,6 +374,10 @@ export type QueryAdminFindManyPriceArgs = {
 
 export type QueryAdminFindManyUserArgs = {
   input: AdminFindManyUserInput
+}
+
+export type QueryAdminFindOnePaymentArgs = {
+  paymentId: Scalars['String']['input']
 }
 
 export type QueryAdminFindOnePostArgs = {
@@ -813,6 +848,63 @@ export type AnonVerifyIdentityChallengeMutation = {
     verified: boolean
   } | null
 }
+
+export type PaymentDetailsFragment = {
+  __typename?: 'Payment'
+  createdAt?: Date | null
+  id: string
+  signature: string
+  updatedAt?: Date | null
+}
+
+export type AdminFindManyPaymentQueryVariables = Exact<{
+  input: AdminFindManyPaymentInput
+}>
+
+export type AdminFindManyPaymentQuery = {
+  __typename?: 'Query'
+  paging: {
+    __typename?: 'PaymentPaging'
+    data: Array<{
+      __typename?: 'Payment'
+      createdAt?: Date | null
+      id: string
+      signature: string
+      updatedAt?: Date | null
+    }>
+    meta: {
+      __typename?: 'PagingMeta'
+      currentPage: number
+      isFirstPage: boolean
+      isLastPage: boolean
+      nextPage?: number | null
+      pageCount?: number | null
+      previousPage?: number | null
+      totalCount?: number | null
+    }
+  }
+}
+
+export type AdminFindOnePaymentQueryVariables = Exact<{
+  paymentId: Scalars['String']['input']
+}>
+
+export type AdminFindOnePaymentQuery = {
+  __typename?: 'Query'
+  item?: {
+    __typename?: 'Payment'
+    createdAt?: Date | null
+    id: string
+    signature: string
+    updatedAt?: Date | null
+  } | null
+}
+
+export type AdminDeletePaymentMutationVariables = Exact<{
+  paymentId: Scalars['String']['input']
+}>
+
+export type AdminDeletePaymentMutation = { __typename?: 'Mutation'; deleted?: boolean | null }
 
 export type PostDetailsFragment = {
   __typename?: 'Post'
@@ -1553,6 +1645,14 @@ export const IdentityChallengeDetailsFragmentDoc = gql`
     verified
   }
 `
+export const PaymentDetailsFragmentDoc = gql`
+  fragment PaymentDetails on Payment {
+    createdAt
+    id
+    signature
+    updatedAt
+  }
+`
 export const UserDetailsFragmentDoc = gql`
   fragment UserDetails on User {
     avatarUrl
@@ -1718,6 +1818,33 @@ export const AnonVerifyIdentityChallengeDocument = gql`
     }
   }
   ${IdentityChallengeDetailsFragmentDoc}
+`
+export const AdminFindManyPaymentDocument = gql`
+  query adminFindManyPayment($input: AdminFindManyPaymentInput!) {
+    paging: adminFindManyPayment(input: $input) {
+      data {
+        ...PaymentDetails
+      }
+      meta {
+        ...PagingMetaDetails
+      }
+    }
+  }
+  ${PaymentDetailsFragmentDoc}
+  ${PagingMetaDetailsFragmentDoc}
+`
+export const AdminFindOnePaymentDocument = gql`
+  query adminFindOnePayment($paymentId: String!) {
+    item: adminFindOnePayment(paymentId: $paymentId) {
+      ...PaymentDetails
+    }
+  }
+  ${PaymentDetailsFragmentDoc}
+`
+export const AdminDeletePaymentDocument = gql`
+  mutation adminDeletePayment($paymentId: String!) {
+    deleted: adminDeletePayment(paymentId: $paymentId)
+  }
 `
 export const AdminFindManyPostDocument = gql`
   query adminFindManyPost($input: AdminFindManyPostInput!) {
@@ -1950,6 +2077,9 @@ const UserVerifyIdentityChallengeDocumentString = print(UserVerifyIdentityChalle
 const UserLinkIdentityDocumentString = print(UserLinkIdentityDocument)
 const AnonRequestIdentityChallengeDocumentString = print(AnonRequestIdentityChallengeDocument)
 const AnonVerifyIdentityChallengeDocumentString = print(AnonVerifyIdentityChallengeDocument)
+const AdminFindManyPaymentDocumentString = print(AdminFindManyPaymentDocument)
+const AdminFindOnePaymentDocumentString = print(AdminFindOnePaymentDocument)
+const AdminDeletePaymentDocumentString = print(AdminDeletePaymentDocument)
 const AdminFindManyPostDocumentString = print(AdminFindManyPostDocument)
 const AdminFindOnePostDocumentString = print(AdminFindOnePostDocument)
 const AdminCreatePostDocumentString = print(AdminCreatePostDocument)
@@ -2274,6 +2404,69 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'anonVerifyIdentityChallenge',
+        'mutation',
+        variables,
+      )
+    },
+    adminFindManyPayment(
+      variables: AdminFindManyPaymentQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: AdminFindManyPaymentQuery
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<AdminFindManyPaymentQuery>(AdminFindManyPaymentDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'adminFindManyPayment',
+        'query',
+        variables,
+      )
+    },
+    adminFindOnePayment(
+      variables: AdminFindOnePaymentQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: AdminFindOnePaymentQuery
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<AdminFindOnePaymentQuery>(AdminFindOnePaymentDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'adminFindOnePayment',
+        'query',
+        variables,
+      )
+    },
+    adminDeletePayment(
+      variables: AdminDeletePaymentMutationVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: AdminDeletePaymentMutation
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<AdminDeletePaymentMutation>(AdminDeletePaymentDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'adminDeletePayment',
         'mutation',
         variables,
       )
@@ -2817,6 +3010,14 @@ export function AdminFindManyIdentityInputSchema(): z.ZodObject<Properties<Admin
   return z.object({
     ownerId: z.string().nullish(),
     provider: IdentityProviderSchema.nullish(),
+  })
+}
+
+export function AdminFindManyPaymentInputSchema(): z.ZodObject<Properties<AdminFindManyPaymentInput>> {
+  return z.object({
+    limit: z.number().nullish(),
+    page: z.number().nullish(),
+    search: z.string().nullish(),
   })
 }
 
