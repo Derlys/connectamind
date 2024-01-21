@@ -46,9 +46,15 @@ export function useUserFindManyPost(props?: Partial<UserFindManyPostInput>) {
           return undefined
         }),
     deletePost: (postId: string) =>
-      sdk.userDeletePost({ postId }).then(() => {
-        toastSuccess('Post deleted')
-        return query.refetch()
-      }),
+      sdk
+        .userDeletePost({ postId })
+        .then(() => {
+          toastSuccess('Post deleted')
+          return query.refetch()
+        })
+        .catch((err) => {
+          toastError(err.message)
+          return undefined
+        }),
   }
 }

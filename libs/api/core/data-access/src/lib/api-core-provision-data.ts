@@ -3,10 +3,39 @@ import { IdentityProvider, Prisma, UserRole, UserStatus } from '@prisma/client'
 
 export const provisionUsers: Prisma.UserCreateInput[] = [
   {
+    username: 'derlys',
+    role: UserRole.Admin,
+    developer: true,
+    avatarUrl: 'https://avatars.githubusercontent.com/u/58484607?v=4',
+    posts: {
+      create: [
+        { title: 'Derlys Post 1', content: 'Hola!!' },
+        { title: 'Derlys Post 2', content: 'Hola!!' },
+        { title: 'Derlys Post 3', content: 'Hola!!' },
+        { title: 'Derlys Post 4', content: 'Hola!!' },
+        { title: 'Derlys Post 5', content: 'Hola!!' },
+        { title: 'Derlys Post 6', content: 'Hola!!' },
+      ],
+    },
+    identities: {
+      create: [{ provider: IdentityProvider.Solana, providerId: 'CvQf1w1T828bRqfD6fA1rWdCR4ybCsEr6vwHdYPTMfSr' }],
+    },
+  },
+  {
     username: 'alice',
     password: 'password',
     role: UserRole.Admin,
     developer: true,
+    posts: {
+      create: [
+        { title: 'Alice Post 1', content: 'Hola from Alice!!' },
+        { title: 'Alice Post 2', content: 'Hola from Alice!!' },
+        { title: 'Alice Post 3', content: 'Hola from Alice!!' },
+        { title: 'Alice Post 4', content: 'Hola from Alice!!' },
+        { title: 'Alice Post 5', content: 'Hola from Alice!!' },
+        { title: 'Alice Post 6', content: 'Hola from Alice!!' },
+      ],
+    },
     identities: {
       create: [{ provider: IdentityProvider.Solana, providerId: 'ALiC98dw6j47Skrxje3zBN4jTA11w67JRjQRBeZH3BRG' }],
     },
