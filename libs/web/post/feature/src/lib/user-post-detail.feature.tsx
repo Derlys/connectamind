@@ -27,7 +27,7 @@ export function UserPostDetailFeature() {
       }
     >
       <PriceUiButtons
-        prices={item.prices}
+        prices={item.prices ?? []}
         onClick={({ token, amount }) => {
           console.log({ token, amount })
         }}
