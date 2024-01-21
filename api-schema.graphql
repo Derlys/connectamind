@@ -157,6 +157,7 @@ type Mutation {
   login(input: LoginInput!): User
   logout: Boolean
   register(input: RegisterInput!): User
+  userCreatePayment(input: UserCreatePaymentInput!): Payment
   userCreatePost(input: UserCreatePostInput!): Post
   userDeleteIdentity(identityId: String!): Boolean
   userDeletePost(postId: String!): Boolean
@@ -233,6 +234,7 @@ type Query {
   me: User
   uptime: Float!
   userFindManyIdentity(input: UserFindManyIdentityInput!): [Identity!]
+  userFindManyPayment(input: UserFindManyPaymentInput!): PaymentPaging!
   userFindManyPost(input: UserFindManyPostInput!): PostPaging!
   userFindManyUser(input: UserFindManyUserInput!): UserPaging!
   userFindOnePost(postId: String!): Post
@@ -264,10 +266,17 @@ type User {
   identities: [Identity!]
   name: String
   profileUrl: String
+  publicKey: String
   role: UserRole
   status: UserStatus
   updatedAt: DateTime
   username: String
+}
+
+input UserCreatePaymentInput {
+  postId: String!
+  priceId: String!
+  signature: String!
 }
 
 input UserCreatePostInput {
@@ -277,6 +286,12 @@ input UserCreatePostInput {
 
 input UserFindManyIdentityInput {
   username: String!
+}
+
+input UserFindManyPaymentInput {
+  limit: Int = 10
+  page: Int = 1
+  search: String
 }
 
 input UserFindManyPostInput {

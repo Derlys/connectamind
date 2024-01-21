@@ -5,6 +5,7 @@ import { UserFindManyPostInput } from './dto/user-find-many-post.input'
 import { UserUpdatePostInput } from './dto/user-update-post.input'
 import { PostPaging } from './entity/post-paging.entity'
 import { getUserPostWhereInput } from './helpers/get-user-post-where.input'
+import { IdentityProvider } from '@connectamind/api-identity-data-access'
 
 @Injectable()
 export class ApiUserPostService {
@@ -37,7 +38,21 @@ export class ApiUserPostService {
   }
 
   async findOnePost(userId: string, postId: string) {
-    return this.core.data.post.findUnique({ where: { id: postId }, include: { author: true, prices: true } })
+    return this.core.data.post.findUnique({
+      where: { id: postId },
+      include: {
+        author: {
+          include: {
+            identities: {
+              where: {
+                provider: IdentityProvider.Solana,
+              },
+            },
+          },
+        },
+        prices: true,
+      },
+    })
   }
 
   async updatePost(userId: string, postId: string, input: UserUpdatePostInput) {

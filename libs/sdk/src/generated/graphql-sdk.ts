@@ -173,6 +173,7 @@ export type Mutation = {
   login?: Maybe<User>
   logout?: Maybe<Scalars['Boolean']['output']>
   register?: Maybe<User>
+  userCreatePayment?: Maybe<Payment>
   userCreatePost?: Maybe<Post>
   userDeleteIdentity?: Maybe<Scalars['Boolean']['output']>
   userDeletePost?: Maybe<Scalars['Boolean']['output']>
@@ -243,6 +244,10 @@ export type MutationLoginArgs = {
 
 export type MutationRegisterArgs = {
   input: RegisterInput
+}
+
+export type MutationUserCreatePaymentArgs = {
+  input: UserCreatePaymentInput
 }
 
 export type MutationUserCreatePostArgs = {
@@ -349,6 +354,7 @@ export type Query = {
   me?: Maybe<User>
   uptime: Scalars['Float']['output']
   userFindManyIdentity?: Maybe<Array<Identity>>
+  userFindManyPayment: PaymentPaging
   userFindManyPost: PostPaging
   userFindManyUser: UserPaging
   userFindOnePost?: Maybe<Post>
@@ -400,6 +406,10 @@ export type QueryUserFindManyIdentityArgs = {
   input: UserFindManyIdentityInput
 }
 
+export type QueryUserFindManyPaymentArgs = {
+  input: UserFindManyPaymentInput
+}
+
 export type QueryUserFindManyPostArgs = {
   input: UserFindManyPostInput
 }
@@ -445,10 +455,17 @@ export type User = {
   identities?: Maybe<Array<Identity>>
   name?: Maybe<Scalars['String']['output']>
   profileUrl?: Maybe<Scalars['String']['output']>
+  publicKey?: Maybe<Scalars['String']['output']>
   role?: Maybe<UserRole>
   status?: Maybe<UserStatus>
   updatedAt?: Maybe<Scalars['DateTime']['output']>
   username?: Maybe<Scalars['String']['output']>
+}
+
+export type UserCreatePaymentInput = {
+  postId: Scalars['String']['input']
+  priceId: Scalars['String']['input']
+  signature: Scalars['String']['input']
 }
 
 export type UserCreatePostInput = {
@@ -458,6 +475,12 @@ export type UserCreatePostInput = {
 
 export type UserFindManyIdentityInput = {
   username: Scalars['String']['input']
+}
+
+export type UserFindManyPaymentInput = {
+  limit?: InputMaybe<Scalars['Int']['input']>
+  page?: InputMaybe<Scalars['Int']['input']>
+  search?: InputMaybe<Scalars['String']['input']>
 }
 
 export type UserFindManyPostInput = {
@@ -522,6 +545,7 @@ export type LoginMutation = {
     id: string
     name?: string | null
     profileUrl?: string | null
+    publicKey?: string | null
     role?: UserRole | null
     status?: UserStatus | null
     updatedAt?: Date | null
@@ -547,6 +571,7 @@ export type RegisterMutation = {
     id: string
     name?: string | null
     profileUrl?: string | null
+    publicKey?: string | null
     role?: UserRole | null
     status?: UserStatus | null
     updatedAt?: Date | null
@@ -566,6 +591,7 @@ export type MeQuery = {
     id: string
     name?: string | null
     profileUrl?: string | null
+    publicKey?: string | null
     role?: UserRole | null
     status?: UserStatus | null
     updatedAt?: Date | null
@@ -682,6 +708,7 @@ export type AdminFindManyIdentityQuery = {
       id: string
       name?: string | null
       profileUrl?: string | null
+      publicKey?: string | null
       role?: UserRole | null
       status?: UserStatus | null
       updatedAt?: Date | null
@@ -906,6 +933,49 @@ export type AdminDeletePaymentMutationVariables = Exact<{
 
 export type AdminDeletePaymentMutation = { __typename?: 'Mutation'; deleted?: boolean | null }
 
+export type UserFindManyPaymentQueryVariables = Exact<{
+  input: UserFindManyPaymentInput
+}>
+
+export type UserFindManyPaymentQuery = {
+  __typename?: 'Query'
+  paging: {
+    __typename?: 'PaymentPaging'
+    data: Array<{
+      __typename?: 'Payment'
+      createdAt?: Date | null
+      id: string
+      signature: string
+      updatedAt?: Date | null
+    }>
+    meta: {
+      __typename?: 'PagingMeta'
+      currentPage: number
+      isFirstPage: boolean
+      isLastPage: boolean
+      nextPage?: number | null
+      pageCount?: number | null
+      previousPage?: number | null
+      totalCount?: number | null
+    }
+  }
+}
+
+export type UserCreatePaymentMutationVariables = Exact<{
+  input: UserCreatePaymentInput
+}>
+
+export type UserCreatePaymentMutation = {
+  __typename?: 'Mutation'
+  created?: {
+    __typename?: 'Payment'
+    createdAt?: Date | null
+    id: string
+    signature: string
+    updatedAt?: Date | null
+  } | null
+}
+
 export type PostDetailsFragment = {
   __typename?: 'Post'
   createdAt?: Date | null
@@ -922,6 +992,7 @@ export type PostDetailsFragment = {
     id: string
     name?: string | null
     profileUrl?: string | null
+    publicKey?: string | null
     role?: UserRole | null
     status?: UserStatus | null
     updatedAt?: Date | null
@@ -962,6 +1033,7 @@ export type AdminFindManyPostQuery = {
         id: string
         name?: string | null
         profileUrl?: string | null
+        publicKey?: string | null
         role?: UserRole | null
         status?: UserStatus | null
         updatedAt?: Date | null
@@ -1012,6 +1084,7 @@ export type AdminFindOnePostQuery = {
       id: string
       name?: string | null
       profileUrl?: string | null
+      publicKey?: string | null
       role?: UserRole | null
       status?: UserStatus | null
       updatedAt?: Date | null
@@ -1051,6 +1124,7 @@ export type AdminCreatePostMutation = {
       id: string
       name?: string | null
       profileUrl?: string | null
+      publicKey?: string | null
       role?: UserRole | null
       status?: UserStatus | null
       updatedAt?: Date | null
@@ -1091,6 +1165,7 @@ export type AdminUpdatePostMutation = {
       id: string
       name?: string | null
       profileUrl?: string | null
+      publicKey?: string | null
       role?: UserRole | null
       status?: UserStatus | null
       updatedAt?: Date | null
@@ -1138,6 +1213,7 @@ export type UserFindManyPostQuery = {
         id: string
         name?: string | null
         profileUrl?: string | null
+        publicKey?: string | null
         role?: UserRole | null
         status?: UserStatus | null
         updatedAt?: Date | null
@@ -1188,6 +1264,7 @@ export type UserFindOnePostQuery = {
       id: string
       name?: string | null
       profileUrl?: string | null
+      publicKey?: string | null
       role?: UserRole | null
       status?: UserStatus | null
       updatedAt?: Date | null
@@ -1227,6 +1304,7 @@ export type UserCreatePostMutation = {
       id: string
       name?: string | null
       profileUrl?: string | null
+      publicKey?: string | null
       role?: UserRole | null
       status?: UserStatus | null
       updatedAt?: Date | null
@@ -1267,6 +1345,7 @@ export type UserUpdatePostMutation = {
       id: string
       name?: string | null
       profileUrl?: string | null
+      publicKey?: string | null
       role?: UserRole | null
       status?: UserStatus | null
       updatedAt?: Date | null
@@ -1396,6 +1475,7 @@ export type UserDetailsFragment = {
   id: string
   name?: string | null
   profileUrl?: string | null
+  publicKey?: string | null
   role?: UserRole | null
   status?: UserStatus | null
   updatedAt?: Date | null
@@ -1416,6 +1496,7 @@ export type AdminCreateUserMutation = {
     id: string
     name?: string | null
     profileUrl?: string | null
+    publicKey?: string | null
     role?: UserRole | null
     status?: UserStatus | null
     updatedAt?: Date | null
@@ -1445,6 +1526,7 @@ export type AdminFindManyUserQuery = {
       id: string
       name?: string | null
       profileUrl?: string | null
+      publicKey?: string | null
       role?: UserRole | null
       status?: UserStatus | null
       updatedAt?: Date | null
@@ -1490,6 +1572,7 @@ export type AdminFindOneUserQuery = {
     id: string
     name?: string | null
     profileUrl?: string | null
+    publicKey?: string | null
     role?: UserRole | null
     status?: UserStatus | null
     updatedAt?: Date | null
@@ -1512,6 +1595,7 @@ export type AdminUpdateUserMutation = {
     id: string
     name?: string | null
     profileUrl?: string | null
+    publicKey?: string | null
     role?: UserRole | null
     status?: UserStatus | null
     updatedAt?: Date | null
@@ -1535,6 +1619,7 @@ export type UserFindManyUserQuery = {
       id: string
       name?: string | null
       profileUrl?: string | null
+      publicKey?: string | null
       role?: UserRole | null
       status?: UserStatus | null
       updatedAt?: Date | null
@@ -1567,6 +1652,7 @@ export type UserFindOneUserQuery = {
     id: string
     name?: string | null
     profileUrl?: string | null
+    publicKey?: string | null
     role?: UserRole | null
     status?: UserStatus | null
     updatedAt?: Date | null
@@ -1588,6 +1674,7 @@ export type UserUpdateUserMutation = {
     id: string
     name?: string | null
     profileUrl?: string | null
+    publicKey?: string | null
     role?: UserRole | null
     status?: UserStatus | null
     updatedAt?: Date | null
@@ -1661,6 +1748,7 @@ export const UserDetailsFragmentDoc = gql`
     id
     name
     profileUrl
+    publicKey
     role
     status
     updatedAt
@@ -1845,6 +1933,28 @@ export const AdminDeletePaymentDocument = gql`
   mutation adminDeletePayment($paymentId: String!) {
     deleted: adminDeletePayment(paymentId: $paymentId)
   }
+`
+export const UserFindManyPaymentDocument = gql`
+  query userFindManyPayment($input: UserFindManyPaymentInput!) {
+    paging: userFindManyPayment(input: $input) {
+      data {
+        ...PaymentDetails
+      }
+      meta {
+        ...PagingMetaDetails
+      }
+    }
+  }
+  ${PaymentDetailsFragmentDoc}
+  ${PagingMetaDetailsFragmentDoc}
+`
+export const UserCreatePaymentDocument = gql`
+  mutation userCreatePayment($input: UserCreatePaymentInput!) {
+    created: userCreatePayment(input: $input) {
+      ...PaymentDetails
+    }
+  }
+  ${PaymentDetailsFragmentDoc}
 `
 export const AdminFindManyPostDocument = gql`
   query adminFindManyPost($input: AdminFindManyPostInput!) {
@@ -2080,6 +2190,8 @@ const AnonVerifyIdentityChallengeDocumentString = print(AnonVerifyIdentityChalle
 const AdminFindManyPaymentDocumentString = print(AdminFindManyPaymentDocument)
 const AdminFindOnePaymentDocumentString = print(AdminFindOnePaymentDocument)
 const AdminDeletePaymentDocumentString = print(AdminDeletePaymentDocument)
+const UserFindManyPaymentDocumentString = print(UserFindManyPaymentDocument)
+const UserCreatePaymentDocumentString = print(UserCreatePaymentDocument)
 const AdminFindManyPostDocumentString = print(AdminFindManyPostDocument)
 const AdminFindOnePostDocumentString = print(AdminFindOnePostDocument)
 const AdminCreatePostDocumentString = print(AdminCreatePostDocument)
@@ -2467,6 +2579,48 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'adminDeletePayment',
+        'mutation',
+        variables,
+      )
+    },
+    userFindManyPayment(
+      variables: UserFindManyPaymentQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: UserFindManyPaymentQuery
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<UserFindManyPaymentQuery>(UserFindManyPaymentDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'userFindManyPayment',
+        'query',
+        variables,
+      )
+    },
+    userCreatePayment(
+      variables: UserCreatePaymentMutationVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: UserCreatePaymentMutation
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<UserCreatePaymentMutation>(UserCreatePaymentDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'userCreatePayment',
         'mutation',
         variables,
       )
@@ -3100,6 +3254,14 @@ export function RequestIdentityChallengeInputSchema(): z.ZodObject<Properties<Re
   })
 }
 
+export function UserCreatePaymentInputSchema(): z.ZodObject<Properties<UserCreatePaymentInput>> {
+  return z.object({
+    postId: z.string(),
+    priceId: z.string(),
+    signature: z.string(),
+  })
+}
+
 export function UserCreatePostInputSchema(): z.ZodObject<Properties<UserCreatePostInput>> {
   return z.object({
     content: z.string(),
@@ -3110,6 +3272,14 @@ export function UserCreatePostInputSchema(): z.ZodObject<Properties<UserCreatePo
 export function UserFindManyIdentityInputSchema(): z.ZodObject<Properties<UserFindManyIdentityInput>> {
   return z.object({
     username: z.string(),
+  })
+}
+
+export function UserFindManyPaymentInputSchema(): z.ZodObject<Properties<UserFindManyPaymentInput>> {
+  return z.object({
+    limit: z.number().nullish(),
+    page: z.number().nullish(),
+    search: z.string().nullish(),
   })
 }
 

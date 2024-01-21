@@ -1,4 +1,5 @@
 import { Field, HideField, ObjectType } from '@nestjs/graphql'
+import { Identity } from '@prisma/client'
 import { UserRole } from './user-role.enum'
 import { UserStatus } from './user-status.enum'
 
@@ -23,5 +24,5 @@ export class User {
   @Field({ nullable: true })
   username!: string
   @HideField()
-  identities?: unknown[] | null
+  identities?: Identity[] | null
 }

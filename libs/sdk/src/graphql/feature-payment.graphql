@@ -25,3 +25,19 @@ query adminFindOnePayment($paymentId: String!) {
 mutation adminDeletePayment($paymentId: String!) {
   deleted: adminDeletePayment(paymentId: $paymentId)
 }
+
+query userFindManyPayment($input: UserFindManyPaymentInput!) {
+  paging: userFindManyPayment(input: $input) {
+    data {
+      ...PaymentDetails
+    }
+    meta {
+      ...PagingMetaDetails
+    }
+  }
+}
+mutation userCreatePayment($input: UserCreatePaymentInput!) {
+  created: userCreatePayment(input: $input) {
+    ...PaymentDetails
+  }
+}

@@ -5,6 +5,7 @@ fragment UserDetails on User {
   id
   name
   profileUrl
+  publicKey
   role
   status
   updatedAt
