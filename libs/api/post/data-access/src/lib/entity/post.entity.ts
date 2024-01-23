@@ -1,6 +1,7 @@
 import { Field, ObjectType } from '@nestjs/graphql'
 import { User } from '@connectamind/api-user-data-access'
 import { Price } from '@connectamind/api-price-data-access'
+import { Payment } from '@connectamind/api-payment-data-access'
 
 @ObjectType()
 export class Post {
@@ -20,4 +21,6 @@ export class Post {
   authorId!: string
   @Field(() => [Price], { nullable: true })
   prices?: Price[]
+  @Field(() => Payment, { nullable: true })
+  payment?: Payment | null
 }

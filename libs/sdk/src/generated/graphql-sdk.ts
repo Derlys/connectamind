@@ -311,6 +311,7 @@ export type Post = {
   content: Scalars['String']['output']
   createdAt?: Maybe<Scalars['DateTime']['output']>
   id: Scalars['String']['output']
+  payment?: Maybe<Payment>
   prices?: Maybe<Array<Price>>
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
@@ -1007,6 +1008,13 @@ export type PostDetailsFragment = {
     updatedAt?: Date | null
     postId: string
   }> | null
+  payment?: {
+    __typename?: 'Payment'
+    createdAt?: Date | null
+    id: string
+    signature: string
+    updatedAt?: Date | null
+  } | null
 }
 
 export type AdminFindManyPostQueryVariables = Exact<{
@@ -1048,6 +1056,13 @@ export type AdminFindManyPostQuery = {
         updatedAt?: Date | null
         postId: string
       }> | null
+      payment?: {
+        __typename?: 'Payment'
+        createdAt?: Date | null
+        id: string
+        signature: string
+        updatedAt?: Date | null
+      } | null
     }>
     meta: {
       __typename?: 'PagingMeta'
@@ -1099,6 +1114,13 @@ export type AdminFindOnePostQuery = {
       updatedAt?: Date | null
       postId: string
     }> | null
+    payment?: {
+      __typename?: 'Payment'
+      createdAt?: Date | null
+      id: string
+      signature: string
+      updatedAt?: Date | null
+    } | null
   } | null
 }
 
@@ -1139,6 +1161,13 @@ export type AdminCreatePostMutation = {
       updatedAt?: Date | null
       postId: string
     }> | null
+    payment?: {
+      __typename?: 'Payment'
+      createdAt?: Date | null
+      id: string
+      signature: string
+      updatedAt?: Date | null
+    } | null
   } | null
 }
 
@@ -1180,6 +1209,13 @@ export type AdminUpdatePostMutation = {
       updatedAt?: Date | null
       postId: string
     }> | null
+    payment?: {
+      __typename?: 'Payment'
+      createdAt?: Date | null
+      id: string
+      signature: string
+      updatedAt?: Date | null
+    } | null
   } | null
 }
 
@@ -1228,6 +1264,13 @@ export type UserFindManyPostQuery = {
         updatedAt?: Date | null
         postId: string
       }> | null
+      payment?: {
+        __typename?: 'Payment'
+        createdAt?: Date | null
+        id: string
+        signature: string
+        updatedAt?: Date | null
+      } | null
     }>
     meta: {
       __typename?: 'PagingMeta'
@@ -1279,6 +1322,13 @@ export type UserFindOnePostQuery = {
       updatedAt?: Date | null
       postId: string
     }> | null
+    payment?: {
+      __typename?: 'Payment'
+      createdAt?: Date | null
+      id: string
+      signature: string
+      updatedAt?: Date | null
+    } | null
   } | null
 }
 
@@ -1319,6 +1369,13 @@ export type UserCreatePostMutation = {
       updatedAt?: Date | null
       postId: string
     }> | null
+    payment?: {
+      __typename?: 'Payment'
+      createdAt?: Date | null
+      id: string
+      signature: string
+      updatedAt?: Date | null
+    } | null
   } | null
 }
 
@@ -1360,6 +1417,13 @@ export type UserUpdatePostMutation = {
       updatedAt?: Date | null
       postId: string
     }> | null
+    payment?: {
+      __typename?: 'Payment'
+      createdAt?: Date | null
+      id: string
+      signature: string
+      updatedAt?: Date | null
+    } | null
   } | null
 }
 
@@ -1732,14 +1796,6 @@ export const IdentityChallengeDetailsFragmentDoc = gql`
     verified
   }
 `
-export const PaymentDetailsFragmentDoc = gql`
-  fragment PaymentDetails on Payment {
-    createdAt
-    id
-    signature
-    updatedAt
-  }
-`
 export const UserDetailsFragmentDoc = gql`
   fragment UserDetails on User {
     avatarUrl
@@ -1765,6 +1821,14 @@ export const PriceDetailsFragmentDoc = gql`
     postId
   }
 `
+export const PaymentDetailsFragmentDoc = gql`
+  fragment PaymentDetails on Payment {
+    createdAt
+    id
+    signature
+    updatedAt
+  }
+`
 export const PostDetailsFragmentDoc = gql`
   fragment PostDetails on Post {
     createdAt
@@ -1779,9 +1843,13 @@ export const PostDetailsFragmentDoc = gql`
     prices {
       ...PriceDetails
     }
+    payment {
+      ...PaymentDetails
+    }
   }
   ${UserDetailsFragmentDoc}
   ${PriceDetailsFragmentDoc}
+  ${PaymentDetailsFragmentDoc}
 `
 export const LoginDocument = gql`
   mutation login($input: LoginInput!) {

@@ -1,5 +1,5 @@
 import { Group } from '@mantine/core'
-import { toastError, UiBack, UiDebug, UiDebugModal, UiError, UiLoader, UiPage } from '@pubkey-ui/core'
+import { toastError, UiBack, UiDebug, UiDebugModal, UiError, UiLoader, UiPage, UiSuccess } from '@pubkey-ui/core'
 import { useUserFindOnePost } from '@connectamind/web-post-data-access'
 import { useParams } from 'react-router-dom'
 import { UserPostUiUpdateForm } from '@connectamind/web-post-ui'
@@ -40,6 +40,10 @@ export function UserPostDetailFeature() {
             console.log(signature)
             return createPayment({ postId, signature, priceId: price.id })
           })
+          .then(() => {
+            //
+            return query.refetch()
+          })
           .catch((err) => {
             toastError(`error sending ${price.token}`)
           })
@@ -67,7 +71,9 @@ export function UserPostDetailFeature() {
         </Group>
       }
     >
-      {publicKey ? (
+      {item.payment ? (
+        <UiSuccess message={'You bought this post'} />
+      ) : publicKey ? (
         <PriceUiButtons prices={item.prices ?? []} onClick={processPayment} />
       ) : (
         <UiPage title="Connect your wallet to continue">

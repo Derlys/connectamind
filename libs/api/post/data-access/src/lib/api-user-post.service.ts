@@ -31,28 +31,47 @@ export class ApiUserPostService {
       .paginate({
         orderBy: { createdAt: 'desc' },
         where: getUserPostWhereInput(input),
-        include: { author: true },
+        include: { author: true, payments: { where: { ownerId: userId } } },
       })
       .withPages({ limit: input.limit, page: input.page })
       .then(([data, meta]) => ({ data, meta }))
+      .then((result) => {
+        return {
+          ...result,
+          data: result.data.map((post) => {
+            const payment = post?.payments.length ? post.payments[0] : null
+            return { ...post, payment, content: payment ? post?.content : 'not paid' }
+          }),
+        }
+      })
   }
 
   async findOnePost(userId: string, postId: string) {
-    return this.core.data.post.findUnique({
-      where: { id: postId },
-      include: {
-        author: {
-          include: {
-            identities: {
-              where: {
-                provider: IdentityProvider.Solana,
+    return this.core.data.post
+      .findUnique({
+        where: { id: postId },
+        include: {
+          author: {
+            include: {
+              identities: {
+                where: {
+                  provider: IdentityProvider.Solana,
+                },
               },
             },
           },
+          prices: true,
+          payments: {
+            where: {
+              ownerId: userId,
+            },
+          },
         },
-        prices: true,
-      },
-    })
+      })
+      .then((post) => {
+        const payment = post?.payments.length ? post.payments[0] : null
+        return { ...post, payment, content: payment ? post?.content : 'not paid' }
+      })
   }
 
   async updatePost(userId: string, postId: string, input: UserUpdatePostInput) {

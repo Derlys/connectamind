@@ -11,6 +11,9 @@ fragment PostDetails on Post {
   prices {
     ...PriceDetails
   }
+  payment {
+    ...PaymentDetails
+  }
 }
 
 query adminFindManyPost($input: AdminFindManyPostInput!) {

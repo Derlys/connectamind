@@ -39,6 +39,7 @@ export function UserPostUiTable({
             ),
           },
           { accessor: 'author.username' },
+          { accessor: 'content' },
           {
             accessor: 'actions',
             title: 'Actions',

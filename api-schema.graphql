@@ -195,6 +195,7 @@ type Post {
   content: String!
   createdAt: DateTime
   id: String!
+  payment: Payment
   prices: [Price!]
   title: String!
   updatedAt: DateTime
