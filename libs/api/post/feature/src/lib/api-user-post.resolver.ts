@@ -30,6 +30,10 @@ export class ApiUserPostResolver {
   userFindManyPost(@CtxUser() user: { id: string }, @Args('input') input: UserFindManyPostInput) {
     return this.service.user.findManyPost(user.id, input)
   }
+  @Query(() => PostPaging)
+  userFindManyPublishedPost(@CtxUser() user: { id: string }, @Args('input') input: UserFindManyPostInput) {
+    return this.service.user.findManyPublishedPost(user.id, input)
+  }
 
   @Query(() => Post, { nullable: true })
   userFindOnePost(@CtxUser() user: { id: string }, @Args('postId') postId: string) {

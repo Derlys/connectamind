@@ -18,9 +18,9 @@ export const provisionUsers: Prisma.UserCreateInput[] = [
         { title: 'Derlys Post 1', content: 'Hola!!', prices: { create: prices } },
         { title: 'Derlys Post 2', content: 'Hola!!', prices: { create: prices } },
         { title: 'Derlys Post 3', content: 'Hola!!', prices: { create: prices } },
-        { title: 'Derlys Post 4', content: 'Hola!!', prices: { create: prices } },
-        { title: 'Derlys Post 5', content: 'Hola!!', prices: { create: prices } },
-        { title: 'Derlys Post 6', content: 'Hola!!', prices: { create: prices } },
+        { title: 'Derlys Post 4', content: 'Hola!!' },
+        { title: 'Derlys Post 5', content: 'Hola!!' },
+        { title: 'Derlys Post 6', content: 'Hola!!' },
       ],
     },
     identities: {
@@ -34,10 +34,10 @@ export const provisionUsers: Prisma.UserCreateInput[] = [
     developer: true,
     posts: {
       create: [
-        { title: 'Alice Post 1', content: 'Hola from Alice!!', prices: { create: prices } },
-        { title: 'Alice Post 2', content: 'Hola from Alice!!', prices: { create: prices } },
-        { title: 'Alice Post 3', content: 'Hola from Alice!!', prices: { create: prices } },
-        { title: 'Alice Post 4', content: 'Hola from Alice!!', prices: { create: prices } },
+        { title: 'Alice Post 1', content: 'Hola from Alice!!' },
+        { title: 'Alice Post 2', content: 'Hola from Alice!!' },
+        { title: 'Alice Post 3', content: 'Hola from Alice!!' },
+        { title: 'Alice Post 4', content: 'Hola from Alice!!' },
         { title: 'Alice Post 5', content: 'Hola from Alice!!', prices: { create: prices } },
         { title: 'Alice Post 6', content: 'Hola from Alice!!', prices: { create: prices } },
       ],

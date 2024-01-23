@@ -357,6 +357,7 @@ export type Query = {
   userFindManyIdentity?: Maybe<Array<Identity>>
   userFindManyPayment: PaymentPaging
   userFindManyPost: PostPaging
+  userFindManyPublishedPost: PostPaging
   userFindManyUser: UserPaging
   userFindOnePost?: Maybe<Post>
   userFindOneUser?: Maybe<User>
@@ -412,6 +413,10 @@ export type QueryUserFindManyPaymentArgs = {
 }
 
 export type QueryUserFindManyPostArgs = {
+  input: UserFindManyPostInput
+}
+
+export type QueryUserFindManyPublishedPostArgs = {
   input: UserFindManyPostInput
 }
 
@@ -1285,6 +1290,66 @@ export type UserFindManyPostQuery = {
   }
 }
 
+export type UserFindManyPublishedPostQueryVariables = Exact<{
+  input: UserFindManyPostInput
+}>
+
+export type UserFindManyPublishedPostQuery = {
+  __typename?: 'Query'
+  paging: {
+    __typename?: 'PostPaging'
+    data: Array<{
+      __typename?: 'Post'
+      createdAt?: Date | null
+      id: string
+      title: string
+      content: string
+      updatedAt?: Date | null
+      authorId: string
+      author?: {
+        __typename?: 'User'
+        avatarUrl?: string | null
+        createdAt?: Date | null
+        developer?: boolean | null
+        id: string
+        name?: string | null
+        profileUrl?: string | null
+        publicKey?: string | null
+        role?: UserRole | null
+        status?: UserStatus | null
+        updatedAt?: Date | null
+        username?: string | null
+      } | null
+      prices?: Array<{
+        __typename?: 'Price'
+        createdAt?: Date | null
+        id: string
+        token: Token
+        amount: string
+        updatedAt?: Date | null
+        postId: string
+      }> | null
+      payment?: {
+        __typename?: 'Payment'
+        createdAt?: Date | null
+        id: string
+        signature: string
+        updatedAt?: Date | null
+      } | null
+    }>
+    meta: {
+      __typename?: 'PagingMeta'
+      currentPage: number
+      isFirstPage: boolean
+      isLastPage: boolean
+      nextPage?: number | null
+      pageCount?: number | null
+      previousPage?: number | null
+      totalCount?: number | null
+    }
+  }
+}
+
 export type UserFindOnePostQueryVariables = Exact<{
   postId: Scalars['String']['input']
 }>
@@ -2081,6 +2146,20 @@ export const UserFindManyPostDocument = gql`
   ${PostDetailsFragmentDoc}
   ${PagingMetaDetailsFragmentDoc}
 `
+export const UserFindManyPublishedPostDocument = gql`
+  query userFindManyPublishedPost($input: UserFindManyPostInput!) {
+    paging: userFindManyPublishedPost(input: $input) {
+      data {
+        ...PostDetails
+      }
+      meta {
+        ...PagingMetaDetails
+      }
+    }
+  }
+  ${PostDetailsFragmentDoc}
+  ${PagingMetaDetailsFragmentDoc}
+`
 export const UserFindOnePostDocument = gql`
   query userFindOnePost($postId: String!) {
     item: userFindOnePost(postId: $postId) {
@@ -2266,6 +2345,7 @@ const AdminCreatePostDocumentString = print(AdminCreatePostDocument)
 const AdminUpdatePostDocumentString = print(AdminUpdatePostDocument)
 const AdminDeletePostDocumentString = print(AdminDeletePostDocument)
 const UserFindManyPostDocumentString = print(UserFindManyPostDocument)
+const UserFindManyPublishedPostDocumentString = print(UserFindManyPublishedPostDocument)
 const UserFindOnePostDocumentString = print(UserFindOnePostDocument)
 const UserCreatePostDocumentString = print(UserCreatePostDocument)
 const UserUpdatePostDocumentString = print(UserUpdatePostDocument)
@@ -2815,6 +2895,27 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'userFindManyPost',
+        'query',
+        variables,
+      )
+    },
+    userFindManyPublishedPost(
+      variables: UserFindManyPublishedPostQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: UserFindManyPublishedPostQuery
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<UserFindManyPublishedPostQuery>(UserFindManyPublishedPostDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'userFindManyPublishedPost',
         'query',
         variables,
       )

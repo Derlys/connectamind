@@ -1,6 +1,7 @@
 import { useAuth } from '@connectamind/web-auth-data-access'
-import { UiContainer, UiDashboardGrid, UiDashboardItem, UiDebug } from '@pubkey-ui/core'
+import { UiContainer, UiDashboardGrid, UiDashboardItem } from '@pubkey-ui/core'
 import { IconBook, IconCurrencySolana, IconSettings, IconUser } from '@tabler/icons-react'
+import { UserPublishedPostListFeature } from './user-published-post-list.feature'
 
 const links: UiDashboardItem[] = [
   // User Dashboard Links
@@ -18,6 +19,7 @@ export default function DashboardFeature() {
   return (
     <UiContainer>
       <UiDashboardGrid links={links} />
+      <UserPublishedPostListFeature />
     </UiContainer>
   )
 }

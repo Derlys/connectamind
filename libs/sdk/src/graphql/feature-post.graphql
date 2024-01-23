@@ -59,6 +59,16 @@ query userFindManyPost($input: UserFindManyPostInput!) {
     }
   }
 }
+query userFindManyPublishedPost($input: UserFindManyPostInput!) {
+  paging: userFindManyPublishedPost(input: $input) {
+    data {
+      ...PostDetails
+    }
+    meta {
+      ...PagingMetaDetails
+    }
+  }
+}
 
 query userFindOnePost($postId: String!) {
   item: userFindOnePost(postId: $postId) {
