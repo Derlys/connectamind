@@ -159,10 +159,13 @@ type Mutation {
   register(input: RegisterInput!): User
   userCreatePayment(input: UserCreatePaymentInput!): Payment
   userCreatePost(input: UserCreatePostInput!): Post
+  userCreatePrice(input: UserCreatePriceInput!): Price
   userDeleteIdentity(identityId: String!): Boolean
   userDeletePost(postId: String!): Boolean
+  userDeletePrice(priceId: String!): Boolean
   userLinkIdentity(input: LinkIdentityInput!): Identity
   userUpdatePost(input: UserUpdatePostInput!, postId: String!): Post
+  userUpdatePrice(input: UserUpdatePriceInput!, priceId: String!): Price
   userUpdateUser(input: UserUpdateUserInput!): User
   userVerifyIdentityChallenge(input: VerifyIdentityChallengeInput!): IdentityChallenge
 }
@@ -255,9 +258,9 @@ input RequestIdentityChallengeInput {
 }
 
 enum Token {
-  BONK
-  SOL
-  USDC
+  Bonk
+  Sol
+  Usdc
 }
 
 type User {
@@ -284,6 +287,12 @@ input UserCreatePaymentInput {
 input UserCreatePostInput {
   content: String!
   title: String!
+}
+
+input UserCreatePriceInput {
+  amount: String!
+  postId: String!
+  token: Token!
 }
 
 input UserFindManyIdentityInput {
@@ -327,6 +336,10 @@ enum UserStatus {
 input UserUpdatePostInput {
   content: String
   title: String
+}
+
+input UserUpdatePriceInput {
+  amount: String
 }
 
 input UserUpdateUserInput {

@@ -1,8 +1,7 @@
-import { Group } from '@mantine/core'
+import { Button, Group } from '@mantine/core'
 import {
   toastError,
   UiBack,
-  UiDebug,
   UiDebugModal,
   UiError,
   UiLoader,
@@ -12,8 +11,7 @@ import {
   UiWarning,
 } from '@pubkey-ui/core'
 import { useUserFindOnePost } from '@connectamind/web-post-data-access'
-import { useParams } from 'react-router-dom'
-import { UserPostUiUpdateForm } from '@connectamind/web-post-ui'
+import { Link, useParams } from 'react-router-dom'
 import { PriceUiButtons } from '@connectamind/web-price-ui'
 import { Price, Token } from '@connectamind/sdk'
 import { useWallet } from '@solana/wallet-adapter-react'
@@ -21,11 +19,13 @@ import { WalletButton } from '@connectamind/web-solana-ui'
 import { useTransferSol } from '@connectamind/web-solana-data-access'
 import { PublicKey } from '@solana/web3.js'
 import { useUserFindManyPayment } from '@connectamind/web-payment-data-access'
+import { useAuth } from '@connectamind/web-auth-data-access'
 
 export function UserPostDetailFeature() {
+  const { user } = useAuth()
   const { postId } = useParams<{ postId: string }>() as { postId: string }
   const { publicKey } = useWallet()
-  const { item, query, updatePost } = useUserFindOnePost({ postId })
+  const { item, query } = useUserFindOnePost({ postId })
   const { createPayment } = useUserFindManyPayment()
   const mutation = useTransferSol({ address: publicKey! })
 
@@ -79,26 +79,31 @@ export function UserPostDetailFeature() {
       rightAction={
         <Group>
           <UiDebugModal data={item} />
+          {item.authorId === user?.id ? (
+            <Button component={Link} to={'./edit'}>
+              Edit
+            </Button>
+          ) : null}
         </Group>
       }
     >
-      {item.payment ? (
-        <UiSuccess message={'You bought this post'} />
-      ) : publicKey ? (
-        <UiStack>
-          <UiWarning message={'You need to buy this post to see its content'} />
-          <PriceUiButtons prices={item.prices ?? []} onClick={processPayment} />
-        </UiStack>
-      ) : (
-        <UiPage title="Connect your wallet to continue">
-          <Group justify="center">
-            <WalletButton size="xl" />
-          </Group>
-        </UiPage>
-      )}
-      {item.content ? <div>content:{item.content}</div> : null}
-      <UiDebug data={item} />
-      <UserPostUiUpdateForm submit={updatePost} post={item} />
+      {item.authorId !== user?.id ? (
+        item.payment ? (
+          <UiSuccess message={'You bought this post'} />
+        ) : publicKey ? (
+          <UiStack>
+            <UiWarning message={'You need to buy this post to see its content'} />
+            <PriceUiButtons prices={item.prices ?? []} onClick={processPayment} />
+          </UiStack>
+        ) : (
+          <UiPage title="Connect your wallet to continue">
+            <Group justify="center">
+              <WalletButton size="xl" />
+            </Group>
+          </UiPage>
+        )
+      ) : null}
+      {item.content ? <div>{item.content}</div> : null}
     </UiPage>
   )
 }

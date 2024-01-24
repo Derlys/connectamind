@@ -175,10 +175,13 @@ export type Mutation = {
   register?: Maybe<User>
   userCreatePayment?: Maybe<Payment>
   userCreatePost?: Maybe<Post>
+  userCreatePrice?: Maybe<Price>
   userDeleteIdentity?: Maybe<Scalars['Boolean']['output']>
   userDeletePost?: Maybe<Scalars['Boolean']['output']>
+  userDeletePrice?: Maybe<Scalars['Boolean']['output']>
   userLinkIdentity?: Maybe<Identity>
   userUpdatePost?: Maybe<Post>
+  userUpdatePrice?: Maybe<Price>
   userUpdateUser?: Maybe<User>
   userVerifyIdentityChallenge?: Maybe<IdentityChallenge>
 }
@@ -254,12 +257,20 @@ export type MutationUserCreatePostArgs = {
   input: UserCreatePostInput
 }
 
+export type MutationUserCreatePriceArgs = {
+  input: UserCreatePriceInput
+}
+
 export type MutationUserDeleteIdentityArgs = {
   identityId: Scalars['String']['input']
 }
 
 export type MutationUserDeletePostArgs = {
   postId: Scalars['String']['input']
+}
+
+export type MutationUserDeletePriceArgs = {
+  priceId: Scalars['String']['input']
 }
 
 export type MutationUserLinkIdentityArgs = {
@@ -269,6 +280,11 @@ export type MutationUserLinkIdentityArgs = {
 export type MutationUserUpdatePostArgs = {
   input: UserUpdatePostInput
   postId: Scalars['String']['input']
+}
+
+export type MutationUserUpdatePriceArgs = {
+  input: UserUpdatePriceInput
+  priceId: Scalars['String']['input']
 }
 
 export type MutationUserUpdateUserArgs = {
@@ -308,7 +324,7 @@ export type Post = {
   __typename?: 'Post'
   author?: Maybe<User>
   authorId: Scalars['String']['output']
-  content: Scalars['String']['output']
+  content?: Maybe<Scalars['String']['output']>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   id: Scalars['String']['output']
   payment?: Maybe<Payment>
@@ -447,9 +463,9 @@ export type RequestIdentityChallengeInput = {
 }
 
 export enum Token {
-  Bonk = 'BONK',
-  Sol = 'SOL',
-  Usdc = 'USDC',
+  Bonk = 'Bonk',
+  Sol = 'Sol',
+  Usdc = 'Usdc',
 }
 
 export type User = {
@@ -477,6 +493,12 @@ export type UserCreatePaymentInput = {
 export type UserCreatePostInput = {
   content: Scalars['String']['input']
   title: Scalars['String']['input']
+}
+
+export type UserCreatePriceInput = {
+  amount: Scalars['String']['input']
+  postId: Scalars['String']['input']
+  token: Token
 }
 
 export type UserFindManyIdentityInput = {
@@ -521,6 +543,10 @@ export enum UserStatus {
 export type UserUpdatePostInput = {
   content?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
+}
+
+export type UserUpdatePriceInput = {
+  amount?: InputMaybe<Scalars['String']['input']>
 }
 
 export type UserUpdateUserInput = {
@@ -987,7 +1013,7 @@ export type PostDetailsFragment = {
   createdAt?: Date | null
   id: string
   title: string
-  content: string
+  content?: string | null
   updatedAt?: Date | null
   authorId: string
   author?: {
@@ -1035,7 +1061,7 @@ export type AdminFindManyPostQuery = {
       createdAt?: Date | null
       id: string
       title: string
-      content: string
+      content?: string | null
       updatedAt?: Date | null
       authorId: string
       author?: {
@@ -1093,7 +1119,7 @@ export type AdminFindOnePostQuery = {
     createdAt?: Date | null
     id: string
     title: string
-    content: string
+    content?: string | null
     updatedAt?: Date | null
     authorId: string
     author?: {
@@ -1140,7 +1166,7 @@ export type AdminCreatePostMutation = {
     createdAt?: Date | null
     id: string
     title: string
-    content: string
+    content?: string | null
     updatedAt?: Date | null
     authorId: string
     author?: {
@@ -1188,7 +1214,7 @@ export type AdminUpdatePostMutation = {
     createdAt?: Date | null
     id: string
     title: string
-    content: string
+    content?: string | null
     updatedAt?: Date | null
     authorId: string
     author?: {
@@ -1243,7 +1269,7 @@ export type UserFindManyPostQuery = {
       createdAt?: Date | null
       id: string
       title: string
-      content: string
+      content?: string | null
       updatedAt?: Date | null
       authorId: string
       author?: {
@@ -1303,7 +1329,7 @@ export type UserFindManyPublishedPostQuery = {
       createdAt?: Date | null
       id: string
       title: string
-      content: string
+      content?: string | null
       updatedAt?: Date | null
       authorId: string
       author?: {
@@ -1361,7 +1387,7 @@ export type UserFindOnePostQuery = {
     createdAt?: Date | null
     id: string
     title: string
-    content: string
+    content?: string | null
     updatedAt?: Date | null
     authorId: string
     author?: {
@@ -1408,7 +1434,7 @@ export type UserCreatePostMutation = {
     createdAt?: Date | null
     id: string
     title: string
-    content: string
+    content?: string | null
     updatedAt?: Date | null
     authorId: string
     author?: {
@@ -1456,7 +1482,7 @@ export type UserUpdatePostMutation = {
     createdAt?: Date | null
     id: string
     title: string
-    content: string
+    content?: string | null
     updatedAt?: Date | null
     authorId: string
     author?: {
@@ -1595,6 +1621,47 @@ export type AdminDeletePriceMutationVariables = Exact<{
 }>
 
 export type AdminDeletePriceMutation = { __typename?: 'Mutation'; deleted?: boolean | null }
+
+export type UserCreatePriceMutationVariables = Exact<{
+  input: UserCreatePriceInput
+}>
+
+export type UserCreatePriceMutation = {
+  __typename?: 'Mutation'
+  created?: {
+    __typename?: 'Price'
+    createdAt?: Date | null
+    id: string
+    token: Token
+    amount: string
+    updatedAt?: Date | null
+    postId: string
+  } | null
+}
+
+export type UserUpdatePriceMutationVariables = Exact<{
+  priceId: Scalars['String']['input']
+  input: UserUpdatePriceInput
+}>
+
+export type UserUpdatePriceMutation = {
+  __typename?: 'Mutation'
+  updated?: {
+    __typename?: 'Price'
+    createdAt?: Date | null
+    id: string
+    token: Token
+    amount: string
+    updatedAt?: Date | null
+    postId: string
+  } | null
+}
+
+export type UserDeletePriceMutationVariables = Exact<{
+  priceId: Scalars['String']['input']
+}>
+
+export type UserDeletePriceMutation = { __typename?: 'Mutation'; deleted?: boolean | null }
 
 export type UserDetailsFragment = {
   __typename?: 'User'
@@ -2232,6 +2299,27 @@ export const AdminDeletePriceDocument = gql`
     deleted: adminDeletePrice(priceId: $priceId)
   }
 `
+export const UserCreatePriceDocument = gql`
+  mutation userCreatePrice($input: UserCreatePriceInput!) {
+    created: userCreatePrice(input: $input) {
+      ...PriceDetails
+    }
+  }
+  ${PriceDetailsFragmentDoc}
+`
+export const UserUpdatePriceDocument = gql`
+  mutation userUpdatePrice($priceId: String!, $input: UserUpdatePriceInput!) {
+    updated: userUpdatePrice(priceId: $priceId, input: $input) {
+      ...PriceDetails
+    }
+  }
+  ${PriceDetailsFragmentDoc}
+`
+export const UserDeletePriceDocument = gql`
+  mutation userDeletePrice($priceId: String!) {
+    deleted: userDeletePrice(priceId: $priceId)
+  }
+`
 export const AdminCreateUserDocument = gql`
   mutation adminCreateUser($input: AdminCreateUserInput!) {
     created: adminCreateUser(input: $input) {
@@ -2355,6 +2443,9 @@ const AdminFindOnePriceDocumentString = print(AdminFindOnePriceDocument)
 const AdminCreatePriceDocumentString = print(AdminCreatePriceDocument)
 const AdminUpdatePriceDocumentString = print(AdminUpdatePriceDocument)
 const AdminDeletePriceDocumentString = print(AdminDeletePriceDocument)
+const UserCreatePriceDocumentString = print(UserCreatePriceDocument)
+const UserUpdatePriceDocumentString = print(UserUpdatePriceDocument)
+const UserDeletePriceDocumentString = print(UserDeletePriceDocument)
 const AdminCreateUserDocumentString = print(AdminCreateUserDocument)
 const AdminDeleteUserDocumentString = print(AdminDeleteUserDocument)
 const AdminFindManyUserDocumentString = print(AdminFindManyUserDocument)
@@ -3109,6 +3200,69 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         variables,
       )
     },
+    userCreatePrice(
+      variables: UserCreatePriceMutationVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: UserCreatePriceMutation
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<UserCreatePriceMutation>(UserCreatePriceDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'userCreatePrice',
+        'mutation',
+        variables,
+      )
+    },
+    userUpdatePrice(
+      variables: UserUpdatePriceMutationVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: UserUpdatePriceMutation
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<UserUpdatePriceMutation>(UserUpdatePriceDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'userUpdatePrice',
+        'mutation',
+        variables,
+      )
+    },
+    userDeletePrice(
+      variables: UserDeletePriceMutationVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<{
+      data: UserDeletePriceMutation
+      errors?: GraphQLError[]
+      extensions?: any
+      headers: Headers
+      status: number
+    }> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.rawRequest<UserDeletePriceMutation>(UserDeletePriceDocumentString, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'userDeletePrice',
+        'mutation',
+        variables,
+      )
+    },
     adminCreateUser(
       variables: AdminCreateUserMutationVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
@@ -3438,6 +3592,14 @@ export function UserCreatePostInputSchema(): z.ZodObject<Properties<UserCreatePo
   })
 }
 
+export function UserCreatePriceInputSchema(): z.ZodObject<Properties<UserCreatePriceInput>> {
+  return z.object({
+    amount: z.string(),
+    postId: z.string(),
+    token: TokenSchema,
+  })
+}
+
 export function UserFindManyIdentityInputSchema(): z.ZodObject<Properties<UserFindManyIdentityInput>> {
   return z.object({
     username: z.string(),
@@ -3472,6 +3634,12 @@ export function UserUpdatePostInputSchema(): z.ZodObject<Properties<UserUpdatePo
   return z.object({
     content: z.string().nullish(),
     title: z.string().nullish(),
+  })
+}
+
+export function UserUpdatePriceInputSchema(): z.ZodObject<Properties<UserUpdatePriceInput>> {
+  return z.object({
+    amount: z.string().nullish(),
   })
 }
 

@@ -74,7 +74,7 @@ export class ApiUserPostService {
               },
             },
           },
-          prices: true,
+          prices: { orderBy: { token: 'asc' } },
           payments: {
             where: {
               ownerId: userId,

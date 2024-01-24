@@ -4,9 +4,9 @@ import { slugifyId } from './helpers/slugify-id'
 
 const prices = [
   //
-  { token: Token.BONK, amount: '10' },
-  { token: Token.SOL, amount: '0.1' },
-  { token: Token.USDC, amount: '9.99' },
+  { token: Token.Bonk, amount: '10' },
+  { token: Token.Sol, amount: '0.1' },
+  { token: Token.Usdc, amount: '9.99' },
 ]
 export const provisionUsers: Prisma.UserCreateInput[] = [
   {

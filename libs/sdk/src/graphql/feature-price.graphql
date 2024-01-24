@@ -39,3 +39,19 @@ mutation adminUpdatePrice($priceId: String!, $input: AdminUpdatePriceInput!) {
 mutation adminDeletePrice($priceId: String!) {
   deleted: adminDeletePrice(priceId: $priceId)
 }
+
+mutation userCreatePrice($input: UserCreatePriceInput!) {
+  created: userCreatePrice(input: $input) {
+    ...PriceDetails
+  }
+}
+
+mutation userUpdatePrice($priceId: String!, $input: UserUpdatePriceInput!) {
+  updated: userUpdatePrice(priceId: $priceId, input: $input) {
+    ...PriceDetails
+  }
+}
+
+mutation userDeletePrice($priceId: String!) {
+  deleted: userDeletePrice(priceId: $priceId)
+}

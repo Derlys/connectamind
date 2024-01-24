@@ -104,9 +104,9 @@ enum IdentityProvider {
 }
 
 enum Token {
-  USDC
-  SOL
-  BONK
+  Bonk
+  Sol
+  Usdc
 }
 
 enum UserRole {
