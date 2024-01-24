@@ -192,7 +192,7 @@ type PaymentPaging {
 type Post {
   author: User
   authorId: String!
-  content: String!
+  content: String
   createdAt: DateTime
   id: String!
   payment: Payment

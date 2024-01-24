@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import { ApiCoreService } from '@connectamind/api-core-data-access'
+import { ApiCoreService, slugifyId } from '@connectamind/api-core-data-access'
 import { AdminCreatePostInput } from './dto/admin-create-post.input'
 import { AdminFindManyPostInput } from './dto/admin-find-many-post.input'
 import { AdminUpdatePostInput } from './dto/admin-update-post.input'
@@ -11,7 +11,9 @@ export class ApiAdminPostService {
   constructor(private readonly core: ApiCoreService) {}
 
   async createPost(userId: string, input: AdminCreatePostInput) {
-    return this.core.data.post.create({ data: { ...input, authorId: userId } })
+    return this.core.data.post.create({
+      data: { ...input, authorId: userId, id: slugifyId(input.title).toLowerCase() },
+    })
   }
 
   async deletePost(postId: string) {

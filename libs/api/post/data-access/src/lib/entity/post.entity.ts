@@ -13,7 +13,7 @@ export class Post {
   updatedAt?: Date
   @Field()
   title!: string
-  @Field()
+  @Field({ nullable: true })
   content!: string
   @Field(() => User, { nullable: true })
   author?: User

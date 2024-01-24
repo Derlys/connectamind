@@ -1,5 +1,16 @@
 import { Group } from '@mantine/core'
-import { toastError, UiBack, UiDebug, UiDebugModal, UiError, UiLoader, UiPage, UiSuccess } from '@pubkey-ui/core'
+import {
+  toastError,
+  UiBack,
+  UiDebug,
+  UiDebugModal,
+  UiError,
+  UiLoader,
+  UiPage,
+  UiStack,
+  UiSuccess,
+  UiWarning,
+} from '@pubkey-ui/core'
 import { useUserFindOnePost } from '@connectamind/web-post-data-access'
 import { useParams } from 'react-router-dom'
 import { UserPostUiUpdateForm } from '@connectamind/web-post-ui'
@@ -74,7 +85,10 @@ export function UserPostDetailFeature() {
       {item.payment ? (
         <UiSuccess message={'You bought this post'} />
       ) : publicKey ? (
-        <PriceUiButtons prices={item.prices ?? []} onClick={processPayment} />
+        <UiStack>
+          <UiWarning message={'You need to buy this post to see its content'} />
+          <PriceUiButtons prices={item.prices ?? []} onClick={processPayment} />
+        </UiStack>
       ) : (
         <UiPage title="Connect your wallet to continue">
           <Group justify="center">
@@ -82,7 +96,8 @@ export function UserPostDetailFeature() {
           </Group>
         </UiPage>
       )}
-      <UiDebug data={item} open />
+      {item.content ? <div>content:{item.content}</div> : null}
+      <UiDebug data={item} />
       <UserPostUiUpdateForm submit={updatePost} post={item} />
     </UiPage>
   )

@@ -1,5 +1,6 @@
 import { faker } from '@faker-js/faker'
 import { IdentityProvider, Prisma, Token, UserRole, UserStatus } from '@prisma/client'
+import { slugifyId } from './helpers/slugify-id'
 
 const prices = [
   //
@@ -21,7 +22,7 @@ export const provisionUsers: Prisma.UserCreateInput[] = [
         { title: 'Derlys Post 4', content: 'Hola!!' },
         { title: 'Derlys Post 5', content: 'Hola!!' },
         { title: 'Derlys Post 6', content: 'Hola!!' },
-      ],
+      ].map((post) => ({ ...post, id: slugifyId(post.title).toLowerCase() })),
     },
     identities: {
       create: [{ provider: IdentityProvider.Solana, providerId: 'CvQf1w1T828bRqfD6fA1rWdCR4ybCsEr6vwHdYPTMfSr' }],
@@ -40,7 +41,7 @@ export const provisionUsers: Prisma.UserCreateInput[] = [
         { title: 'Alice Post 4', content: 'Hola from Alice!!' },
         { title: 'Alice Post 5', content: 'Hola from Alice!!', prices: { create: prices } },
         { title: 'Alice Post 6', content: 'Hola from Alice!!', prices: { create: prices } },
-      ],
+      ].map((post) => ({ ...post, id: slugifyId(post.title).toLowerCase() })),
     },
     identities: {
       create: [{ provider: IdentityProvider.Solana, providerId: 'ALiC98dw6j47Skrxje3zBN4jTA11w67JRjQRBeZH3BRG' }],

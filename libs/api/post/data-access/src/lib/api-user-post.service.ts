@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import { ApiCoreService } from '@connectamind/api-core-data-access'
+import { ApiCoreService, slugifyId } from '@connectamind/api-core-data-access'
 import { UserCreatePostInput } from './dto/user-create-post.input'
 import { UserFindManyPostInput } from './dto/user-find-many-post.input'
 import { UserUpdatePostInput } from './dto/user-update-post.input'
@@ -13,7 +13,9 @@ export class ApiUserPostService {
   constructor(private readonly core: ApiCoreService) {}
 
   async createPost(userId: string, input: UserCreatePostInput) {
-    return this.core.data.post.create({ data: { ...input, authorId: userId } })
+    return this.core.data.post.create({
+      data: { ...input, authorId: userId, id: slugifyId(input.title).toLowerCase() },
+    })
   }
 
   async deletePost(userId: string, postId: string) {
@@ -51,7 +53,8 @@ export class ApiUserPostService {
           ...result,
           data: result.data.map((post) => {
             const payment = post?.payments.length ? post.payments[0] : null
-            return { ...post, payment, content: payment ? post?.content : 'not paid' }
+            const owner = post?.authorId === userId
+            return { ...post, payment, content: owner ? post?.content : payment ? post?.content : null }
           }),
         }
       })
@@ -81,7 +84,8 @@ export class ApiUserPostService {
       })
       .then((post) => {
         const payment = post?.payments.length ? post.payments[0] : null
-        return { ...post, payment, content: payment ? post?.content : 'not paid' }
+        const owner = post?.authorId === userId
+        return { ...post, payment, content: owner ? post?.content : payment ? post?.content : null }
       })
   }
 
