@@ -199,6 +199,8 @@ type Post {
   createdAt: DateTime
   id: String!
   payment: Payment
+  payments: [Payment!]
+  postUrl: String!
   prices: [Price!]
   title: String!
   updatedAt: DateTime
@@ -237,9 +239,9 @@ type Query {
   appConfig: AppConfig!
   me: User
   uptime: Float!
+  userFindManyAuthoredPost(input: UserFindManyPostInput!): PostPaging!
   userFindManyIdentity(input: UserFindManyIdentityInput!): [Identity!]
   userFindManyPayment(input: UserFindManyPaymentInput!): PaymentPaging!
-  userFindManyPost(input: UserFindManyPostInput!): PostPaging!
   userFindManyPublishedPost(input: UserFindManyPostInput!): PostPaging!
   userFindManyUser(input: UserFindManyUserInput!): UserPaging!
   userFindOnePost(postId: String!): Post
@@ -309,6 +311,7 @@ input UserFindManyPostInput {
   limit: Int = 10
   page: Int = 1
   search: String
+  username: String
 }
 
 input UserFindManyUserInput {

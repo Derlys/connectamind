@@ -27,8 +27,8 @@ export class ApiUserPostResolver {
   }
 
   @Query(() => PostPaging)
-  userFindManyPost(@CtxUser() user: { id: string }, @Args('input') input: UserFindManyPostInput) {
-    return this.service.user.findManyPost(user.id, input)
+  userFindManyAuthoredPost(@CtxUser() user: { id: string }, @Args('input') input: UserFindManyPostInput) {
+    return this.service.user.findManyAuthoredPost(user.id, input)
   }
   @Query(() => PostPaging)
   userFindManyPublishedPost(@CtxUser() user: { id: string }, @Args('input') input: UserFindManyPostInput) {

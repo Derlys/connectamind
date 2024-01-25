@@ -23,4 +23,6 @@ export class Post {
   prices?: Price[]
   @Field(() => Payment, { nullable: true })
   payment?: Payment | null
+  @Field(() => [Payment], { nullable: true })
+  payments?: Payment[]
 }

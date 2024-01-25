@@ -3,7 +3,7 @@ import { User } from '@connectamind/sdk'
 import { UiAnchor, type UiAnchorProps } from '@pubkey-ui/core'
 import { UserUiAvatar } from './user-ui-avatar'
 
-export function UserUiTitle({
+export function UserUiItem({
   anchorProps,
   avatarProps,
   groupProps,

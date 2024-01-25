@@ -1,6 +1,6 @@
 import { SimpleGrid, Text } from '@mantine/core'
 import type { User } from '@connectamind/sdk'
-import { AdminUserUiSearch, UserUiAvatar, UserUiSearch, UserUiTitle } from '@connectamind/web-user-ui'
+import { AdminUserUiSearch, UserUiAvatar, UserUiSearch, UserUiItem } from '@connectamind/web-user-ui'
 import { UiCard, UiDebug, UiInfo, UiStack } from '@pubkey-ui/core'
 import { useState } from 'react'
 
@@ -39,7 +39,7 @@ function ShowUserItems({ user }: { user: User }) {
             </Text>
           }
         >
-          <UserUiTitle user={user} to={user.profileUrl} />
+          <UserUiItem user={user} to={user.profileUrl} />
         </UiCard>
         <UiCard
           title={
@@ -48,7 +48,7 @@ function ShowUserItems({ user }: { user: User }) {
             </Text>
           }
         >
-          <UserUiTitle user={user} />
+          <UserUiItem user={user} />
         </UiCard>
         <UiCard
           title={

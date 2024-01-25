@@ -4,7 +4,7 @@ import { UserCreatePostInput } from './dto/user-create-post.input'
 import { UserFindManyPostInput } from './dto/user-find-many-post.input'
 import { UserUpdatePostInput } from './dto/user-update-post.input'
 import { PostPaging } from './entity/post-paging.entity'
-import { getUserPostWhereInput } from './helpers/get-user-post-where.input'
+import { getUserAuthoredPostWhereInput } from './helpers/get-user-authored-post-where.input'
 import { IdentityProvider } from '@connectamind/api-identity-data-access'
 import { getUserPublishedPostWhereInput } from './helpers/get-user-published-post-where.input'
 
@@ -29,21 +29,22 @@ export class ApiUserPostService {
     return !!deleted
   }
 
-  async findManyPost(userId: string, input: UserFindManyPostInput): Promise<PostPaging> {
+  async findManyAuthoredPost(userId: string, input: UserFindManyPostInput): Promise<PostPaging> {
     return this.core.data.post
       .paginate({
         orderBy: { createdAt: 'desc' },
-        where: getUserPostWhereInput(userId, input),
-        include: { author: true, prices: true },
+        where: getUserAuthoredPostWhereInput(userId, input),
+        include: { author: true, prices: true, payments: true },
       })
       .withPages({ limit: input.limit, page: input.page })
       .then(([data, meta]) => ({ data, meta }))
   }
+
   async findManyPublishedPost(userId: string, input: UserFindManyPostInput) {
     return this.core.data.post
       .paginate({
         orderBy: { createdAt: 'desc' },
-        where: getUserPublishedPostWhereInput(userId, input),
+        where: getUserPublishedPostWhereInput(input),
         include: { author: true, payments: { where: { ownerId: userId } }, prices: true },
       })
       .withPages({ limit: input.limit, page: input.page })

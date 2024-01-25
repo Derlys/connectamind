@@ -328,6 +328,8 @@ export type Post = {
   createdAt?: Maybe<Scalars['DateTime']['output']>
   id: Scalars['String']['output']
   payment?: Maybe<Payment>
+  payments?: Maybe<Array<Payment>>
+  postUrl: Scalars['String']['output']
   prices?: Maybe<Array<Price>>
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
@@ -370,9 +372,9 @@ export type Query = {
   appConfig: AppConfig
   me?: Maybe<User>
   uptime: Scalars['Float']['output']
+  userFindManyAuthoredPost: PostPaging
   userFindManyIdentity?: Maybe<Array<Identity>>
   userFindManyPayment: PaymentPaging
-  userFindManyPost: PostPaging
   userFindManyPublishedPost: PostPaging
   userFindManyUser: UserPaging
   userFindOnePost?: Maybe<Post>
@@ -420,16 +422,16 @@ export type QueryAnonRequestIdentityChallengeArgs = {
   input: RequestIdentityChallengeInput
 }
 
+export type QueryUserFindManyAuthoredPostArgs = {
+  input: UserFindManyPostInput
+}
+
 export type QueryUserFindManyIdentityArgs = {
   input: UserFindManyIdentityInput
 }
 
 export type QueryUserFindManyPaymentArgs = {
   input: UserFindManyPaymentInput
-}
-
-export type QueryUserFindManyPostArgs = {
-  input: UserFindManyPostInput
 }
 
 export type QueryUserFindManyPublishedPostArgs = {
@@ -515,6 +517,7 @@ export type UserFindManyPostInput = {
   limit?: InputMaybe<Scalars['Int']['input']>
   page?: InputMaybe<Scalars['Int']['input']>
   search?: InputMaybe<Scalars['String']['input']>
+  username?: InputMaybe<Scalars['String']['input']>
 }
 
 export type UserFindManyUserInput = {
@@ -1016,6 +1019,7 @@ export type PostDetailsFragment = {
   content?: string | null
   updatedAt?: Date | null
   authorId: string
+  postUrl: string
   author?: {
     __typename?: 'User'
     avatarUrl?: string | null
@@ -1046,6 +1050,13 @@ export type PostDetailsFragment = {
     signature: string
     updatedAt?: Date | null
   } | null
+  payments?: Array<{
+    __typename?: 'Payment'
+    createdAt?: Date | null
+    id: string
+    signature: string
+    updatedAt?: Date | null
+  }> | null
 }
 
 export type AdminFindManyPostQueryVariables = Exact<{
@@ -1064,6 +1075,7 @@ export type AdminFindManyPostQuery = {
       content?: string | null
       updatedAt?: Date | null
       authorId: string
+      postUrl: string
       author?: {
         __typename?: 'User'
         avatarUrl?: string | null
@@ -1094,6 +1106,13 @@ export type AdminFindManyPostQuery = {
         signature: string
         updatedAt?: Date | null
       } | null
+      payments?: Array<{
+        __typename?: 'Payment'
+        createdAt?: Date | null
+        id: string
+        signature: string
+        updatedAt?: Date | null
+      }> | null
     }>
     meta: {
       __typename?: 'PagingMeta'
@@ -1122,6 +1141,7 @@ export type AdminFindOnePostQuery = {
     content?: string | null
     updatedAt?: Date | null
     authorId: string
+    postUrl: string
     author?: {
       __typename?: 'User'
       avatarUrl?: string | null
@@ -1152,6 +1172,13 @@ export type AdminFindOnePostQuery = {
       signature: string
       updatedAt?: Date | null
     } | null
+    payments?: Array<{
+      __typename?: 'Payment'
+      createdAt?: Date | null
+      id: string
+      signature: string
+      updatedAt?: Date | null
+    }> | null
   } | null
 }
 
@@ -1169,6 +1196,7 @@ export type AdminCreatePostMutation = {
     content?: string | null
     updatedAt?: Date | null
     authorId: string
+    postUrl: string
     author?: {
       __typename?: 'User'
       avatarUrl?: string | null
@@ -1199,6 +1227,13 @@ export type AdminCreatePostMutation = {
       signature: string
       updatedAt?: Date | null
     } | null
+    payments?: Array<{
+      __typename?: 'Payment'
+      createdAt?: Date | null
+      id: string
+      signature: string
+      updatedAt?: Date | null
+    }> | null
   } | null
 }
 
@@ -1217,6 +1252,7 @@ export type AdminUpdatePostMutation = {
     content?: string | null
     updatedAt?: Date | null
     authorId: string
+    postUrl: string
     author?: {
       __typename?: 'User'
       avatarUrl?: string | null
@@ -1247,6 +1283,13 @@ export type AdminUpdatePostMutation = {
       signature: string
       updatedAt?: Date | null
     } | null
+    payments?: Array<{
+      __typename?: 'Payment'
+      createdAt?: Date | null
+      id: string
+      signature: string
+      updatedAt?: Date | null
+    }> | null
   } | null
 }
 
@@ -1256,11 +1299,11 @@ export type AdminDeletePostMutationVariables = Exact<{
 
 export type AdminDeletePostMutation = { __typename?: 'Mutation'; deleted?: boolean | null }
 
-export type UserFindManyPostQueryVariables = Exact<{
+export type UserFindManyAuthoredPostQueryVariables = Exact<{
   input: UserFindManyPostInput
 }>
 
-export type UserFindManyPostQuery = {
+export type UserFindManyAuthoredPostQuery = {
   __typename?: 'Query'
   paging: {
     __typename?: 'PostPaging'
@@ -1272,6 +1315,7 @@ export type UserFindManyPostQuery = {
       content?: string | null
       updatedAt?: Date | null
       authorId: string
+      postUrl: string
       author?: {
         __typename?: 'User'
         avatarUrl?: string | null
@@ -1302,6 +1346,13 @@ export type UserFindManyPostQuery = {
         signature: string
         updatedAt?: Date | null
       } | null
+      payments?: Array<{
+        __typename?: 'Payment'
+        createdAt?: Date | null
+        id: string
+        signature: string
+        updatedAt?: Date | null
+      }> | null
     }>
     meta: {
       __typename?: 'PagingMeta'
@@ -1332,6 +1383,7 @@ export type UserFindManyPublishedPostQuery = {
       content?: string | null
       updatedAt?: Date | null
       authorId: string
+      postUrl: string
       author?: {
         __typename?: 'User'
         avatarUrl?: string | null
@@ -1362,6 +1414,13 @@ export type UserFindManyPublishedPostQuery = {
         signature: string
         updatedAt?: Date | null
       } | null
+      payments?: Array<{
+        __typename?: 'Payment'
+        createdAt?: Date | null
+        id: string
+        signature: string
+        updatedAt?: Date | null
+      }> | null
     }>
     meta: {
       __typename?: 'PagingMeta'
@@ -1390,6 +1449,7 @@ export type UserFindOnePostQuery = {
     content?: string | null
     updatedAt?: Date | null
     authorId: string
+    postUrl: string
     author?: {
       __typename?: 'User'
       avatarUrl?: string | null
@@ -1420,6 +1480,13 @@ export type UserFindOnePostQuery = {
       signature: string
       updatedAt?: Date | null
     } | null
+    payments?: Array<{
+      __typename?: 'Payment'
+      createdAt?: Date | null
+      id: string
+      signature: string
+      updatedAt?: Date | null
+    }> | null
   } | null
 }
 
@@ -1437,6 +1504,7 @@ export type UserCreatePostMutation = {
     content?: string | null
     updatedAt?: Date | null
     authorId: string
+    postUrl: string
     author?: {
       __typename?: 'User'
       avatarUrl?: string | null
@@ -1467,6 +1535,13 @@ export type UserCreatePostMutation = {
       signature: string
       updatedAt?: Date | null
     } | null
+    payments?: Array<{
+      __typename?: 'Payment'
+      createdAt?: Date | null
+      id: string
+      signature: string
+      updatedAt?: Date | null
+    }> | null
   } | null
 }
 
@@ -1485,6 +1560,7 @@ export type UserUpdatePostMutation = {
     content?: string | null
     updatedAt?: Date | null
     authorId: string
+    postUrl: string
     author?: {
       __typename?: 'User'
       avatarUrl?: string | null
@@ -1515,6 +1591,13 @@ export type UserUpdatePostMutation = {
       signature: string
       updatedAt?: Date | null
     } | null
+    payments?: Array<{
+      __typename?: 'Payment'
+      createdAt?: Date | null
+      id: string
+      signature: string
+      updatedAt?: Date | null
+    }> | null
   } | null
 }
 
@@ -1978,6 +2061,10 @@ export const PostDetailsFragmentDoc = gql`
     payment {
       ...PaymentDetails
     }
+    payments {
+      ...PaymentDetails
+    }
+    postUrl
   }
   ${UserDetailsFragmentDoc}
   ${PriceDetailsFragmentDoc}
@@ -2199,9 +2286,9 @@ export const AdminDeletePostDocument = gql`
     deleted: adminDeletePost(postId: $postId)
   }
 `
-export const UserFindManyPostDocument = gql`
-  query userFindManyPost($input: UserFindManyPostInput!) {
-    paging: userFindManyPost(input: $input) {
+export const UserFindManyAuthoredPostDocument = gql`
+  query userFindManyAuthoredPost($input: UserFindManyPostInput!) {
+    paging: userFindManyAuthoredPost(input: $input) {
       data {
         ...PostDetails
       }
@@ -2432,7 +2519,7 @@ const AdminFindOnePostDocumentString = print(AdminFindOnePostDocument)
 const AdminCreatePostDocumentString = print(AdminCreatePostDocument)
 const AdminUpdatePostDocumentString = print(AdminUpdatePostDocument)
 const AdminDeletePostDocumentString = print(AdminDeletePostDocument)
-const UserFindManyPostDocumentString = print(UserFindManyPostDocument)
+const UserFindManyAuthoredPostDocumentString = print(UserFindManyAuthoredPostDocument)
 const UserFindManyPublishedPostDocumentString = print(UserFindManyPublishedPostDocument)
 const UserFindOnePostDocumentString = print(UserFindOnePostDocument)
 const UserCreatePostDocumentString = print(UserCreatePostDocument)
@@ -2969,11 +3056,11 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         variables,
       )
     },
-    userFindManyPost(
-      variables: UserFindManyPostQueryVariables,
+    userFindManyAuthoredPost(
+      variables: UserFindManyAuthoredPostQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
     ): Promise<{
-      data: UserFindManyPostQuery
+      data: UserFindManyAuthoredPostQuery
       errors?: GraphQLError[]
       extensions?: any
       headers: Headers
@@ -2981,11 +3068,11 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     }> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.rawRequest<UserFindManyPostQuery>(UserFindManyPostDocumentString, variables, {
+          client.rawRequest<UserFindManyAuthoredPostQuery>(UserFindManyAuthoredPostDocumentString, variables, {
             ...requestHeaders,
             ...wrappedRequestHeaders,
           }),
-        'userFindManyPost',
+        'userFindManyAuthoredPost',
         'query',
         variables,
       )
@@ -3619,6 +3706,7 @@ export function UserFindManyPostInputSchema(): z.ZodObject<Properties<UserFindMa
     limit: z.number().nullish(),
     page: z.number().nullish(),
     search: z.string().nullish(),
+    username: z.string().nullish(),
   })
 }
 

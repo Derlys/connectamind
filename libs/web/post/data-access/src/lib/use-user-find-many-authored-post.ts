@@ -4,7 +4,7 @@ import { toastError, toastSuccess } from '@pubkey-ui/core'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 
-export function useUserFindManyPost(props?: Partial<UserFindManyPostInput>) {
+export function useUserFindManyAuthoredPost(props?: Partial<UserFindManyPostInput>) {
   const sdk = useSdk()
   const [limit, setLimit] = useState(props?.limit ?? 10)
   const [page, setPage] = useState(props?.page ?? 1)
@@ -12,8 +12,8 @@ export function useUserFindManyPost(props?: Partial<UserFindManyPostInput>) {
 
   const input: UserFindManyPostInput = { page, limit, search }
   const query = useQuery({
-    queryKey: ['user', 'find-many-post', input],
-    queryFn: () => sdk.userFindManyPost({ input }).then((res) => res.data),
+    queryKey: ['user', 'find-many-authored-post', input],
+    queryFn: () => sdk.userFindManyAuthoredPost({ input }).then((res) => res.data),
   })
   const total = query.data?.paging?.meta?.totalCount ?? 0
   const items = query.data?.paging.data ?? []

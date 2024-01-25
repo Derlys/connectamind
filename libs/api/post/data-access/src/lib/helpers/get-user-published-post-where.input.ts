@@ -1,9 +1,9 @@
-import { UserFindManyPostInput } from '@connectamind/api-post-data-access'
 import { Prisma } from '@prisma/client'
+import { UserFindManyPostInput } from '../dto/user-find-many-post.input'
 
-export function getUserPublishedPostWhereInput(authorId: string, input: UserFindManyPostInput): Prisma.PostWhereInput {
+export function getUserPublishedPostWhereInput(input: UserFindManyPostInput): Prisma.PostWhereInput {
   const where: Prisma.PostWhereInput = {
-    prices: { some: {} }, //
+    prices: { some: {} },
   }
 
   if (input.search) {
@@ -12,6 +12,10 @@ export function getUserPublishedPostWhereInput(authorId: string, input: UserFind
       { title: { contains: input.search, mode: 'insensitive' } },
       { content: { contains: input.search, mode: 'insensitive' } },
     ]
+  }
+
+  if (input.username) {
+    where.author = { username: input.username }
   }
 
   return where

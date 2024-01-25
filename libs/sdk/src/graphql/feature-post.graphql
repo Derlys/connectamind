@@ -14,6 +14,10 @@ fragment PostDetails on Post {
   payment {
     ...PaymentDetails
   }
+  payments {
+    ...PaymentDetails
+  }
+  postUrl
 }
 
 query adminFindManyPost($input: AdminFindManyPostInput!) {
@@ -49,8 +53,8 @@ mutation adminDeletePost($postId: String!) {
   deleted: adminDeletePost(postId: $postId)
 }
 
-query userFindManyPost($input: UserFindManyPostInput!) {
-  paging: userFindManyPost(input: $input) {
+query userFindManyAuthoredPost($input: UserFindManyPostInput!) {
+  paging: userFindManyAuthoredPost(input: $input) {
     data {
       ...PostDetails
     }

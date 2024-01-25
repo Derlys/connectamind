@@ -31,7 +31,7 @@ export function UiHeaderProfile() {
         </Button>
       </Menu.Target>
       <Menu.Dropdown>
-        <Menu.Item component={Link} to="/profile" leftSection={<IconUser size="0.9rem" stroke={1.5} />}>
+        <Menu.Item component={Link} to={user?.profileUrl ?? '/u'} leftSection={<IconUser size="0.9rem" stroke={1.5} />}>
           View profile
         </Menu.Item>
         <Menu.Item component={Link} to="/settings" leftSection={<IconSettings size="0.9rem" stroke={1.5} />}>

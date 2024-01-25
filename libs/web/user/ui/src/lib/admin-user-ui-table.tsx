@@ -6,7 +6,7 @@ import { DataTable, DataTableProps } from 'mantine-datatable'
 import { Link } from 'react-router-dom'
 import { UserUiRoleBadge } from './user-ui-role-badge'
 import { UserUiStatusBadge } from './user-ui-status-badge'
-import { UserUiTitle } from './user-ui-title'
+import { UserUiItem } from './user-ui-item'
 
 interface AdminUserTableProps {
   users: User[]
@@ -38,7 +38,7 @@ export function AdminUserUiTable({
         columns={[
           {
             accessor: 'username',
-            render: (item) => <UserUiTitle user={item} to={`/admin/users/${item.id}`} />,
+            render: (item) => <UserUiItem user={item} to={`/admin/users/${item.id}`} />,
           },
           {
             accessor: 'identities',
@@ -69,7 +69,7 @@ export function AdminUserUiTable({
             textAlign: 'right',
             render: (item) => (
               <Group gap="xs" justify="right">
-                <ActionIcon size="sm" variant="light" color="brand" component={Link} to={`/profile/${item.username}`}>
+                <ActionIcon size="sm" variant="light" color="brand" component={Link} to={`${item.profileUrl}`}>
                   <IconUser size={16} />
                 </ActionIcon>
                 <ActionIcon

@@ -5,11 +5,11 @@ import { useState } from 'react'
 
 export function useUserFindManyPublishedPost(props?: Partial<UserFindManyPostInput>) {
   const sdk = useSdk()
-  const [limit, setLimit] = useState(props?.limit ?? 10)
+  const [limit, setLimit] = useState(props?.limit ?? 50)
   const [page, setPage] = useState(props?.page ?? 1)
   const [search, setSearch] = useState<string>(props?.search ?? '')
 
-  const input: UserFindManyPostInput = { page, limit, search }
+  const input: UserFindManyPostInput = { page, limit, search, username: props?.username }
   const query = useQuery({
     queryKey: ['user', 'find-many-published-post', input],
     queryFn: () => sdk.userFindManyPublishedPost({ input }).then((res) => res.data),

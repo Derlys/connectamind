@@ -4,7 +4,7 @@ import { IconPencil, IconTrash } from '@tabler/icons-react'
 import { DataTable, DataTableProps } from 'mantine-datatable'
 import { Link } from 'react-router-dom'
 
-export function UserPostUiTable({
+export function AuthorPostUiTable({
   deletePost,
   posts = [],
   onPageChange,
@@ -33,20 +33,19 @@ export function UserPostUiTable({
           {
             accessor: 'title',
             render: (item) => (
-              <Anchor component={Link} to={`/posts/${item.id}`} size="sm" fw={500}>
+              <Anchor component={Link} to={`${item.postUrl}`} size="sm" fw={500}>
                 {item.title}
               </Anchor>
             ),
           },
-          { accessor: 'author.username' },
-          { accessor: 'content' },
+          { accessor: 'payments', textAlign: 'right', render: (item) => item?.payments?.length ?? 0 },
           {
             accessor: 'actions',
             title: 'Actions',
             textAlign: 'right',
             render: (item) => (
               <Group gap="xs" justify="right">
-                <ActionIcon color="brand" variant="light" size="sm" component={Link} to={`/posts/${item.id}/settings`}>
+                <ActionIcon color="brand" variant="light" size="sm" component={Link} to={`${item.postUrl}/edit`}>
                   <IconPencil size={16} />
                 </ActionIcon>
                 <ActionIcon color="red" variant="light" size="sm" onClick={() => deletePost(item)}>

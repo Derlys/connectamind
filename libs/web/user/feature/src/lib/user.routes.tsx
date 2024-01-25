@@ -3,7 +3,7 @@ import { UiWarning } from '@pubkey-ui/core'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { UserDetailFeature } from './user-detail-feature'
 
-export default function UserFeature() {
+export default function UserRoutes() {
   const { user } = useAuth()
 
   if (!user?.username) {
@@ -13,7 +13,7 @@ export default function UserFeature() {
   return (
     <Routes>
       <Route index element={<Navigate to={user.username} replace />} />
-      <Route path=":username" element={<UserDetailFeature />} />
+      <Route path=":username/*" element={<UserDetailFeature />} />
     </Routes>
   )
 }

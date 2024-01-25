@@ -1,5 +1,4 @@
 import { AuthLoginFeature, AuthRegisterFeature } from '@connectamind/web-auth-feature'
-import { DashboardFeature } from '@connectamind/web-dashboard-feature'
 import { HomeFeature } from '@connectamind/web-home-feature'
 import { SettingsFeature } from '@connectamind/web-settings-feature'
 import { SolanaFeature } from '@connectamind/web-solana-feature'
@@ -8,13 +7,13 @@ import { UiNotFound } from '@pubkey-ui/core'
 import { lazy } from 'react'
 import { Navigate } from 'react-router-dom'
 import { useGuardedRoutes } from './use-guarded-routes'
-import { UserPostFeature } from '@connectamind/web-post-feature'
+import { AuthorPostFeature, PublishedPostFeature } from '@connectamind/web-post-feature'
 
 export const LazyAdminFeature = lazy(() => import('./shell-admin-routes'))
 
 export function ShellRoutes() {
   return useGuardedRoutes({
-    index: '/dashboard',
+    index: '/posts',
     admin: [
       // Here you can add routes that are only accessible by admins under the /admin/* path
       // Visit /admin/custom-admin-page to see this route
@@ -23,9 +22,9 @@ export function ShellRoutes() {
     ],
     layout: [
       // Here you can add routes that are part of the main layout
-      { path: '/dashboard', element: <DashboardFeature /> },
-      { path: '/posts/*', element: <UserPostFeature /> },
-      { path: '/profile/*', element: <UserFeature /> },
+      { path: '/dashboard/*', element: <AuthorPostFeature /> },
+      { path: '/posts/*', element: <PublishedPostFeature /> },
+      { path: '/u/*', element: <UserFeature /> },
       { path: '/settings/*', element: <SettingsFeature /> },
       { path: '/solana/*', element: <SolanaFeature /> },
     ],

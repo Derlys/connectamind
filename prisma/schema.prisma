@@ -44,11 +44,11 @@ model Payment {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   signature String
-  post      Post     @relation(fields: [postId], references: [id])
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId    String
-  price     Price    @relation(fields: [priceId], references: [id])
+  price     Price    @relation(fields: [priceId], references: [id], onDelete: Cascade)
   priceId   String
-  owner     User     @relation(fields: [ownerId], references: [id])
+  owner     User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
   ownerId   String
 
   @@unique([postId, ownerId])
@@ -62,7 +62,7 @@ model Post {
   content   String
   payments  Payment[]
   prices    Price[]
-  author    User      @relation(fields: [authorId], references: [id])
+  author    User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
   authorId  String
 }
 
@@ -72,7 +72,7 @@ model Price {
   updatedAt DateTime  @updatedAt
   token     Token
   payments  Payment[]
-  post      Post      @relation(fields: [postId], references: [id])
+  post      Post      @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId    String
   amount    String
 

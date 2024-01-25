@@ -4,9 +4,9 @@ import { useUserFindOnePost } from '@connectamind/web-post-data-access'
 import { useParams } from 'react-router-dom'
 import { UserPostUiUpdateForm } from '@connectamind/web-post-ui'
 import { useAuth } from '@connectamind/web-auth-data-access'
-import { UserPostManagePricesFeature } from './user-post-manage-prices.feature'
+import { AuthorPostManagePricesFeature } from './author-post-manage-prices.feature'
 
-export function UserPostEditFeature() {
+export function AuthorPostEditFeature() {
   const { user } = useAuth()
   const { postId } = useParams<{ postId: string }>() as { postId: string }
   const { item, query, updatePost } = useUserFindOnePost({ postId })
@@ -47,7 +47,7 @@ export function UserPostEditFeature() {
             label: 'Prices',
             element: (
               <UiCard>
-                <UserPostManagePricesFeature post={item} />
+                <AuthorPostManagePricesFeature post={item} />
               </UiCard>
             ),
           },

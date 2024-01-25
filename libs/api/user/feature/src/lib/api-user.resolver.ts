@@ -17,7 +17,7 @@ export class ApiUserResolver {
 
   @ResolveField(() => String, { nullable: true })
   profileUrl(@Parent() user: User) {
-    return ['/profile', user.username].join('/')
+    return ['/u', user.username].join('/')
   }
 
   @ResolveField(() => [Identity], { nullable: true })

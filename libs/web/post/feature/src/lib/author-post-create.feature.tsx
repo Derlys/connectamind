@@ -1,12 +1,12 @@
 import { UserCreatePostInput } from '@connectamind/sdk'
-import { useUserFindManyPost } from '@connectamind/web-post-data-access'
+import { useUserFindManyAuthoredPost } from '@connectamind/web-post-data-access'
 import { UserPostUiCreateForm } from '@connectamind/web-post-ui'
 import { toastError, UiBack, UiCard, UiPage } from '@pubkey-ui/core'
 import { useNavigate } from 'react-router-dom'
 
-export function UserPostCreateFeature() {
+export function AuthorPostCreateFeature() {
   const navigate = useNavigate()
-  const { createPost } = useUserFindManyPost()
+  const { createPost } = useUserFindManyAuthoredPost()
 
   async function submit(input: UserCreatePostInput) {
     return createPost(input)
