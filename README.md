@@ -49,23 +49,20 @@ Decentralized Access: Without intermediaries, without geographical barriers.
 
 ## 👩🏽‍💻 Built with 
 
-- Angular CLI: 13.1.3
-- Node: 20.10.0 (Unsupported)
-- Package Manager: yarn 1.22.17
-- Tailwind
+- Prisma
+- Nest
+- GraphlQL
+- React
 - WebStorm editor
+- Mantine
 
 ## Develoment
 
-This was my first page and is the reason because I was want to have idea of the structure of the app.
+This was my first participation in a Hackathon with a Dapp and is the reason why I wanted to get an idea of the structure of the application.
 
-As I'm not a designer, I helped myself with some online tools like [Mockflow](https://mockflow.com/) and finally created my mockup en Figma.
+After doing that, the structure of my application was organized in my mind.
 
-After doing that, the structure of my app go to do ordered in my mind.
-
-First I created my Angular-app and installed CSS (this was in my first versions) because I found that I can use framework like BootStrap, Tailwind between other with You can design and add styles betters.
-
-Separated all my components and folders in a way that I can understand if I have what do changes. Also, it is useful to me, so I use this order in others projects like a guide.
+Create a data model based on the features you wanted to have
 
 
 Have a folder for each use is a great tool of learning because I learned the functionality of services, data, page, and UI.
