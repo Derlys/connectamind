@@ -1,6 +1,6 @@
 import { useAdminFindOne<%= modelClassName %> } from '@<%= npmScope %>/<%= app %>-<%= modelFileName %>-data-access'
 import { Admin<%= modelClassName %>UiUpdateForm } from '@<%= npmScope %>/<%= app %>-<%= modelFileName %>-ui'
-import { UiCard, UiError, UiLoader } from '@pubkey-ui/core'
+import { UiCard, UiError, UiLoader } from '@connectamind/web-ui-core'
 
 export function Admin<%= modelClassName %>DetailSettingsTab({ <%= modelPropertyName %>Id }: { <%= modelPropertyName %>Id: string }) {
   const { item, query, update<%= modelClassName %> } = useAdminFindOne<%= modelClassName %>({ <%= modelPropertyName %>Id })

@@ -1,5 +1,5 @@
 import { ActionIcon, Tooltip } from '@mantine/core'
-import { toastWarning } from '@pubkey-ui/core'
+import { toastWarning } from '@connectamind/web-ui-core'
 
 import { useCounterFetch } from '../data-access/use-counter-fetch'
 import { useCounterSet } from '../data-access/use-counter-set'

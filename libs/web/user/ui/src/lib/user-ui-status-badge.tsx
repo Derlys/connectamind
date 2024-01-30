@@ -1,6 +1,6 @@
 import { Badge } from '@mantine/core'
 import { UserStatus } from '@connectamind/sdk'
-import { useUiColorScheme } from '@pubkey-ui/core'
+import { useUiColorScheme } from '@connectamind/web-ui-core'
 
 export const USER_STATUS_COLORS: Record<UserStatus, string> = {
   [UserStatus.Active]: 'green',

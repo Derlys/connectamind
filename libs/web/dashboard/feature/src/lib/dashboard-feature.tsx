@@ -1,5 +1,5 @@
 import { useAuth } from '@connectamind/web-auth-data-access'
-import { UiContainer } from '@pubkey-ui/core'
+import { UiContainer } from '@connectamind/web-ui-core'
 
 export default function DashboardFeature() {
   const { user } = useAuth()

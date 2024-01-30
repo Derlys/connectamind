@@ -1,4 +1,4 @@
-import { UiContainer, UiTabRoutes } from '@pubkey-ui/core'
+import { UiContainer, UiTabRoutes } from '@connectamind/web-ui-core'
 import { DevIdentityWizard } from './dev-identity-wizard'
 import { DevNew } from './dev-new'
 import { DevUserAutocomplete } from './dev-user-autocomplete'

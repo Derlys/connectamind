@@ -1,6 +1,6 @@
 import { useAdminFindOnePrice } from '@connectamind/web-price-data-access'
 import { AdminPriceUiUpdateForm } from '@connectamind/web-price-ui'
-import { UiCard, UiError, UiLoader } from '@pubkey-ui/core'
+import { UiCard, UiError, UiLoader } from '@connectamind/web-ui-core'
 
 export function AdminPriceDetailSettingsTab({ priceId }: { priceId: string }) {
   const { item, query, updatePrice } = useAdminFindOnePrice({ priceId })

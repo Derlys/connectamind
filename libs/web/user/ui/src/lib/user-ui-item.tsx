@@ -1,6 +1,6 @@
 import { AvatarProps, Group, type GroupProps, Stack, Text } from '@mantine/core'
 import { User } from '@connectamind/sdk'
-import { UiAnchor, type UiAnchorProps } from '@pubkey-ui/core'
+import { UiAnchor, type UiAnchorProps } from '@connectamind/web-ui-core'
 import { UserUiAvatar } from './user-ui-avatar'
 
 export function UserUiItem({

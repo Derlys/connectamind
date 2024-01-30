@@ -1,5 +1,5 @@
 import { Button, Group, SimpleGrid } from '@mantine/core'
-import { UiInfo, UiLoader, UiPage } from '@pubkey-ui/core'
+import { UiInfo, UiLoader, UiPage } from '@connectamind/web-ui-core'
 import { Keypair } from '@solana/web3.js'
 import { CounterProgramAccountProvider } from './data-access/counter-program-account-provider'
 import { useCounterFetchAll } from './data-access/use-counter-fetch-all'

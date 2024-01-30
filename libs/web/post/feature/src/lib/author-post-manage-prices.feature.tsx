@@ -1,6 +1,6 @@
 import { Post, Token } from '@connectamind/sdk'
 import { useUserFindOnePost } from '@connectamind/web-post-data-access'
-import { UiInfo, UiStack } from '@pubkey-ui/core'
+import { UiInfo, UiStack } from '@connectamind/web-ui-core'
 import { UserPriceUiCreateForm, UserPriceUiUpdateForm } from '@connectamind/web-price-ui'
 
 export function AuthorPostManagePricesFeature({ post }: { post: Post }) {

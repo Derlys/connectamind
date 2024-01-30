@@ -1,5 +1,5 @@
 import { Box, Group } from '@mantine/core'
-import { UiLogoType, UiStack } from '@pubkey-ui/core'
+import { UiLogoType, UiStack } from '@connectamind/web-ui-core'
 import { ReactNode } from 'react'
 import { AuthUiEnabled } from './auth-ui-enabled'
 import { AuthUiFull } from './auth-ui-full'

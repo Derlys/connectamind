@@ -1,6 +1,6 @@
 import { Alert, Badge, Button, rem, Stepper, StepperProps, Switch } from '@mantine/core'
 import { ellipsify } from '@connectamind/sdk'
-import { UiGroup, useUiBreakpoints } from '@pubkey-ui/core'
+import { UiGroup, useUiBreakpoints } from '@connectamind/web-ui-core'
 import { WalletDisconnectButton, WalletMultiButton } from '@pubkeyapp/wallet-adapter-mantine-ui'
 import { useWallet } from '@solana/wallet-adapter-react'
 import { IconAlertTriangle, IconUsb, IconWallet } from '@tabler/icons-react'

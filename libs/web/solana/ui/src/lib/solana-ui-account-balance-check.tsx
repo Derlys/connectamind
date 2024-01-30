@@ -1,6 +1,6 @@
 import { Button, Group, Text } from '@mantine/core'
 import { useRequestAirdrop, useCluster, useGetBalance } from '@connectamind/web-solana-data-access'
-import { UiWarning } from '@pubkey-ui/core'
+import { UiWarning } from '@connectamind/web-ui-core'
 import { PublicKey } from '@solana/web3.js'
 import { IconUserOff } from '@tabler/icons-react'
 

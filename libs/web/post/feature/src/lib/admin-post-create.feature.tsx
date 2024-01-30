@@ -1,7 +1,7 @@
 import { AdminCreatePostInput } from '@connectamind/sdk'
 import { useAdminFindManyPost } from '@connectamind/web-post-data-access'
 import { AdminPostUiCreateForm } from '@connectamind/web-post-ui'
-import { toastError, UiBack, UiCard, UiPage } from '@pubkey-ui/core'
+import { toastError, UiBack, UiCard, UiPage } from '@connectamind/web-ui-core'
 import { useNavigate } from 'react-router-dom'
 
 export function AdminPostCreateFeature() {

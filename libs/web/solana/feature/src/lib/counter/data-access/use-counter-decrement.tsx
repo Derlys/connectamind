@@ -1,5 +1,5 @@
 import { uiToastLink } from '@connectamind/web-solana-data-access'
-import { toastError } from '@pubkey-ui/core'
+import { toastError } from '@connectamind/web-ui-core'
 import { useMutation } from '@tanstack/react-query'
 import { useCounterProgramAccount } from './counter-program-account-provider'
 

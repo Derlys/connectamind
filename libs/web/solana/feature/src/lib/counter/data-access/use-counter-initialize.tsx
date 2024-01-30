@@ -1,5 +1,5 @@
 import { uiToastLink, useCluster } from '@connectamind/web-solana-data-access'
-import { toastError } from '@pubkey-ui/core'
+import { toastError } from '@connectamind/web-ui-core'
 import { Keypair } from '@solana/web3.js'
 import { useMutation } from '@tanstack/react-query'
 import { useCounterProgram } from './use-counter-program'

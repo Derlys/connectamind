@@ -1,6 +1,6 @@
 import { ActionIcon, Button, Modal } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
-import { UiStack } from '@pubkey-ui/core'
+import { UiStack } from '@connectamind/web-ui-core'
 import type { ComponentType, ReactNode } from 'react'
 
 export function UiModalButton({

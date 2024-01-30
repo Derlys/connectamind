@@ -1,6 +1,6 @@
 import { Group } from '@mantine/core'
 import { WalletButton } from '@connectamind/web-solana-ui'
-import { UiPage } from '@pubkey-ui/core'
+import { UiPage } from '@connectamind/web-ui-core'
 import { useWallet } from '@solana/wallet-adapter-react'
 import { CounterListFeature } from './counter-list-feature'
 

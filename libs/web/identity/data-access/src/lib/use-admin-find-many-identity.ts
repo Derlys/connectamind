@@ -1,7 +1,7 @@
 import { modals } from '@mantine/modals'
 import { AdminCreateIdentityInput, AdminFindManyIdentityInput, Identity, IdentityProvider } from '@connectamind/sdk'
 import { useSdk } from '@connectamind/web-core-data-access'
-import { toastError, toastSuccess } from '@pubkey-ui/core'
+import { toastError, toastSuccess } from '@connectamind/web-ui-core'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 

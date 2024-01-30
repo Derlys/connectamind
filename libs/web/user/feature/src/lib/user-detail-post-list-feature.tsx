@@ -1,6 +1,6 @@
 import { useAuth } from '@connectamind/web-auth-data-access'
 import { useUserFineOneUser } from '@connectamind/web-user-data-access'
-import { UiInfo, UiLoader, UiStack, UiWarning } from '@pubkey-ui/core'
+import { UiInfo, UiLoader, UiStack, UiWarning } from '@connectamind/web-ui-core'
 import { useUserFindManyPublishedPost } from '@connectamind/web-post-data-access'
 import { PostUiGrid } from '@connectamind/web-post-ui'
 import { IconBook, IconUserSearch } from '@tabler/icons-react'

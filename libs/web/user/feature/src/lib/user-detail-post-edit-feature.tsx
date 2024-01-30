@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { useUserFindOnePost } from '@connectamind/web-post-data-access'
-import { UiBack, UiCard, UiDebugModal, UiError, UiLoader, UiPage, UiTabRoutes } from '@pubkey-ui/core'
+import { UiBack, UiCard, UiDebugModal, UiError, UiLoader, UiPage, UiTabRoutes } from '@connectamind/web-ui-core'
 import { useAuth } from '@connectamind/web-auth-data-access'
 import { Group } from '@mantine/core'
 import { UserPostUiUpdateForm } from '@connectamind/web-post-ui'

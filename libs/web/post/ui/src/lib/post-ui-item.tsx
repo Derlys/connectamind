@@ -1,6 +1,6 @@
 import { Post } from '@connectamind/sdk'
 import { Group, type GroupProps, Stack, Text } from '@mantine/core'
-import { UiAnchor, type UiAnchorProps, UiDebugModal, UiGroup, UiInfo, UiStack, UiTime } from '@pubkey-ui/core'
+import { UiAnchor, type UiAnchorProps, UiDebugModal, UiGroup, UiInfo, UiStack, UiTime } from '@connectamind/web-ui-core'
 import { UserUiItem } from '@connectamind/web-user-ui'
 
 export function PostUiItem({

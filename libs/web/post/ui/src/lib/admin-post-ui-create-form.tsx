@@ -1,6 +1,6 @@
 import { Button, Group } from '@mantine/core'
 import { AdminCreatePostInput } from '@connectamind/sdk'
-import { formFieldText, formFieldTextarea, UiForm, UiFormField } from '@pubkey-ui/core'
+import { formFieldText, formFieldTextarea, UiForm, UiFormField } from '@connectamind/web-ui-core'
 
 export function AdminPostUiCreateForm({ submit }: { submit: (res: AdminCreatePostInput) => Promise<boolean> }) {
   const model: AdminCreatePostInput = {

@@ -1,6 +1,6 @@
 import { useAdminFindOneUser } from '@connectamind/web-user-data-access'
 import { AdminUiUpdateUserForm } from '@connectamind/web-user-ui'
-import { UiCard, UiError, UiLoader } from '@pubkey-ui/core'
+import { UiCard, UiError, UiLoader } from '@connectamind/web-ui-core'
 
 export function AdminUserDetailFeatureSettings({ userId }: { userId: string }) {
   const { item, query, updateUser } = useAdminFindOneUser({ userId })

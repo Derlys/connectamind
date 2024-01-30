@@ -1,6 +1,6 @@
 import { AdminUpdatePriceInput } from '@connectamind/sdk'
 import { useSdk } from '@connectamind/web-core-data-access'
-import { toastError, toastSuccess } from '@pubkey-ui/core'
+import { toastError, toastSuccess } from '@connectamind/web-ui-core'
 import { useQuery } from '@tanstack/react-query'
 
 export function useAdminFindOnePrice({ priceId }: { priceId: string }) {

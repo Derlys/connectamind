@@ -1,6 +1,6 @@
 import { Badge } from '@mantine/core'
 import { UserRole } from '@connectamind/sdk'
-import { useUiColorScheme } from '@pubkey-ui/core'
+import { useUiColorScheme } from '@connectamind/web-ui-core'
 
 export const USER_ROLE_COLORS: Record<UserRole, string> = {
   [UserRole.Admin]: 'pink',

@@ -1,7 +1,7 @@
 import { SimpleGrid, Text } from '@mantine/core'
 import type { User } from '@connectamind/sdk'
 import { AdminUserUiSearch, UserUiAvatar, UserUiSearch, UserUiItem } from '@connectamind/web-user-ui'
-import { UiCard, UiDebug, UiInfo, UiStack } from '@pubkey-ui/core'
+import { UiCard, UiDebug, UiInfo, UiStack } from '@connectamind/web-ui-core'
 import { useState } from 'react'
 
 export function DevUserAutocomplete() {

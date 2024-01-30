@@ -1,7 +1,7 @@
 import { AdminCreateUserInput } from '@connectamind/sdk'
 import { useAdminFindManyUser } from '@connectamind/web-user-data-access'
 import { AdminUiCreateUserForm } from '@connectamind/web-user-ui'
-import { toastError, UiBack, UiCard, UiPage } from '@pubkey-ui/core'
+import { toastError, UiBack, UiCard, UiPage } from '@connectamind/web-ui-core'
 import { useNavigate } from 'react-router-dom'
 
 export function AdminUserCreateFeature() {

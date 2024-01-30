@@ -1,6 +1,6 @@
 import { Avatar, AvatarProps, Tooltip } from '@mantine/core'
 import { getRandomInt, User } from '@connectamind/sdk'
-import { getColorByIndex } from '@pubkey-ui/core'
+import { getColorByIndex } from '@connectamind/web-ui-core'
 
 export type UserUiAvatarProps = Omit<AvatarProps, 'src'> & {
   user?: User

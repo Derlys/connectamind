@@ -1,7 +1,7 @@
 import { ActionIcon, Badge, Button, Group, Loader, Table, Text } from '@mantine/core'
 import { ellipsify } from '@connectamind/sdk'
 import { useGetSignatures } from '@connectamind/web-solana-data-access'
-import { UiError, UiInfo, UiStack, UiTime } from '@pubkey-ui/core'
+import { UiError, UiInfo, UiStack, UiTime } from '@connectamind/web-ui-core'
 import { PublicKey } from '@solana/web3.js'
 import { IconRefresh } from '@tabler/icons-react'
 import { useMemo, useState } from 'react'

@@ -2,7 +2,7 @@ import { PublicKey } from '@solana/web3.js'
 import { useTransferSol } from '@connectamind/web-solana-data-access'
 import { useUserFindManyPayment } from '@connectamind/web-payment-data-access'
 import { Price, Token } from '@connectamind/sdk'
-import { toastError } from '@pubkey-ui/core'
+import { toastError } from '@connectamind/web-ui-core'
 
 export function useProcessPayment({ source, refresh }: { source: PublicKey; refresh: () => void }) {
   const mutation = useTransferSol({ address: source })

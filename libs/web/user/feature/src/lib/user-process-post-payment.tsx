@@ -1,7 +1,7 @@
 import { Post } from '@connectamind/sdk'
 import { useWallet } from '@solana/wallet-adapter-react'
 import { useProcessPayment } from '@connectamind/web-user-data-access'
-import { UiPage, UiStack, UiSuccess, UiWarning } from '@pubkey-ui/core'
+import { UiPage, UiStack, UiSuccess, UiWarning } from '@connectamind/web-ui-core'
 import { PriceUiButtons } from '@connectamind/web-price-ui'
 import { PublicKey } from '@solana/web3.js'
 import { Group } from '@mantine/core'

@@ -1,5 +1,5 @@
 import { Button, Code, Group } from '@mantine/core'
-import { toastSuccess, UiCard, UiInfo, UiStack } from '@pubkey-ui/core'
+import { toastSuccess, UiCard, UiInfo, UiStack } from '@connectamind/web-ui-core'
 
 export function DevNew() {
   return (

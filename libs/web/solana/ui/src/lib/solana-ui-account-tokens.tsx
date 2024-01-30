@@ -1,7 +1,7 @@
 import { ActionIcon, Button, Group, Loader, Table, Text } from '@mantine/core'
 import { ellipsify } from '@connectamind/sdk'
 import { useGetTokenAccounts } from '@connectamind/web-solana-data-access'
-import { UiError, UiInfo, UiStack } from '@pubkey-ui/core'
+import { UiError, UiInfo, UiStack } from '@connectamind/web-ui-core'
 import { PublicKey } from '@solana/web3.js'
 import { IconRefresh } from '@tabler/icons-react'
 import { useQueryClient } from '@tanstack/react-query'

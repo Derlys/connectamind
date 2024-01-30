@@ -1,7 +1,7 @@
 import { useAuth } from '@connectamind/web-auth-data-access'
 import { useUserFindManyIdentity } from '@connectamind/web-identity-data-access'
 import { IdentityUiGroupList } from '@connectamind/web-identity-ui'
-import { UiLoader, UiStack } from '@pubkey-ui/core'
+import { UiLoader, UiStack } from '@connectamind/web-ui-core'
 
 export function SettingsIdentityFeature() {
   const { user } = useAuth()

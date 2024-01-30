@@ -1,6 +1,6 @@
 import { useAdminFindOnePost } from '@connectamind/web-post-data-access'
 import { AdminPostUiUpdateForm } from '@connectamind/web-post-ui'
-import { UiCard, UiError, UiLoader } from '@pubkey-ui/core'
+import { UiCard, UiError, UiLoader } from '@connectamind/web-ui-core'
 
 export function AdminPostDetailSettingsTab({ postId }: { postId: string }) {
   const { item, query, updatePost } = useAdminFindOnePost({ postId })

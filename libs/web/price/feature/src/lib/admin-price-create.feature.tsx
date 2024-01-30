@@ -1,7 +1,7 @@
 import { AdminCreatePriceInput } from '@connectamind/sdk'
 import { useAdminFindManyPrice } from '@connectamind/web-price-data-access'
 import { AdminPriceUiCreateForm } from '@connectamind/web-price-ui'
-import { toastError, UiBack, UiCard, UiPage } from '@pubkey-ui/core'
+import { toastError, UiBack, UiCard, UiPage } from '@connectamind/web-ui-core'
 import { useNavigate } from 'react-router-dom'
 
 export function AdminPriceCreateFeature({ postId }: { postId: string }) {

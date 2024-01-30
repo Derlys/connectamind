@@ -1,5 +1,5 @@
 import { Group, Pagination, SimpleGrid } from '@mantine/core'
-import { UiDebugModal, UiGroup, UiStack } from '@pubkey-ui/core'
+import { UiDebugModal, UiGroup, UiStack } from '@connectamind/web-ui-core'
 import { DataTableProps } from 'mantine-datatable'
 import { PostUiGridItem } from './post-ui-grid-item'
 import { Post } from '@connectamind/sdk'

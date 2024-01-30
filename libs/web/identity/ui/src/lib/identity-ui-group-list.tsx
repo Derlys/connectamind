@@ -1,6 +1,6 @@
 import { Group, Text } from '@mantine/core'
 import { Identity, IdentityProvider } from '@connectamind/sdk'
-import { UiStack } from '@pubkey-ui/core'
+import { UiStack } from '@connectamind/web-ui-core'
 import { IdentityUiIcon } from './identity-ui-icon'
 
 import { IdentityUiLinkButton } from './identity-ui-link-button'

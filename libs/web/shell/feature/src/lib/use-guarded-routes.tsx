@@ -1,6 +1,6 @@
 import { UserRole, UserStatus } from '@connectamind/sdk'
 import { AuthUiRouteGuard, AuthUiUserRoleGuard, AuthUiUserStatusGuard } from '@connectamind/web-auth-ui'
-import { UiLoader } from '@pubkey-ui/core'
+import { UiLoader } from '@connectamind/web-ui-core'
 
 import { Navigate, Outlet, RouteObject, useRoutes } from 'react-router-dom'
 import { ShellLayout } from './shell-layout'

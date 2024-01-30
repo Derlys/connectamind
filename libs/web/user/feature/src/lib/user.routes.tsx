@@ -1,5 +1,5 @@
 import { useAuth } from '@connectamind/web-auth-data-access'
-import { UiWarning } from '@pubkey-ui/core'
+import { UiWarning } from '@connectamind/web-ui-core'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { UserDetailFeature } from './user-detail-feature'
 

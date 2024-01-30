@@ -1,7 +1,7 @@
 import { UserCreatePostInput } from '@connectamind/sdk'
 import { useUserFindManyAuthoredPost } from '@connectamind/web-post-data-access'
 import { UserPostUiCreateForm } from '@connectamind/web-post-ui'
-import { toastError, UiBack, UiCard, UiPage } from '@pubkey-ui/core'
+import { toastError, UiBack, UiCard, UiPage } from '@connectamind/web-ui-core'
 import { useNavigate } from 'react-router-dom'
 
 export function AuthorPostCreateFeature() {

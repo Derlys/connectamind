@@ -2,7 +2,7 @@ import { Button } from '@mantine/core'
 import { UiGrid } from '@connectamind/web-ui-core'
 import { useUserProfile } from '@connectamind/web-user-data-access'
 import { UserUiProfile, UserUiUpdateForm } from '@connectamind/web-user-ui'
-import { UiCard, UiContainer, UiLoader, UiStack, UiWarning } from '@pubkey-ui/core'
+import { UiCard, UiContainer, UiLoader, UiStack, UiWarning } from '@connectamind/web-ui-core'
 import { Link } from 'react-router-dom'
 import { SettingsIdentityFeature } from './settings-identity-feature'
 

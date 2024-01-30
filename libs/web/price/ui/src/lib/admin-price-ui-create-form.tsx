@@ -1,6 +1,6 @@
 import { Button, Group } from '@mantine/core'
 import { AdminCreatePriceInput, getEnumOptions, Token } from '@connectamind/sdk'
-import { formFieldSelect, formFieldText, UiForm, UiFormField } from '@pubkey-ui/core'
+import { formFieldSelect, formFieldText, UiForm, UiFormField } from '@connectamind/web-ui-core'
 
 export function AdminPriceUiCreateForm({ submit }: { submit: (res: AdminCreatePriceInput) => Promise<boolean> }) {
   const model: AdminCreatePriceInput = {

@@ -1,4 +1,4 @@
-import { toastError } from '@pubkey-ui/core'
+import { toastError } from '@connectamind/web-ui-core'
 import { useQuery } from '@tanstack/react-query'
 import { useCounterProgram } from './use-counter-program'
 import { PublicKey } from '@solana/web3.js'

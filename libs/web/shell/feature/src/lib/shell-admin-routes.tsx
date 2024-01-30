@@ -1,6 +1,6 @@
 import { DevAdminRoutes } from '@connectamind/web-dev-feature'
 import { AdminUserFeature } from '@connectamind/web-user-feature'
-import { UiContainer, UiDashboardGrid, UiDashboardItem, UiNotFound } from '@pubkey-ui/core'
+import { UiContainer, UiDashboardGrid, UiDashboardItem, UiNotFound } from '@connectamind/web-ui-core'
 import { IconBook, IconUsers } from '@tabler/icons-react'
 import { Navigate, RouteObject, useRoutes } from 'react-router-dom'
 import { AdminPostFeature } from '@connectamind/web-post-feature'

@@ -1,6 +1,6 @@
 import { Button, Group } from '@mantine/core'
 import { UserUpdatePostInput, Post } from '@connectamind/sdk'
-import { formFieldText, formFieldTextarea, UiForm, UiFormField } from '@pubkey-ui/core'
+import { formFieldText, formFieldTextarea, UiForm, UiFormField } from '@connectamind/web-ui-core'
 
 export function UserPostUiUpdateForm({
   submit,

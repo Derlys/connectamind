@@ -1,4 +1,4 @@
-import { toastError, toastSuccess, UiCard, UiInfo, UiPage, UiStack } from '@pubkey-ui/core'
+import { toastError, toastSuccess, UiCard, UiInfo, UiPage, UiStack } from '@connectamind/web-ui-core'
 import { Button, Code, Group } from '@mantine/core'
 import { Price, Token } from '@connectamind/sdk'
 import { PriceUiButtons } from '@connectamind/web-price-ui'

@@ -1,6 +1,6 @@
 import { AdminFindManyPaymentInput } from '@connectamind/sdk'
 import { useSdk } from '@connectamind/web-core-data-access'
-import { toastSuccess } from '@pubkey-ui/core'
+import { toastSuccess } from '@connectamind/web-ui-core'
 import { useQuery } from '@tanstack/react-query'
 import { useState } from 'react'
 

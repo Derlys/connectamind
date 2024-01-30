@@ -2,7 +2,7 @@ import { Group } from '@mantine/core'
 import { UiPageLimit, UiSearchField } from '@connectamind/web-ui-core'
 import { useUserFindManyPublishedPost } from '@connectamind/web-post-data-access'
 import { PostUiGrid } from '@connectamind/web-post-ui'
-import { UiInfo, UiLoader, UiPage } from '@pubkey-ui/core'
+import { UiInfo, UiLoader, UiPage } from '@connectamind/web-ui-core'
 
 export function UserPostListFeature() {
   const { items, pagination, query, setSearch } = useUserFindManyPublishedPost()

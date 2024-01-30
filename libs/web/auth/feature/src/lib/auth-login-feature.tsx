@@ -2,7 +2,7 @@ import { Button, Divider, Group } from '@mantine/core'
 import { LoginInput } from '@connectamind/sdk'
 import { useAuth } from '@connectamind/web-auth-data-access'
 import { AuthUiForm, AuthUiShell } from '@connectamind/web-auth-ui'
-import { UiLoader, UiStack } from '@pubkey-ui/core'
+import { UiLoader, UiStack } from '@connectamind/web-ui-core'
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 

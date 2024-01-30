@@ -2,7 +2,7 @@ import { Button, Group } from '@mantine/core'
 import { UiPageLimit, UiSearchField } from '@connectamind/web-ui-core'
 import { useAdminFindManyPayment } from '@connectamind/web-payment-data-access'
 import { AdminPaymentUiTable } from '@connectamind/web-payment-ui'
-import { UiBack, UiDebugModal, UiInfo, UiLoader, UiPage } from '@pubkey-ui/core'
+import { UiBack, UiDebugModal, UiInfo, UiLoader, UiPage } from '@connectamind/web-ui-core'
 import { Link } from 'react-router-dom'
 
 export function AdminPaymentListFeature() {

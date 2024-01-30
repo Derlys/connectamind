@@ -1,5 +1,5 @@
 import { useAdminFindOnePrice } from '@connectamind/web-price-data-access'
-import { UiCard, UiDebug, UiError, UiLoader } from '@pubkey-ui/core'
+import { UiCard, UiDebug, UiError, UiLoader } from '@connectamind/web-ui-core'
 
 export function AdminPriceDetailOverviewTab({ priceId }: { priceId: string }) {
   const { item, query } = useAdminFindOnePrice({ priceId })

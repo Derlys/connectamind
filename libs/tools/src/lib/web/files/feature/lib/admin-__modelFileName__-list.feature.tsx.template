@@ -2,7 +2,7 @@ import { Button, Group } from '@mantine/core'
 import { UiPageLimit, UiSearchField } from '@<%= npmScope %>/<%= app %>-ui-core'
 import { useAdminFindMany<%= modelClassName %> } from '@<%= npmScope %>/<%= app %>-<%= modelFileName %>-data-access'
 import { Admin<%= modelClassName %>UiTable } from '@<%= npmScope %>/<%= app %>-<%= modelFileName %>-ui'
-import { UiBack, UiDebugModal, UiInfo, UiLoader, UiPage } from '@pubkey-ui/core'
+import { UiBack, UiDebugModal, UiInfo, UiLoader, UiPage } from '@connectamind/web-ui-core'
 import { Link } from 'react-router-dom'
 
 export function Admin<%= modelClassName %>ListFeature() {

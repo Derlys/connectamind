@@ -2,7 +2,7 @@ import { Button, Group } from '@mantine/core'
 import { UiPageLimit, UiSearchField } from '@connectamind/web-ui-core'
 import { useAdminFindManyPrice } from '@connectamind/web-price-data-access'
 import { AdminPriceUiTable } from '@connectamind/web-price-ui'
-import { UiBack, UiDebugModal, UiInfo, UiLoader, UiPage, UiStack } from '@pubkey-ui/core'
+import { UiBack, UiDebugModal, UiInfo, UiLoader, UiPage, UiStack } from '@connectamind/web-ui-core'
 import { Link } from 'react-router-dom'
 
 export function AdminPriceListFeature({ postId }: { postId: string }) {

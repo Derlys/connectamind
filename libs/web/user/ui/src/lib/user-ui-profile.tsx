@@ -1,6 +1,6 @@
 import { Group, Paper, PaperProps, Text, useMantineTheme } from '@mantine/core'
 import { User } from '@connectamind/sdk'
-import { useUiColorScheme } from '@pubkey-ui/core'
+import { useUiColorScheme } from '@connectamind/web-ui-core'
 
 import { ReactNode } from 'react'
 import { UserUiAvatar } from './user-ui-avatar'

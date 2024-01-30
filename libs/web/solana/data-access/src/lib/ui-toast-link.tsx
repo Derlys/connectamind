@@ -1,6 +1,6 @@
 import { Anchor } from '@mantine/core'
 import { NotificationData } from '@mantine/notifications'
-import { toastSuccess } from '@pubkey-ui/core'
+import { toastSuccess } from '@connectamind/web-ui-core'
 
 export function uiToastLink({
   label,

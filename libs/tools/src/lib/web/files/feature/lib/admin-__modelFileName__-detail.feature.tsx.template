@@ -1,5 +1,5 @@
 import { Group } from '@mantine/core'
-import { UiBack, UiDebugModal, UiError, UiLoader, UiPage, UiTabRoutes } from '@pubkey-ui/core'
+import { UiBack, UiDebugModal, UiError, UiLoader, UiPage, UiTabRoutes } from '@connectamind/web-ui-core'
 import { useAdminFindOne<%= modelClassName %> } from '@<%= npmScope %>/<%= app %>-<%= modelFileName %>-data-access'
 import { useParams } from 'react-router-dom'
 import { Admin<%= modelClassName %>DetailOverviewTab } from './admin-<%= modelFileName %>-detail-overview.tab'

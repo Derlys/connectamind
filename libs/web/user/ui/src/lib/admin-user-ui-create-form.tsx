@@ -1,6 +1,6 @@
 import { Button, Group } from '@mantine/core'
 import { AdminCreateUserInput } from '@connectamind/sdk'
-import { formFieldPassword, formFieldText, UiForm, UiFormField } from '@pubkey-ui/core'
+import { formFieldPassword, formFieldText, UiForm, UiFormField } from '@connectamind/web-ui-core'
 
 export function AdminUiCreateUserForm({ submit }: { submit: (res: AdminCreateUserInput) => Promise<boolean> }) {
   const model: AdminCreateUserInput = {

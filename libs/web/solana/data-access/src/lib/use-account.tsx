@@ -1,4 +1,4 @@
-import { toastError } from '@pubkey-ui/core'
+import { toastError } from '@connectamind/web-ui-core'
 import { TOKEN_2022_PROGRAM_ID, TOKEN_PROGRAM_ID } from '@solana/spl-token'
 import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 import { Connection, LAMPORTS_PER_SOL, PublicKey, TransactionSignature } from '@solana/web3.js'

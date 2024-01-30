@@ -1,5 +1,5 @@
 import { Group } from '@mantine/core'
-import { UiBack, UiCard, UiDebugModal, UiError, UiLoader, UiPage, UiTabRoutes } from '@pubkey-ui/core'
+import { UiBack, UiCard, UiDebugModal, UiError, UiLoader, UiPage, UiTabRoutes } from '@connectamind/web-ui-core'
 import { useUserFindOnePost } from '@connectamind/web-post-data-access'
 import { useParams } from 'react-router-dom'
 import { UserPostUiUpdateForm } from '@connectamind/web-post-ui'

@@ -2,7 +2,7 @@ import { Button, Group } from '@mantine/core'
 import { modals } from '@mantine/modals'
 import { useAdminFindManyIdentity } from '@connectamind/web-identity-data-access'
 import { AdminIdentityUiTable, AuthUiIdentityCreateForm } from '@connectamind/web-identity-ui'
-import { UiInfo, UiLoader, UiStack } from '@pubkey-ui/core'
+import { UiInfo, UiLoader, UiStack } from '@connectamind/web-ui-core'
 
 export function AdminUserDetailFeatureIdentities({ userId }: { userId: string }) {
   const { items, createIdentity, deleteIdentity, query } = useAdminFindManyIdentity({ ownerId: userId })

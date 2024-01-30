@@ -10,7 +10,7 @@ import {
   UiLoader,
   UiStack,
   UiWarning,
-} from '@pubkey-ui/core'
+} from '@connectamind/web-ui-core'
 import { useAuth } from '@connectamind/web-auth-data-access'
 import { Button, Group } from '@mantine/core'
 import { useMemo } from 'react'

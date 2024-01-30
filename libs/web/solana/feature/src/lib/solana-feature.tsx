@@ -1,4 +1,4 @@
-import { type UiGridRoute, UiGridRoutes } from '@pubkey-ui/core'
+import { type UiGridRoute, UiGridRoutes } from '@connectamind/web-ui-core'
 import { IconNumber, IconServer, IconWallet } from '@tabler/icons-react'
 import { lazy } from 'react'
 

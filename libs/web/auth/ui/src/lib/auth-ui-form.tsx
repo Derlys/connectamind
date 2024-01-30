@@ -1,5 +1,5 @@
 import { type LoginInput, RegisterInput } from '@connectamind/sdk'
-import { formFieldPassword, formFieldText, UiForm, UiFormField } from '@pubkey-ui/core'
+import { formFieldPassword, formFieldText, UiForm, UiFormField } from '@connectamind/web-ui-core'
 import { ReactNode, useState } from 'react'
 
 export type AuthUiFormInput = LoginInput | RegisterInput

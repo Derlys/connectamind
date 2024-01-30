@@ -1,5 +1,5 @@
 import { useAdminFindOnePayment } from '@connectamind/web-payment-data-access'
-import { UiCard, UiDebug, UiError, UiLoader } from '@pubkey-ui/core'
+import { UiCard, UiDebug, UiError, UiLoader } from '@connectamind/web-ui-core'
 
 export function AdminPaymentDetailOverviewTab({ paymentId }: { paymentId: string }) {
   const { item, query } = useAdminFindOnePayment({ paymentId })

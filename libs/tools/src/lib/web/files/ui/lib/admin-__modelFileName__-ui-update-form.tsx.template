@@ -1,6 +1,6 @@
 import { Button, Group } from '@mantine/core'
 import { AdminUpdate<%= modelClassName %>Input, <%= modelClassName %> } from '@<%= npmScope %>/sdk'
-import { formFieldText, UiForm, UiFormField } from '@pubkey-ui/core'
+import { formFieldText, UiForm, UiFormField } from '@connectamind/web-ui-core'
 
 export function Admin<%= modelClassName %>UiUpdateForm({
   submit,

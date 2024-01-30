@@ -1,8 +1,8 @@
 import { AuthProvider } from '@connectamind/web-auth-data-access'
 import { SdkProvider } from '@connectamind/web-core-data-access'
 import { SolanaClusterProvider } from '@connectamind/web-solana-data-access'
-import { toastError, UiThemeLink, UiThemeProvider } from '@pubkey-ui/core'
-import '@pubkey-ui/core/index.esm.css'
+import { toastError, UiThemeLink, UiThemeProvider } from '@connectamind/web-ui-core'
+
 import 'mantine-datatable/styles.layer.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { BrowserRouter, Link } from 'react-router-dom'

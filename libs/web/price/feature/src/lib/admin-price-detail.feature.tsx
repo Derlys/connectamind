@@ -1,5 +1,5 @@
 import { Group } from '@mantine/core'
-import { UiBack, UiDebugModal, UiError, UiLoader, UiPage, UiTabRoutes } from '@pubkey-ui/core'
+import { UiBack, UiDebugModal, UiError, UiLoader, UiPage, UiTabRoutes } from '@connectamind/web-ui-core'
 import { useAdminFindOnePrice } from '@connectamind/web-price-data-access'
 import { useParams } from 'react-router-dom'
 import { AdminPriceDetailOverviewTab } from './admin-price-detail-overview.tab'

@@ -7,7 +7,7 @@ import {
   SolanaUiAccountTransactions,
   SolanaUiExplorerLink,
 } from '@connectamind/web-solana-ui'
-import { UiPage, UiStack } from '@pubkey-ui/core'
+import { UiPage, UiStack } from '@connectamind/web-ui-core'
 import { PublicKey } from '@solana/web3.js'
 import { useMemo } from 'react'
 

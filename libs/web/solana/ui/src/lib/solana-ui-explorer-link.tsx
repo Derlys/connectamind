@@ -1,6 +1,6 @@
 import { Anchor, AnchorProps, Group } from '@mantine/core'
 import { useCluster } from '@connectamind/web-solana-data-access'
-import { UiCopy } from '@pubkey-ui/core'
+import { UiCopy } from '@connectamind/web-ui-core'
 
 export function SolanaUiExplorerLink({
   label,

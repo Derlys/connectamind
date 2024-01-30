@@ -1,7 +1,7 @@
 import { UserUpdateUserInput } from '@connectamind/sdk'
 import { useAuth, useMe } from '@connectamind/web-auth-data-access'
 import { useSdk } from '@connectamind/web-core-data-access'
-import { toastError } from '@pubkey-ui/core'
+import { toastError } from '@connectamind/web-ui-core'
 import { useUserFineOneUser } from './use-user-fine-one-user'
 
 export function useUserProfile() {

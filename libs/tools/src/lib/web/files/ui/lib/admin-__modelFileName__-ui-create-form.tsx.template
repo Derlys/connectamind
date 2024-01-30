@@ -1,6 +1,6 @@
 import { Button, Group } from '@mantine/core'
 import { AdminCreate<%= modelClassName %>Input } from '@<%= npmScope %>/sdk'
-import { formFieldText, UiForm, UiFormField } from '@pubkey-ui/core'
+import { formFieldText, UiForm, UiFormField } from '@connectamind/web-ui-core'
 import { ReactNode } from 'react'
 
 export function Admin<%= modelClassName %>UiCreateForm({ submit }: { submit: (res: AdminCreate<%= modelClassName %>Input) => Promise<boolean> }) {
