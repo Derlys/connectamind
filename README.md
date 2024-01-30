@@ -77,7 +77,6 @@ I created a data model based on the features I wanted to have.
 ![Image description]()
 
   
-  
 ## What Do you need for run this project
 
 ### Prerequisites
@@ -192,24 +191,4 @@ CREATE libs/sdk/src/graphql/feature-company.graphql
 CREATE apps/api-e2e/src/api/api-company-feature.spec.ts
 ```
 
-### Adding a new web feature
 
-The following command will generate a new web feature in `libs/web/company/*`.
-
-You will need to restart the web server to make sure it picks up the new libraries.
-
-```shell
-pnpm nx g web-feature company
-```
-
-Output:
-
-```shell
-> NX Generating @connectamind/tools:web-feature
-
-CREATE libs/web/company/data-access/...
-CREATE libs/web/company/feature/...
-CREATE libs/web/company/ui/...
-UPDATE libs/web/shell/feature/src/lib/shell-admin-routes.tsx
-UPDATE tsconfig.base.json
-```
