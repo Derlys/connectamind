@@ -1,6 +1,7 @@
 import { faker } from '@faker-js/faker'
 import { IdentityProvider, Prisma, Token, UserRole, UserStatus } from '@prisma/client'
 import { slugifyId } from './helpers/slugify-id'
+import { postDerlys } from './provision-data/derlys-dev-to'
 
 const prices = [
   //
@@ -16,6 +17,11 @@ export const provisionUsers: Prisma.UserCreateInput[] = [
     avatarUrl: 'https://avatars.githubusercontent.com/u/58484607?v=4',
     posts: {
       create: [
+        ...postDerlys.map((post) => ({
+          ...post,
+          updatedAt: post.createdAt,
+          prices: { create: prices },
+        })),
         { title: 'Derlys Post 1', content: 'Hola!!', prices: { create: prices } },
         { title: 'Derlys Post 2', content: 'Hola!!', prices: { create: prices } },
         { title: 'Derlys Post 3', content: 'Hola!!', prices: { create: prices } },
@@ -35,6 +41,12 @@ export const provisionUsers: Prisma.UserCreateInput[] = [
     developer: true,
     posts: {
       create: [
+        ...postDerlys.map((post) => ({
+          ...post,
+          title: `${post.title} (Alice)`,
+          updatedAt: post.createdAt,
+          prices: { create: prices },
+        })),
         { title: 'Alice Post 1', content: 'Hola from Alice!!' },
         { title: 'Alice Post 2', content: 'Hola from Alice!!' },
         { title: 'Alice Post 3', content: 'Hola from Alice!!' },

@@ -16,6 +16,7 @@ import { Button, Group } from '@mantine/core'
 import { useMemo } from 'react'
 import { UserProcessPostPayment } from './user-process-post-payment'
 import { PostUiItem } from '@connectamind/web-post-ui'
+import Markdown from 'react-markdown'
 
 export function UserDetailPostDetailFeature({ username }: { username: string }) {
   const { user } = useAuth()
@@ -56,7 +57,7 @@ export function UserDetailPostDetailFeature({ username }: { username: string }) 
       <UiCard>
         <PostUiItem post={item} />
 
-        {item.content ? <pre>{item.content}</pre> : null}
+        {item.content ? <Markdown>{item.content}</Markdown> : null}
       </UiCard>
 
       {!userIsAuthor ? (
