@@ -31,22 +31,6 @@ Connect a Mind is the answer for content creators. In this open source DApp you 
 - Dashboard
 
 
-
-
-
-Advantages for Creators:
-
-Direct Earnings: Get instant rewards in the token of your choice for your work.
-
-Choose a list of tokens and you have the option of taking the ones you want from those offered by the platform.
-
-Total Control: Manage your content, prices and participate in the Web3 educational community.
-
-Advantages for Students:
-
-Decentralized Access: Without intermediaries, without geographical barriers.
-
-
 ## 👩🏽‍💻 Built with 
 
 - Prisma
@@ -57,17 +41,13 @@ Decentralized Access: Without intermediaries, without geographical barriers.
 - Mantine
 
 ## Develoment
+This is my first participation in a Hackathon with a Dapp and is the reason why I wanted to get an idea of the structure of the application. After doing that, the structure of my application was organized in my mind.
 
-This was my first participation in a Hackathon with a Dapp and is the reason why I wanted to get an idea of the structure of the application.
-
-After doing that, the structure of my application was organized in my mind.
-
-Create a data model based on the features you wanted to have
+I created a data model based on the features I wanted to have.
 
 
-Have a folder for each use is a great tool of learning because I learned the functionality of services, data, page, and UI.
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8dmnevfv1vm36reu5qe9.png)
+![Image description]()
   
 ## 💪🏽 What impacted me positively
 
