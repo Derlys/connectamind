@@ -16,9 +16,10 @@ Connect a Mind is the answer for content creators. In this open source DApp you 
 
 
 ## Demo
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/aoezux0ox99z6egu2cf3.png)
 
-🚀 [Mododifil.com]()
+
+ 🎤 [PRESENTATION]()
+🚀 [CONNECT A MIND]()
 
 
 ## 🤓 Features
@@ -47,7 +48,7 @@ I created a data model based on the features I wanted to have.
 
 
 
-![Image description]()
+
   
 ## 💪🏽 What impacted me positively
 
@@ -59,13 +60,13 @@ I created a data model based on the features I wanted to have.
   -data examples
   - Minimum Viable Product (MVP)
 
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/x4zwmrstzts4k0235huh.png)
+
 
 
   ## My challenge
 - Normally I use Angular as a framework for the front end, however this time the open source project stack I chose is with react. It was a challenge for me to learn this new syntax.
 
-  ![Image description]()
+
 
 - I solved the functionality of displaying a certain amount of post on the home page with this service.
 - Doing the frontend as a backend was another challenge, things like connecting the database to the frontend was new to me.
@@ -74,7 +75,7 @@ I created a data model based on the features I wanted to have.
 - Not to focus on making it look pretty the first time, only on the functionalities
 
   
-![Image description]()
+
 
   
 ## What Do you need for run this project
