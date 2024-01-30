@@ -8,19 +8,16 @@ Connect a Mind is the answer for content creators. In this open source DApp you 
 - Requirements
 - Features
 - Built with
-- Develoment
+- Development
 - What impacted me positively
 - My challenge
 - What Do you need for run this project
 - Build
 
-
 ## Demo
 
-
- 🎤 [PRESENTATION]()
+🎤 [PRESENTATION]()
 🚀 [CONNECT A MIND]()
-
 
 ## 🤓 Features
 
@@ -31,8 +28,7 @@ Connect a Mind is the answer for content creators. In this open source DApp you 
 - Posts
 - Dashboard
 
-
-## 👩🏽‍💻 Built with 
+## 👩🏽‍💻 Built with
 
 - Prisma
 - Nest
@@ -42,42 +38,32 @@ Connect a Mind is the answer for content creators. In this open source DApp you 
 - Mantine
 
 ## Develoment
+
 This is my first participation in a Hackathon with a Dapp and is the reason why I wanted to get an idea of the structure of the application. After doing that, the structure of my application was organized in my mind.
 
 I created a data model based on the features I wanted to have.
 
-
-
-
-  
 ## 💪🏽 What impacted me positively
 
 - Building an application in Web3 gives you the possibility to explore the diverse payment alternatives.
 
-- During coding I learned concepts such as: 
+- During coding I learned concepts such as:
+
   - data model
   - user story
-  -data examples
+    -data examples
   - Minimum Viable Product (MVP)
 
-
-
-
   ## My challenge
+
 - Normally I use Angular as a framework for the front end, however this time the open source project stack I chose is with react. It was a challenge for me to learn this new syntax.
-
-
 
 - I solved the functionality of displaying a certain amount of post on the home page with this service.
 - Doing the frontend as a backend was another challenge, things like connecting the database to the frontend was new to me.
-- Do not get lost in unnecessary functions for this initial prototype. 
+- Do not get lost in unnecessary functions for this initial prototype.
 - Know how to allocate time for each task
 - Not to focus on making it look pretty the first time, only on the functionalities
 
-  
-
-
-  
 ## What Do you need for run this project
 
 ### Prerequisites
@@ -191,5 +177,3 @@ UPDATE libs/api/core/feature/src/lib/api-core-feature.module.ts
 CREATE libs/sdk/src/graphql/feature-company.graphql
 CREATE apps/api-e2e/src/api/api-company-feature.spec.ts
 ```
-
-
