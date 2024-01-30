@@ -51,48 +51,34 @@ I created a data model based on the features I wanted to have.
   
 ## 💪🏽 What impacted me positively
 
-- The evolution of web application is the same as my learning.
+- Building an application in Web3 gives you the possibility to explore the diverse payment alternatives.
 
-- Every learning of a new style framework, a new concept or a new version of Angular is reflected here. I started with Angular V8.
-- The refactoring and the order it started with is currently very different. Leaving learnings about clean code, application architecture, design and more.
+- During coding I learned concepts such as: 
+  - data model
+  - user story
+  -data examples
+  - Minimum Viable Product (MVP)
+
+![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/x4zwmrstzts4k0235huh.png)
+
 
   ## My challenge
-- Learn new syntax in style frameworks.
+- Normally I use Angular as a framework for the front end, however this time the open source project stack I chose is with react. It was a challenge for me to learn this new syntax.
 
-- The decision of where to host the data changed more than 3 times between Firebase, my own backend application that was more of a manager, and finally my own project that used Markdown.
-
-- For server side rendering, I first had my domain and used "good daddy" and then switched to Cloudflare because it was free.
-
-- Making the routes work was a task that involved more than 10 prototypes.
-
-  ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ppls4zg32x9hdozswfyt.png)
+  ![Image description]()
 
 - I solved the functionality of displaying a certain amount of post on the home page with this service.
+- Doing the frontend as a backend was another challenge, things like connecting the database to the frontend was new to me.
+- Do not get lost in unnecessary functions for this initial prototype. 
+- Know how to allocate time for each task
+- Not to focus on making it look pretty the first time, only on the functionalities
 
   
-![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/krtoz4q5uxe7ix1yciwr.png)
+![Image description]()
 
   
   
 ## What Do you need for run this project
-
-1. Install dependencies. You will only have to do this once.
-
-```
-npm install
-```
-😉 I prefer `yarn`, [here](https://www.aluracursos.com/blog/npm-vs-yarn) is an article for you to decide.
-
-2. ng serve
-
-## Build
-- Run `ng build` to build the project.
-- The build artifacts will be stored in the `/dist/mododificil.com/browser` directory.
-- Use the `--prod` flag for a production build.
-
-
-
-## Getting Started
 
 ### Prerequisites
 
