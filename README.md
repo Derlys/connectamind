@@ -32,12 +32,12 @@ Connect a Mind is the answer for content creators. In this open source DApp you 
 
 - Prisma
 - Nest
-- GraphlQL
+- GraphQL
 - React
 - WebStorm editor
 - Mantine
 
-## Develoment
+## Development
 
 This is my first participation in a Hackathon with a Dapp and is the reason why I wanted to get an idea of the structure of the application. After doing that, the structure of my application was organized in my mind.
 
@@ -47,7 +47,7 @@ I created a data model based on the features I wanted to have.
 
 - Building an application in Web3 gives you the possibility to explore the diverse payment alternatives.
 
-- During coding I learned concepts such as:
+- During coding, I learned concepts such as:
 
   - data model
   - user story

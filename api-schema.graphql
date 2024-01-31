@@ -243,6 +243,7 @@ type Query {
   userFindManyIdentity(input: UserFindManyIdentityInput!): [Identity!]
   userFindManyPayment(input: UserFindManyPaymentInput!): PaymentPaging!
   userFindManyPublishedPost(input: UserFindManyPostInput!): PostPaging!
+  userFindManyPurchasedPost(input: UserFindManyPostInput!): PostPaging!
   userFindManyUser(input: UserFindManyUserInput!): UserPaging!
   userFindOnePost(postId: String!): Post
   userFindOneUser(username: String!): User

@@ -63,8 +63,20 @@ query userFindManyAuthoredPost($input: UserFindManyPostInput!) {
     }
   }
 }
+
 query userFindManyPublishedPost($input: UserFindManyPostInput!) {
   paging: userFindManyPublishedPost(input: $input) {
+    data {
+      ...PostDetails
+    }
+    meta {
+      ...PagingMetaDetails
+    }
+  }
+}
+
+query userFindManyPurchasedPost($input: UserFindManyPostInput!) {
+  paging: userFindManyPurchasedPost(input: $input) {
     data {
       ...PostDetails
     }

@@ -7,7 +7,7 @@ import { UiNotFound } from '@connectamind/web-ui-core'
 import { lazy } from 'react'
 import { Navigate } from 'react-router-dom'
 import { useGuardedRoutes } from './use-guarded-routes'
-import { AuthorPostFeature, PublishedPostFeature } from '@connectamind/web-post-feature'
+import { AuthorPostFeature, PublishedPostFeature, PurchasedPostFeature } from '@connectamind/web-post-feature'
 
 export const LazyAdminFeature = lazy(() => import('./shell-admin-routes'))
 
@@ -24,6 +24,7 @@ export function ShellRoutes() {
       // Here you can add routes that are part of the main layout
       { path: '/dashboard/*', element: <AuthorPostFeature /> },
       { path: '/posts/*', element: <PublishedPostFeature /> },
+      { path: '/purchased/*', element: <PurchasedPostFeature /> },
       { path: '/u/*', element: <UserFeature /> },
       { path: '/settings/*', element: <SettingsFeature /> },
       { path: '/solana/*', element: <SolanaFeature /> },

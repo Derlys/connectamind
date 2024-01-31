@@ -7,6 +7,7 @@ import { PostPaging } from './entity/post-paging.entity'
 import { getUserAuthoredPostWhereInput } from './helpers/get-user-authored-post-where.input'
 import { IdentityProvider } from '@connectamind/api-identity-data-access'
 import { getUserPublishedPostWhereInput } from './helpers/get-user-published-post-where.input'
+import { getUserPurchasedPostWhereInput } from './helpers/get-user-purchased-post-where.input'
 
 @Injectable()
 export class ApiUserPostService {
@@ -45,6 +46,27 @@ export class ApiUserPostService {
       .paginate({
         orderBy: { createdAt: 'desc' },
         where: getUserPublishedPostWhereInput(input),
+        include: { author: true, payments: { where: { ownerId: userId } }, prices: true },
+      })
+      .withPages({ limit: input.limit, page: input.page })
+      .then(([data, meta]) => ({ data, meta }))
+      .then((result) => {
+        return {
+          ...result,
+          data: result.data.map((post) => {
+            const payment = post?.payments.length ? post.payments[0] : null
+            const owner = post?.authorId === userId
+            return { ...post, payment, content: owner ? post?.content : payment ? post?.content : null }
+          }),
+        }
+      })
+  }
+
+  async findManyPurchasedPost(userId: string, input: UserFindManyPostInput) {
+    return this.core.data.post
+      .paginate({
+        orderBy: { createdAt: 'desc' },
+        where: getUserPurchasedPostWhereInput(userId, input),
         include: { author: true, payments: { where: { ownerId: userId } }, prices: true },
       })
       .withPages({ limit: input.limit, page: input.page })
