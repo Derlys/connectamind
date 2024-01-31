@@ -1,8 +1,7 @@
 import { Button, Group } from '@mantine/core'
-import { UiPageLimit, UiSearchField, UiStack } from '@connectamind/web-ui-core'
+import { UiDebugModal, UiInfo, UiLoader, UiPage, UiPageLimit, UiSearchField, UiStack } from '@connectamind/web-ui-core'
 import { useUserFindManyAuthoredPost } from '@connectamind/web-post-data-access'
 import { AuthorPostUiTable } from '@connectamind/web-post-ui'
-import { UiBack, UiDebugModal, UiInfo, UiLoader, UiPage } from '@connectamind/web-ui-core'
 import { Link } from 'react-router-dom'
 
 export function AuthorPostListFeature() {
@@ -20,7 +19,6 @@ export function AuthorPostListFeature() {
         </Group>
       }
     >
-      {' '}
       <UiStack>
         <UiInfo
           title="About the Creator Dashboard"

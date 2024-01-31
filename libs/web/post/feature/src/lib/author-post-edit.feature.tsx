@@ -24,7 +24,7 @@ export function AuthorPostEditFeature() {
   return (
     <UiPage
       title={<Group>edit:{item.title}</Group>}
-      leftAction={<UiBack to={`/posts/${item.id}`} />}
+      leftAction={<UiBack to={item.postUrl} />}
       rightAction={
         <Group>
           <UiDebugModal data={item} />

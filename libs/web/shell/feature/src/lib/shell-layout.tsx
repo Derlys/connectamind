@@ -20,9 +20,9 @@ export function ShellLayout({ children }: { children: ReactNode }) {
           opened={opened}
           toggle={toggle}
           links={[
-            { link: '/posts', label: 'Home' },
+            { link: '/home', label: 'Home' },
             { link: '/purchased', label: 'Purchased' },
-            { link: '/dashboard', label: 'Creator Dashboard' },
+            { link: '/creator', label: 'Creator Dashboard' },
           ]}
           profile={
             <Group gap="xs">

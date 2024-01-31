@@ -13,7 +13,7 @@ export const LazyAdminFeature = lazy(() => import('./shell-admin-routes'))
 
 export function ShellRoutes() {
   return useGuardedRoutes({
-    index: '/posts',
+    index: '/dashboard',
     admin: [
       // Here you can add routes that are only accessible by admins under the /admin/* path
       // Visit /admin/custom-admin-page to see this route
@@ -22,8 +22,9 @@ export function ShellRoutes() {
     ],
     layout: [
       // Here you can add routes that are part of the main layout
-      { path: '/dashboard/*', element: <AuthorPostFeature /> },
-      { path: '/posts/*', element: <PublishedPostFeature /> },
+      { path: '/dashboard', element: <Navigate to="/home" /> },
+      { path: '/creator/*', element: <AuthorPostFeature /> },
+      { path: '/home/*', element: <PublishedPostFeature /> },
       { path: '/purchased/*', element: <PurchasedPostFeature /> },
       { path: '/u/*', element: <UserFeature /> },
       { path: '/settings/*', element: <SettingsFeature /> },

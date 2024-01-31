@@ -17,7 +17,7 @@ export function UserDetailFeature() {
   const routes = useRoutes([
     { index: true, element: <UserDetailPostListFeature username={username} /> },
     { path: ':postId/edit/*', element: <AuthorPostEditFeature /> },
-    { path: ':postId', element: <UserDetailPostDetailFeature username={username} /> },
+    { path: ':postId/*', element: <UserDetailPostDetailFeature username={username} /> },
   ])
 
   if (query.isLoading) {
