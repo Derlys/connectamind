@@ -1,5 +1,5 @@
 import { Button, Group } from '@mantine/core'
-import { UiPageLimit, UiSearchField } from '@connectamind/web-ui-core'
+import { UiPageLimit, UiSearchField, UiStack } from '@connectamind/web-ui-core'
 import { useUserFindManyAuthoredPost } from '@connectamind/web-post-data-access'
 import { AuthorPostUiTable } from '@connectamind/web-post-ui'
 import { UiBack, UiDebugModal, UiInfo, UiLoader, UiPage } from '@connectamind/web-ui-core'
@@ -10,39 +10,46 @@ export function AuthorPostListFeature() {
 
   return (
     <UiPage
-      title="Dashboard"
-      leftAction={<UiBack />}
+      title="Creator Dashboard"
       rightAction={
         <Group>
           <UiDebugModal data={items} />
-          <Button component={Link} to="create">
+          <Button component={Link} to="create" size="xs">
             Create
           </Button>
         </Group>
       }
     >
-      <Group>
-        <UiSearchField placeholder="Search post" setSearch={setSearch} />
-        <UiPageLimit limit={pagination.limit} setLimit={pagination.setLimit} setPage={pagination.setPage} />
-      </Group>
-
-      {query.isLoading ? (
-        <UiLoader />
-      ) : items?.length ? (
-        <AuthorPostUiTable
-          deletePost={(post) => {
-            if (!window.confirm('Are you sure?')) return
-            return deletePost(post.id)
-          }}
-          posts={items}
-          page={pagination.page}
-          totalRecords={pagination.total}
-          recordsPerPage={pagination.limit}
-          onPageChange={(page) => void pagination.setPage(page)}
+      {' '}
+      <UiStack>
+        <UiInfo
+          title="About the Creator Dashboard"
+          message="Here is where the creator manages theird content that others can buy."
         />
-      ) : (
-        <UiInfo message="No posts found" />
-      )}
+
+        <Group>
+          <UiSearchField size="lg" placeholder="Search created posts" setSearch={setSearch} />
+          <UiPageLimit size="lg" limit={pagination.limit} setLimit={pagination.setLimit} setPage={pagination.setPage} />
+        </Group>
+
+        {query.isLoading ? (
+          <UiLoader />
+        ) : items?.length ? (
+          <AuthorPostUiTable
+            deletePost={(post) => {
+              if (!window.confirm('Are you sure?')) return
+              return deletePost(post.id)
+            }}
+            posts={items}
+            page={pagination.page}
+            totalRecords={pagination.total}
+            recordsPerPage={pagination.limit}
+            onPageChange={(page) => void pagination.setPage(page)}
+          />
+        ) : (
+          <UiInfo message="No posts found" />
+        )}
+      </UiStack>
     </UiPage>
   )
 }
