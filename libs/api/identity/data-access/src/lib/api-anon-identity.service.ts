@@ -32,10 +32,10 @@ export class ApiAnonIdentityService {
     const found = await this.solana.findIdentity(provider, providerId)
 
     // Get the IP and user agent from the request
-    const { ip, userAgent } = getRequestDetails(ctx)
+    const { userAgent } = getRequestDetails(ctx)
 
     // Generate a random challenge
-    const challenge = sha256(`${Math.random()}-${ip}-${userAgent}-${provider}-${providerId}-${Math.random()}`)
+    const challenge = sha256(`${Math.random()}-${userAgent}-${provider}-${providerId}-${Math.random()}`)
     const admin = this.core.config.isAdminId(IdentityProvider.Solana, providerId)
     // Store the challenge
     return this.core.data.identityChallenge.create({
@@ -58,7 +58,7 @@ export class ApiAnonIdentityService {
             },
           },
         },
-        ip,
+        ip: '0.0.0.0',
         userAgent,
         challenge: `Approve this message ${
           found ? `sign in as ${found.owner.username}` : 'sign up for a new account'

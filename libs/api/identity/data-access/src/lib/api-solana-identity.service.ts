@@ -33,9 +33,9 @@ export class ApiSolanaIdentityService {
     const found = await this.ensureIdentityChallenge(provider, providerId, challenge)
 
     // Make sure the IP and user agent match the challenge
-    const { ip, userAgent } = getRequestDetails(ctx)
+    const { userAgent } = getRequestDetails(ctx)
 
-    if (found.ip !== ip || found.userAgent !== userAgent) {
+    if (found.userAgent !== userAgent) {
       throw new Error(`Identity challenge not found.`)
     }
 

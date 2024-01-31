@@ -54,16 +54,16 @@ export class ApiUserIdentityService {
     await this.solana.ensureIdentityOwner(userId, provider, providerId)
 
     // Get the IP and user agent from the request
-    const { ip, userAgent } = getRequestDetails(ctx)
+    const { userAgent } = getRequestDetails(ctx)
 
     // Generate a random challenge
-    const challenge = sha256(`${Math.random()}-${ip}-${userAgent}-${userId}-${provider}-${providerId}-${Math.random()}`)
+    const challenge = sha256(`${Math.random()}-${userAgent}-${userId}-${provider}-${providerId}-${Math.random()}`)
 
     // Store the challenge
     return this.core.data.identityChallenge.create({
       data: {
         identity: { connect: { provider_providerId: { provider, providerId } } },
-        ip,
+        ip: '0.0.0.0',
         userAgent,
         challenge: `Approve this message to verify your wallet. #REF-${challenge}`,
       },
@@ -85,9 +85,9 @@ export class ApiUserIdentityService {
     // Make sure we find the challenge
     const found = await this.solana.ensureIdentityChallenge(provider, providerId, challenge)
 
-    const { ip, userAgent } = getRequestDetails(ctx)
+    const { userAgent } = getRequestDetails(ctx)
 
-    if (found.ip !== ip || found.userAgent !== userAgent) {
+    if (found.userAgent !== userAgent) {
       throw new Error(`Identity challenge not found.`)
     }
 
