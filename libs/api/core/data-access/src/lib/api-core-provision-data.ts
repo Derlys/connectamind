@@ -12,6 +12,7 @@ const prices = [
 export const provisionUsers: Prisma.UserCreateInput[] = [
   {
     username: 'derlys',
+    name: 'Derlys Dominguez',
     role: UserRole.Admin,
     developer: true,
     avatarUrl: 'https://avatars.githubusercontent.com/u/58484607?v=4',
@@ -22,12 +23,6 @@ export const provisionUsers: Prisma.UserCreateInput[] = [
           updatedAt: post.createdAt,
           prices: { create: prices },
         })),
-        { title: 'Derlys Post 1', content: 'Hola!!', prices: { create: prices } },
-        { title: 'Derlys Post 2', content: 'Hola!!', prices: { create: prices } },
-        { title: 'Derlys Post 3', content: 'Hola!!', prices: { create: prices } },
-        { title: 'Derlys Post 4', content: 'Hola!!' },
-        { title: 'Derlys Post 5', content: 'Hola!!' },
-        { title: 'Derlys Post 6', content: 'Hola!!' },
       ].map((post) => ({ ...post, id: slugifyId(post.title).toLowerCase() })),
     },
     identities: {
@@ -36,9 +31,11 @@ export const provisionUsers: Prisma.UserCreateInput[] = [
   },
   {
     username: 'alice',
+    name: 'Alice in Web3',
     password: 'password',
     role: UserRole.Admin,
     developer: true,
+    avatarUrl: 'https://mighty.tools/mockmind-api/content/human/76.jpg',
     posts: {
       create: [
         ...postDerlys.map((post) => ({
@@ -47,12 +44,6 @@ export const provisionUsers: Prisma.UserCreateInput[] = [
           updatedAt: post.createdAt,
           prices: { create: prices },
         })),
-        { title: 'Alice Post 1', content: 'Hola from Alice!!' },
-        { title: 'Alice Post 2', content: 'Hola from Alice!!' },
-        { title: 'Alice Post 3', content: 'Hola from Alice!!' },
-        { title: 'Alice Post 4', content: 'Hola from Alice!!' },
-        { title: 'Alice Post 5', content: 'Hola from Alice!!', prices: { create: prices } },
-        { title: 'Alice Post 6', content: 'Hola from Alice!!', prices: { create: prices } },
       ].map((post) => ({ ...post, id: slugifyId(post.title).toLowerCase() })),
     },
     identities: {

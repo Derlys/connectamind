@@ -25,9 +25,9 @@ export function PostUiGrid({
   const totalPages = totalRecords / limit + 1
   return (
     <UiStack>
-      <SimpleGrid cols={{ base: 1, md: 2, lg: 3 }} spacing="md">
+      <SimpleGrid cols={{ base: 1, md: 2 }} spacing="md">
         {posts.map((post) => (
-          <PostUiGridItem key={post.id} to={post.postUrl} post={post} />
+          <PostUiGridItem key={post.id} to={post.postUrl} post={post} withCta />
         ))}
       </SimpleGrid>
       <UiGroup>

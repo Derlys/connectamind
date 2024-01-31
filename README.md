@@ -16,7 +16,7 @@ Connect a Mind is the answer for content creators. In this open source DApp you 
 
 ## Demo
 
-🎤 [PRESENTATION]()
+🎤 [PRESENTATION](https://hackmd.io/@2deLyou0QfS5AldsZl4d4A/H1sAXAN5p#/)
 🚀 [CONNECT A MIND]()
 
 ## 🤓 Features

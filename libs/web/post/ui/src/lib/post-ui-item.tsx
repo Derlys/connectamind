@@ -1,18 +1,21 @@
 import { Post } from '@connectamind/sdk'
-import { Group, type GroupProps, Stack, Text } from '@mantine/core'
+import { Button, Group, type GroupProps, Stack, Text } from '@mantine/core'
 import { UiAnchor, type UiAnchorProps, UiDebugModal, UiGroup, UiInfo, UiStack, UiTime } from '@connectamind/web-ui-core'
 import { UserUiItem } from '@connectamind/web-user-ui'
+import { Link } from 'react-router-dom'
 
 export function PostUiItem({
   anchorProps,
   groupProps,
   post,
   to,
+  withCta,
 }: {
   anchorProps?: UiAnchorProps
   groupProps?: GroupProps
   post?: Post
   to?: string | null
+  withCta?: boolean
 }) {
   if (!post) return null
 
@@ -28,11 +31,22 @@ export function PostUiItem({
             <Text size="xl" fw="bold">
               {post?.title}
             </Text>
-            {post.createdAt ? <UiTime size="xs" c="dimmed" date={new Date(post.createdAt)} /> : null}
           </Stack>
         </Group>
+        <UiGroup mt="xl">
+          {post.createdAt ? <UiTime size="xs" c="dimmed" date={new Date(post.createdAt)} /> : null}
+          {withCta ? <PostUiCta post={post} /> : null}
+        </UiGroup>
       </UiAnchor>
       {/*<UiInfo message={'POST CONTENT HERE'} />*/}
     </UiStack>
+  )
+}
+
+function PostUiCta({ post }: { post: Post }) {
+  return (
+    <Button component={Link} to={post.postUrl} color={post.content ? 'green' : 'brand'}>
+      {post.content ? 'Read Post' : 'Buy Post'}
+    </Button>
   )
 }
