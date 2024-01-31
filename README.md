@@ -1,4 +1,4 @@
-# Connectamind ![landing page](https://avatars.githubusercontent.com/u/56296236?v=4)
+# Connectamind ![landing page](https://avatars.githubuserconte)
 
 Connect a Mind is the answer for content creators. In this open source DApp you can upload your articles, posts and more on any topic and sell them in exchange for the token you choose from those offered by the platform. A decentralized space where education meets blockchain innovation.
 
@@ -16,8 +16,8 @@ Connect a Mind is the answer for content creators. In this open source DApp you 
 
 ## Demo
 
-🎤 [PRESENTATION](https://hackmd.io/@2deLyou0QfS5AldsZl4d4A/H1sAXAN5p#/)
-🚀 [CONNECT A MIND]()
+🎤 [PRESENTATION](https://hackmd.io/@2deLyou0QfS5AldsZl4d4A/)
+🚀 [CONNECT A MIND](https://next.connectamind.com/)
 
 ## 🤓 Features
 
