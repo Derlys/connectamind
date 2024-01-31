@@ -16,6 +16,7 @@ export class ApiUserPostService {
   async createPost(userId: string, input: UserCreatePostInput) {
     return this.core.data.post.create({
       data: { ...input, authorId: userId, id: slugifyId(input.title).toLowerCase() },
+      include: { author: true },
     })
   }
 

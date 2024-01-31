@@ -12,7 +12,7 @@ export function AuthorPostCreateFeature() {
     return createPost(input)
       .then((res) => {
         if (res) {
-          navigate(`/posts/${res?.id}`)
+          navigate(`${res?.postUrl}/edit`)
         }
       })
       .then(() => true)
