@@ -1,8 +1,9 @@
 import { UserCreatePostInput } from '@connectamind/sdk'
 import { useUserFindManyAuthoredPost } from '@connectamind/web-post-data-access'
 import { UserPostUiCreateForm } from '@connectamind/web-post-ui'
-import { toastError, UiBack, UiCard, UiPage } from '@connectamind/web-ui-core'
+import { toastError, UiBack, UiCard, UiCardTitle, UiGroup, UiStack } from '@connectamind/web-ui-core'
 import { useNavigate } from 'react-router-dom'
+import { Group } from '@mantine/core'
 
 export function AuthorPostCreateFeature() {
   const navigate = useNavigate()
@@ -23,10 +24,17 @@ export function AuthorPostCreateFeature() {
   }
 
   return (
-    <UiPage leftAction={<UiBack />} title="Create Post">
+    <UiStack>
+      <UiGroup>
+        <Group>
+          <UiBack />
+          <UiCardTitle>Create Post</UiCardTitle>
+        </Group>
+      </UiGroup>
+
       <UiCard>
         <UserPostUiCreateForm submit={submit} />
       </UiCard>
-    </UiPage>
+    </UiStack>
   )
 }

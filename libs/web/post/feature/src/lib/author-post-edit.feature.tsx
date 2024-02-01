@@ -1,5 +1,17 @@
 import { Group } from '@mantine/core'
-import { UiBack, UiCard, UiDebugModal, UiError, UiLoader, UiPage, UiTabRoutes } from '@connectamind/web-ui-core'
+import {
+  UiBack,
+  UiCard,
+  UiCardTitle,
+  UiDebugModal,
+  UiError,
+  UiGroup,
+  UiLoader,
+  UiStack,
+  UiSuccess,
+  UiTabRoutes,
+  UiWarning,
+} from '@connectamind/web-ui-core'
 import { useUserFindOnePost } from '@connectamind/web-post-data-access'
 import { useParams } from 'react-router-dom'
 import { UserPostUiUpdateForm } from '@connectamind/web-post-ui'
@@ -22,15 +34,21 @@ export function AuthorPostEditFeature() {
   }
 
   return (
-    <UiPage
-      title={<Group>edit:{item.title}</Group>}
-      leftAction={<UiBack to={item.postUrl} />}
-      rightAction={
+    <UiStack>
+      <UiGroup>
+        <Group>
+          <UiBack to={item.postUrl} />
+          <UiCardTitle>edit:{item.title}</UiCardTitle>
+        </Group>
         <Group>
           <UiDebugModal data={item} />
         </Group>
-      }
-    >
+      </UiGroup>
+      {item.prices?.length ? (
+        <UiSuccess message={'Your post is published'} />
+      ) : (
+        <UiWarning title="Pusblish your post" message="Add at least one price to monetize your content." />
+      )}
       <UiTabRoutes
         tabs={[
           {
@@ -53,6 +71,6 @@ export function AuthorPostEditFeature() {
           },
         ]}
       />
-    </UiPage>
+    </UiStack>
   )
 }

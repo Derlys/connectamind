@@ -1,5 +1,14 @@
 import { Button, Group } from '@mantine/core'
-import { UiDebugModal, UiInfo, UiLoader, UiPage, UiPageLimit, UiSearchField, UiStack } from '@connectamind/web-ui-core'
+import {
+  UiCardTitle,
+  UiDebugModal,
+  UiGroup,
+  UiInfo,
+  UiLoader,
+  UiPageLimit,
+  UiSearchField,
+  UiStack,
+} from '@connectamind/web-ui-core'
 import { useUserFindManyAuthoredPost } from '@connectamind/web-post-data-access'
 import { AuthorPostUiTable } from '@connectamind/web-post-ui'
 import { Link } from 'react-router-dom'
@@ -8,18 +17,18 @@ export function AuthorPostListFeature() {
   const { deletePost, items, pagination, query, setSearch } = useUserFindManyAuthoredPost()
 
   return (
-    <UiPage
-      title="Creator Dashboard"
-      rightAction={
-        <Group>
-          <UiDebugModal data={items} />
-          <Button component={Link} to="create" size="xs">
-            Create
-          </Button>
-        </Group>
-      }
-    >
+    <UiStack>
       <UiStack>
+        <UiGroup>
+          <UiCardTitle>Creator Dashboard</UiCardTitle>
+          <Group>
+            <UiDebugModal data={items} />
+            <Button component={Link} to="create" size="xs">
+              Create
+            </Button>
+          </Group>
+        </UiGroup>
+
         <UiInfo
           title="About the Creator Dashboard"
           message="Here is where the creator manages theird content that others can buy."
@@ -48,6 +57,6 @@ export function AuthorPostListFeature() {
           <UiInfo message="No posts found" />
         )}
       </UiStack>
-    </UiPage>
+    </UiStack>
   )
 }

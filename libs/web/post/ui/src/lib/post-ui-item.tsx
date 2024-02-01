@@ -1,8 +1,9 @@
 import { Post } from '@connectamind/sdk'
 import { Button, Group, type GroupProps, Stack, Text } from '@mantine/core'
-import { UiAnchor, type UiAnchorProps, UiDebugModal, UiGroup, UiInfo, UiStack, UiTime } from '@connectamind/web-ui-core'
+import { UiAnchor, type UiAnchorProps, UiDebugModal, UiGroup, UiStack, UiTime } from '@connectamind/web-ui-core'
 import { UserUiItem } from '@connectamind/web-user-ui'
 import { Link } from 'react-router-dom'
+import { useAuth } from '@connectamind/web-auth-data-access'
 
 export function PostUiItem({
   anchorProps,
@@ -44,7 +45,12 @@ export function PostUiItem({
 }
 
 function PostUiCta({ post }: { post: Post }) {
-  return (
+  const { user } = useAuth()
+  return user?.id === post.authorId ? (
+    <Button component={Link} to={post.postUrl + '/edit'} color="blue">
+      Edit Post
+    </Button>
+  ) : (
     <Button component={Link} to={post.postUrl} color={post.content ? 'green' : 'brand'}>
       {post.content ? 'Read Post' : 'Buy Post'}
     </Button>

@@ -14,8 +14,9 @@ export class ApiUserPostService {
   constructor(private readonly core: ApiCoreService) {}
 
   async createPost(userId: string, input: UserCreatePostInput) {
+    const id = await this.findUniqueId(slugifyId(input.title).toLowerCase())
     return this.core.data.post.create({
-      data: { ...input, authorId: userId, id: slugifyId(input.title).toLowerCase() },
+      data: { ...input, authorId: userId, id },
       include: { author: true },
     })
   }
@@ -121,5 +122,14 @@ export class ApiUserPostService {
       throw new Error('Post not found')
     }
     return this.core.data.post.update({ where: { id: postId }, data: input })
+  }
+
+  async findUniqueId(id: string, suffix = ''): Promise<string> {
+    const found = await this.core.data.post.findUnique({ where: { id: `${id}${suffix}` } })
+    if (!found) {
+      return id + suffix
+    }
+    // We need to generate a new unique id.
+    return this.findUniqueId(id, `-${Math.floor(Math.random() * 10000)}`)
   }
 }

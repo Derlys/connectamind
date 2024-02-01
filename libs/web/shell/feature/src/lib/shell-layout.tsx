@@ -10,9 +10,11 @@ import {
 import { UiHeaderProfile } from '@connectamind/web-ui-core'
 import { UiHeader, UiLayout, UiLoader } from '@connectamind/web-ui-core'
 import { ReactNode, Suspense } from 'react'
+import { useAuth } from '@connectamind/web-auth-data-access'
 
 export function ShellLayout({ children }: { children: ReactNode }) {
   const [opened, { toggle }] = useDisclosure(false)
+  const { user } = useAuth()
   return (
     <UiLayout
       header={
@@ -22,7 +24,7 @@ export function ShellLayout({ children }: { children: ReactNode }) {
           links={[
             { link: '/home', label: 'Home' },
             { link: '/purchased', label: 'Purchased' },
-            { link: '/creator', label: 'Creator Dashboard' },
+            { link: `${user?.profileUrl}/dashboard`, label: 'Creator Dashboard' },
           ]}
           profile={
             <Group gap="xs">

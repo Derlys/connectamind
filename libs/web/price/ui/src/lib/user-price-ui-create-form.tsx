@@ -14,9 +14,9 @@ export function UserPriceUiCreateForm({
   return (
     <Group align="end" gap="xs">
       <TextInput
-        label={`Amount in ${token}`}
+        label={`Amount in ${token.toUpperCase()}`}
         required
-        w={120}
+        w={150}
         value={amount}
         onChange={(e) => setAmount(e.currentTarget.value)}
       />

@@ -278,7 +278,7 @@ type User {
   role: UserRole
   status: UserStatus
   updatedAt: DateTime
-  username: String
+  username: String!
 }
 
 input UserCreatePaymentInput {

@@ -488,7 +488,7 @@ export type User = {
   role?: Maybe<UserRole>
   status?: Maybe<UserStatus>
   updatedAt?: Maybe<Scalars['DateTime']['output']>
-  username?: Maybe<Scalars['String']['output']>
+  username: Scalars['String']['output']
 }
 
 export type UserCreatePaymentInput = {
@@ -589,7 +589,7 @@ export type LoginMutation = {
     role?: UserRole | null
     status?: UserStatus | null
     updatedAt?: Date | null
-    username?: string | null
+    username: string
   } | null
 }
 
@@ -615,7 +615,7 @@ export type RegisterMutation = {
     role?: UserRole | null
     status?: UserStatus | null
     updatedAt?: Date | null
-    username?: string | null
+    username: string
   } | null
 }
 
@@ -635,7 +635,7 @@ export type MeQuery = {
     role?: UserRole | null
     status?: UserStatus | null
     updatedAt?: Date | null
-    username?: string | null
+    username: string
   } | null
 }
 
@@ -752,7 +752,7 @@ export type AdminFindManyIdentityQuery = {
       role?: UserRole | null
       status?: UserStatus | null
       updatedAt?: Date | null
-      username?: string | null
+      username: string
     } | null
   }> | null
 }
@@ -1037,7 +1037,7 @@ export type PostDetailsFragment = {
     role?: UserRole | null
     status?: UserStatus | null
     updatedAt?: Date | null
-    username?: string | null
+    username: string
   } | null
   prices?: Array<{
     __typename?: 'Price'
@@ -1093,7 +1093,7 @@ export type AdminFindManyPostQuery = {
         role?: UserRole | null
         status?: UserStatus | null
         updatedAt?: Date | null
-        username?: string | null
+        username: string
       } | null
       prices?: Array<{
         __typename?: 'Price'
@@ -1159,7 +1159,7 @@ export type AdminFindOnePostQuery = {
       role?: UserRole | null
       status?: UserStatus | null
       updatedAt?: Date | null
-      username?: string | null
+      username: string
     } | null
     prices?: Array<{
       __typename?: 'Price'
@@ -1214,7 +1214,7 @@ export type AdminCreatePostMutation = {
       role?: UserRole | null
       status?: UserStatus | null
       updatedAt?: Date | null
-      username?: string | null
+      username: string
     } | null
     prices?: Array<{
       __typename?: 'Price'
@@ -1270,7 +1270,7 @@ export type AdminUpdatePostMutation = {
       role?: UserRole | null
       status?: UserStatus | null
       updatedAt?: Date | null
-      username?: string | null
+      username: string
     } | null
     prices?: Array<{
       __typename?: 'Price'
@@ -1333,7 +1333,7 @@ export type UserFindManyAuthoredPostQuery = {
         role?: UserRole | null
         status?: UserStatus | null
         updatedAt?: Date | null
-        username?: string | null
+        username: string
       } | null
       prices?: Array<{
         __typename?: 'Price'
@@ -1401,7 +1401,7 @@ export type UserFindManyPublishedPostQuery = {
         role?: UserRole | null
         status?: UserStatus | null
         updatedAt?: Date | null
-        username?: string | null
+        username: string
       } | null
       prices?: Array<{
         __typename?: 'Price'
@@ -1469,7 +1469,7 @@ export type UserFindManyPurchasedPostQuery = {
         role?: UserRole | null
         status?: UserStatus | null
         updatedAt?: Date | null
-        username?: string | null
+        username: string
       } | null
       prices?: Array<{
         __typename?: 'Price'
@@ -1535,7 +1535,7 @@ export type UserFindOnePostQuery = {
       role?: UserRole | null
       status?: UserStatus | null
       updatedAt?: Date | null
-      username?: string | null
+      username: string
     } | null
     prices?: Array<{
       __typename?: 'Price'
@@ -1590,7 +1590,7 @@ export type UserCreatePostMutation = {
       role?: UserRole | null
       status?: UserStatus | null
       updatedAt?: Date | null
-      username?: string | null
+      username: string
     } | null
     prices?: Array<{
       __typename?: 'Price'
@@ -1646,7 +1646,7 @@ export type UserUpdatePostMutation = {
       role?: UserRole | null
       status?: UserStatus | null
       updatedAt?: Date | null
-      username?: string | null
+      username: string
     } | null
     prices?: Array<{
       __typename?: 'Price'
@@ -1831,7 +1831,7 @@ export type UserDetailsFragment = {
   role?: UserRole | null
   status?: UserStatus | null
   updatedAt?: Date | null
-  username?: string | null
+  username: string
 }
 
 export type AdminCreateUserMutationVariables = Exact<{
@@ -1852,7 +1852,7 @@ export type AdminCreateUserMutation = {
     role?: UserRole | null
     status?: UserStatus | null
     updatedAt?: Date | null
-    username?: string | null
+    username: string
   } | null
 }
 
@@ -1882,7 +1882,7 @@ export type AdminFindManyUserQuery = {
       role?: UserRole | null
       status?: UserStatus | null
       updatedAt?: Date | null
-      username?: string | null
+      username: string
       identities?: Array<{
         __typename?: 'Identity'
         createdAt: Date
@@ -1928,7 +1928,7 @@ export type AdminFindOneUserQuery = {
     role?: UserRole | null
     status?: UserStatus | null
     updatedAt?: Date | null
-    username?: string | null
+    username: string
   } | null
 }
 
@@ -1951,7 +1951,7 @@ export type AdminUpdateUserMutation = {
     role?: UserRole | null
     status?: UserStatus | null
     updatedAt?: Date | null
-    username?: string | null
+    username: string
   } | null
 }
 
@@ -1975,7 +1975,7 @@ export type UserFindManyUserQuery = {
       role?: UserRole | null
       status?: UserStatus | null
       updatedAt?: Date | null
-      username?: string | null
+      username: string
     }>
     meta: {
       __typename?: 'PagingMeta'
@@ -2008,7 +2008,7 @@ export type UserFindOneUserQuery = {
     role?: UserRole | null
     status?: UserStatus | null
     updatedAt?: Date | null
-    username?: string | null
+    username: string
   } | null
 }
 
@@ -2030,7 +2030,7 @@ export type UserUpdateUserMutation = {
     role?: UserRole | null
     status?: UserStatus | null
     updatedAt?: Date | null
-    username?: string | null
+    username: string
   } | null
 }
 

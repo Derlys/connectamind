@@ -21,7 +21,7 @@ export class User {
   developer!: boolean
   @Field({ nullable: true })
   name?: string | null
-  @Field({ nullable: true })
+  @Field()
   username!: string
   @HideField()
   identities?: Identity[] | null
