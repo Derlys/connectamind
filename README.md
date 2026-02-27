@@ -1,3 +1,19 @@
+## Developer Advocate Case Study
+
+**The Challenge:** Building a product users actually adopt
+
+**What I Did:**
+- 🏗️ Built [technical stack]
+- 🧪 Tested with X users, identified friction points
+- 🔄 Iterated UX based on feedback
+- 📝 Created technical documentation
+- 🚀 Result: [user adoption metric if you have one]
+
+**The Full Loop:** Build → Test → Improve → Document → Support
+
+This is Developer Advocacy in action.
+
+
 # Connectamind ![landing page](https://avatars.githubuserconte)
 
 Connect a Mind is the answer for content creators. In this open source DApp you can upload your articles, posts and more on any topic and sell them in exchange for the token you choose from those offered by the platform. A decentralized space where education meets blockchain innovation.
